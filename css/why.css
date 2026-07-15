@@ -1,0 +1,318 @@
+/* ==================================================
+   WHY US
+================================================== */
+
+#why {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    radial-gradient(circle at top,
+      rgba(108, 99, 255, 0.08),
+      transparent 60%);
+}
+
+/* ==================================================
+   SECTION HEADER
+================================================== */
+
+#why .section-header {
+
+  max-width: 900px;
+
+  margin: 0 auto 5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  gap: 1.5rem;
+
+}
+
+#why .section-title {
+
+  max-width: 850px;
+
+  font-size: clamp(3rem, 5vw, 4.8rem);
+
+  line-height: .95;
+
+  letter-spacing: -.04em;
+
+}
+
+#why .section-note {
+
+  max-width: 650px;
+
+  color: rgba(255,255,255,.68);
+
+  line-height: 1.8;
+
+  font-size: 1.05rem;
+
+}
+
+/* ==================================================
+   GRID
+================================================== */
+
+.why-grid {
+
+  width: min(1200px,100%);
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3,1fr);
+
+  gap: 2rem;
+
+}
+
+/* ==================================================
+   CARD
+================================================== */
+
+.why-card {
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100%;
+
+  padding: 2.4rem;
+
+  border-radius: 24px;
+
+  background: rgba(255,255,255,.035);
+
+  border: 1px solid rgba(255,255,255,.08);
+
+  backdrop-filter: blur(18px);
+
+  overflow: hidden;
+
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+
+}
+
+.why-card:hover {
+
+  transform: translateY(-8px);
+
+  background: rgba(255,255,255,.055);
+
+  border-color: rgba(0,212,255,.25);
+
+  box-shadow:
+    0 30px 70px rgba(0,0,0,.28);
+
+}
+
+/* ==================================================
+   GRADIENT BORDER
+================================================== */
+
+.why-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  padding: 1px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(108,99,255,.45),
+      transparent,
+      rgba(0,212,255,.45)
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite: xor;
+
+  mask-composite: exclude;
+
+  opacity: 0;
+
+  transition: opacity .35s;
+
+}
+
+.why-card:hover::before {
+
+  opacity: 1;
+
+}
+
+/* ==================================================
+   ICON
+================================================== */
+
+.why-icon {
+
+  width: 64px;
+
+  height: 64px;
+
+  border-radius: 18px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin-bottom: 1.75rem;
+
+  font-size: 1.5rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--indigo),
+      var(--cyan));
+
+  color: white;
+
+  box-shadow:
+    0 15px 35px rgba(108,99,255,.35);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+
+}
+
+.why-card:hover .why-icon {
+
+  transform:
+    rotate(-6deg)
+    scale(1.08);
+
+  box-shadow:
+    0 20px 45px rgba(108,99,255,.45);
+
+}
+
+/* ==================================================
+   TYPOGRAPHY
+================================================== */
+
+.why-card h3 {
+
+  margin-bottom: .9rem;
+
+  font-family: "Syne", sans-serif;
+
+  font-size: 1.35rem;
+
+  font-weight: 700;
+
+  color: white;
+
+}
+
+.why-card p {
+
+  color: rgba(255,255,255,.68);
+
+  line-height: 1.8;
+
+  font-size: .97rem;
+
+  flex: 1;
+
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 1100px){
+
+  .why-grid{
+
+    grid-template-columns: repeat(2,1fr);
+
+  }
+
+}
+
+@media (max-width: 768px){
+
+  #why{
+
+    padding: 6rem 0;
+
+  }
+
+  #why .section-title{
+
+    font-size: clamp(2.5rem,9vw,3.8rem);
+
+  }
+
+  .why-grid{
+
+    grid-template-columns: 1fr;
+
+    gap: 1.5rem;
+
+  }
+
+}
+
+@media (max-width: 576px){
+
+  .why-card{
+
+    padding: 1.75rem;
+
+  }
+
+  .why-icon{
+
+    width: 56px;
+
+    height: 56px;
+
+    font-size: 1.3rem;
+
+    border-radius: 16px;
+
+  }
+
+  .why-card h3{
+
+    font-size: 1.2rem;
+
+  }
+
+  .why-card p{
+
+    font-size: .92rem;
+
+  }
+
+}

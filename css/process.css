@@ -1,0 +1,222 @@
+/* PROCESS */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      left: calc(12.5% + 1rem);
+      right: calc(12.5% + 1rem);
+      height: 1px;
+      background: linear-gradient(to right, var(--indigo), var(--cyan));
+      opacity: 0.3;
+    }
+
+    .step {
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .step-num {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--indigo), var(--cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 32px rgba(108, 99, 255, 0.35);
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc {
+      font-size: 0.82rem;
+      color: rgba(240, 239, 255, 0.45);
+      line-height: 1.6;
+    }
+
+    /* mockup browser/dashboard frame replacing emoji art */
+    .mock-frame {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 0.6rem;
+      background: rgba(10, 10, 18, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .project-card:hover .mock-frame {
+      transform: translateY(-6px) scale(1.03);
+    }
+
+    .mock-bar {
+      display: flex;
+      gap: 0.3rem;
+      padding: 0.55rem 0.7rem;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .mock-bar span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .mock-body {
+      padding: 0.9rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mock-row {
+      height: 8px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mock-chart {
+      margin-top: 0.4rem;
+      height: 64px;
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+    }
+
+    .mock-chart i {
+      flex: 1;
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(180deg, var(--cyan), var(--indigo));
+      opacity: 0.85;
+    }
+
+    .mock-kpis {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 0.3rem;
+    }
+
+    .mock-kpi {
+      flex: 1;
+      border-radius: 0.4rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.5rem 0.6rem;
+    }
+
+    .mock-kpi b {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      background: linear-gradient(135deg, var(--indigo), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .mock-kpi small {
+      font-size: 0.58rem;
+      color: rgba(240, 239, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .project-glow {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+    }
+
+    .project-metric {
+      position: absolute;
+      bottom: 1rem;
+      left: 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      background: rgba(5, 5, 8, 0.55);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.35rem 0.75rem;
+      border-radius: 1rem;
+      z-index: 2;
+    }
+
+    .project-info {
+      padding: 1.75rem 2rem;
+    }
+
+    .project-type {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: rgba(240, 239, 255, 0.45);
+      line-height: 1.6;
+    }
+
+    .project-tech {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 0.5rem;
+      background: rgba(108, 99, 255, 0.1);
+      border: 1px solid rgba(108, 99, 255, 0.15);
+      color: rgba(240, 239, 255, 0.6);
+    }
+
+    .project-cs-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      color: var(--cyan);
+      text-decoration: none;
+    }

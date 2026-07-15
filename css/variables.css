@@ -1,0 +1,123 @@
+/* ========================================
+   DESIGN TOKENS
+======================================== */
+
+:root {
+
+    /* ====================================
+       COLORS
+    ==================================== */
+
+    --black: #050508;
+    --black-soft: #0A0A12;
+
+    --white: #F0EFFF;
+
+    --indigo: #6C63FF;
+    --cyan: #00D4FF;
+
+    --slate: #3A3A5C;
+
+    --card-bg: rgba(255,255,255,.035);
+    --card-bg-hover: rgba(255,255,255,.055);
+    --card-border: rgba(108,99,255,.18);
+
+    --text-primary: rgba(240,239,255,.95);
+    --text-secondary: rgba(240,239,255,.70);
+    --text-muted: rgba(240,239,255,.45);
+
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* ====================================
+       TYPOGRAPHY
+    ==================================== */
+
+    --font-heading: "Syne", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    --fs-xs: .72rem;
+    --fs-sm: .85rem;
+    --fs-md: 1rem;
+    --fs-lg: 1.2rem;
+    --fs-xl: 1.5rem;
+    --fs-2xl: 2rem;
+    --fs-3xl: 3rem;
+
+    /* ====================================
+       SPACING
+    ==================================== */
+
+    --space-xs: .5rem;
+    --space-sm: .75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    --space-4xl: 6rem;
+
+    /* ====================================
+       BORDER RADIUS
+    ==================================== */
+
+    --radius-sm: .5rem;
+    --radius-md: .75rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 999px;
+
+    /* ====================================
+       SHADOWS
+    ==================================== */
+
+    --shadow-sm: 0 4px 12px rgba(0,0,0,.15);
+
+    --shadow-md: 0 12px 30px rgba(0,0,0,.25);
+
+    --shadow-lg: 0 24px 60px rgba(0,0,0,.40);
+
+    --shadow-indigo: 0 10px 30px rgba(108,99,255,.35);
+
+    --shadow-cyan: 0 10px 30px rgba(0,212,255,.25);
+
+    /* ====================================
+       TRANSITIONS
+    ==================================== */
+
+    --transition-fast: .2s ease;
+
+    --transition: .3s ease;
+
+    --transition-slow: .45s cubic-bezier(.23,1,.32,1);
+
+    /* ====================================
+       LAYOUT
+    ==================================== */
+
+    --container-width: 1280px;
+
+    --section-padding: 8rem;
+
+    --navbar-height: 88px;
+
+    /* ====================================
+       BLUR
+    ==================================== */
+
+    --blur-sm: blur(8px);
+    --blur-md: blur(18px);
+    --blur-lg: blur(32px);
+
+    /* ====================================
+       Z-INDEX
+    ==================================== */
+
+    --z-nav: 1000;
+    --z-cursor: 9999;
+    --z-cursor-ring: 9998;
+    --z-grain: 9997;
+    --z-progress: 10001;
+}

@@ -1,0 +1,227 @@
+/* ========================================
+   LARGE TABLETS
+======================================== */
+
+@media (max-width: 1100px) {
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #founder {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .founder-photo {
+        max-width: 360px;
+        margin: 0 auto;
+    }
+}
+
+/* ========================================
+   TABLETS
+======================================== */
+
+@media (max-width: 900px) {
+
+    /* Navigation */
+
+    nav,
+    nav.scrolled {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* Hero */
+
+    #hero {
+        padding: 0 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-trust {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: .75rem;
+    }
+
+    .hero-orb {
+        width: 500px;
+        height: 500px;
+    }
+
+    /* Stats */
+
+    #stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem;
+    }
+
+    /* Sections */
+
+    #services,
+    #why,
+    #founder,
+    #process,
+    #work,
+    #testimonials,
+    #stack,
+    #pricing,
+    #faq,
+    #badges,
+    #cta {
+        padding: 4rem 1.5rem;
+    }
+
+    /* Grids */
+
+    .services-grid,
+    .work-grid,
+    .testi-grid,
+    .why-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 0;
+    }
+
+    .process-steps::before {
+        display: none;
+    }
+
+    /* Generic */
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    /* Footer */
+
+    footer {
+        padding: 3rem 1.5rem 2rem;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 1rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* CTA */
+
+    .cta-email {
+        flex-direction: column;
+    }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+
+    #stats {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .founder-links {
+        flex-wrap: wrap;
+    }
+
+    .cta-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .section-title {
+        font-size: clamp(1.8rem, 8vw, 2.6rem);
+    }
+}
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 480px) {
+
+    body {
+        cursor: auto;
+    }
+
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    nav,
+    nav.scrolled {
+        padding: 1rem;
+    }
+
+    .service-card,
+    .project-card,
+    .testi-card,
+    .price-card {
+        padding: 1.5rem;
+    }
+
+    .project-info {
+        padding: 1.5rem;
+    }
+
+    .mock-frame {
+        max-width: 100%;
+    }
+
+    .hero-actions {
+        gap: .75rem;
+    }
+
+    .btn-primary,
+    .btn-ghost,
+    .nav-cta {
+        width: 100%;
+    }
+}

@@ -1,0 +1,32 @@
+/* BADGES */
+    #badges {
+      padding: 4rem 4rem;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .badge-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid var(--card-border);
+      border-radius: 2rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      color: rgba(240, 239, 255, 0.55);
+      background: var(--card-bg);
+    }
+
+    .badge-pill b {
+      color: var(--cyan);
+    }

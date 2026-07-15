@@ -1,0 +1,559 @@
+/* =====================================================
+   CALL TO ACTION
+===================================================== */
+
+#cta{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:4rem 0;
+
+    text-align:center;
+}
+
+
+/* ====================================
+BACKGROUND
+==================================== */
+
+#cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108,99,255,.12),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+#cta::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(255,255,255,.01),
+            transparent
+        );
+
+    pointer-events:none;
+}
+
+
+/* ====================================
+CONTENT
+==================================== */
+
+#cta>*{
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* ====================================
+TITLE
+==================================== */
+
+.cta-title{
+
+    font-family:var(--font-heading);
+
+    font-size:clamp(3rem,7vw,5.5rem);
+
+    font-weight:800;
+
+    line-height:1.05;
+
+    letter-spacing:-0.04em;
+
+    margin:1.5rem auto;
+}
+
+.cta-title span{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+/* ====================================
+SUBTITLE
+==================================== */
+
+.cta-sub{
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    font-size:1.08rem;
+
+    line-height:1.9;
+
+    color:rgba(240,239,255,.65);
+}
+
+
+/* ====================================
+BUTTONS
+==================================== */
+
+.cta-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin-top:3rem;
+
+    flex-wrap:wrap;
+}
+
+
+/* PRIMARY */
+
+.btn-primary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.8rem;
+
+    padding:1rem 2rem;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    font-family:var(--font-heading);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    box-shadow:
+
+        0 20px 45px rgba(108,99,255,.25);
+
+    transition:
+        transform .35s,
+        box-shadow .35s;
+}
+
+.btn-primary:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+
+        0 30px 60px rgba(108,99,255,.35);
+}
+
+
+/* SECONDARY */
+
+.btn-secondary{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:1rem 2rem;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:500;
+
+    border:
+
+        1px solid rgba(255,255,255,.08);
+
+    background:
+
+        rgba(255,255,255,.03);
+
+    transition:.35s;
+}
+
+.btn-secondary:hover{
+
+    transform:
+
+        translateY(-4px);
+
+    border-color:
+
+        rgba(108,99,255,.35);
+
+    background:
+
+        rgba(255,255,255,.06);
+}
+
+/* =====================================================
+   CTA INFO
+===================================================== */
+
+.cta-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:1.5rem;
+
+    max-width:1100px;
+
+    margin:5rem auto 0;
+}
+
+.cta-info>div{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:2rem;
+
+    border-radius:22px;
+
+    text-align:left;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.02)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(16px);
+
+    transition:
+        transform .4s,
+        border-color .3s,
+        box-shadow .4s;
+}
+
+
+/* border glow */
+
+.cta-info>div::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    padding:1px;
+
+    border-radius:inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(108,99,255,.35),
+            transparent,
+            rgba(0,212,255,.25)
+        );
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.35s;
+}
+
+.cta-info>div:hover{
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.35);
+
+    border-color:
+        rgba(108,99,255,.25);
+}
+
+.cta-info>div:hover::before{
+
+    opacity:1;
+}
+
+
+/* labels */
+
+.cta-info strong{
+
+    display:block;
+
+    margin-bottom:.8rem;
+
+    font-family:var(--font-heading);
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:white;
+}
+
+.cta-info span{
+
+    color:
+        rgba(240,239,255,.65);
+
+    line-height:1.8;
+
+    font-size:.95rem;
+}
+
+
+/* =====================================================
+   BUTTON POLISH
+===================================================== */
+
+.btn-primary::after{
+
+    content:"→";
+
+    transition:.35s;
+}
+
+.btn-primary:hover::after{
+
+    transform:
+        translateX(6px);
+}
+
+.btn-secondary::after{
+
+    content:"↗";
+
+    transition:.35s;
+
+    margin-left:.5rem;
+}
+
+.btn-secondary:hover::after{
+
+    transform:
+        translateX(4px)
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   FLOATING ANIMATION
+===================================================== */
+
+.cta-info>div{
+
+    animation:
+        ctaFloat 7s ease-in-out infinite;
+}
+
+.cta-info>div:nth-child(2){
+
+    animation-delay:1.4s;
+}
+
+.cta-info>div:nth-child(3){
+
+    animation-delay:2.8s;
+}
+
+@keyframes ctaFloat{
+
+    0%{
+
+        transform:translateY(0);
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+    }
+
+    100%{
+
+        transform:translateY(0);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:992px){
+
+.cta-info{
+
+    grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+#cta{
+
+    padding:7rem 0;
+}
+
+.cta-title{
+
+    font-size:clamp(2.5rem,10vw,4rem);
+}
+
+.cta-sub{
+
+    font-size:1rem;
+}
+
+.cta-buttons{
+
+    flex-direction:column;
+}
+
+.btn-primary,
+.btn-secondary{
+
+    width:100%;
+}
+
+.cta-info{
+
+    margin-top:4rem;
+}
+
+}
+
+@media(max-width:540px){
+
+.cta-info>div{
+
+    padding:1.6rem;
+}
+
+.cta-title{
+
+    line-height:1.1;
+}
+
+}
+
+
+/* =====================================================
+   PERFORMANCE
+===================================================== */
+
+.btn-primary,
+.btn-secondary,
+.cta-info>div{
+
+    will-change:transform;
+}
+
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible{
+
+    outline:2px solid var(--cyan);
+
+    outline-offset:4px;
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+.btn-primary,
+.btn-secondary,
+.cta-info>div{
+
+    animation:none !important;
+
+    transition:none !important;
+
+}
+
+}

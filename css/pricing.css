@@ -1,0 +1,771 @@
+/* =====================================================
+   ENGAGEMENT
+===================================================== */
+
+#engagement{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:10rem 0;
+
+    margin-top:8rem;
+}
+
+
+/* ====================================
+BACKGROUND GLOW
+==================================== */
+
+#engagement::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    top:-260px;
+    right:-220px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108,99,255,.12),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+#engagement::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+    height:600px;
+
+    bottom:-240px;
+    left:-240px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,212,255,.08),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+
+/* ====================================
+SECTION HEADER
+==================================== */
+
+#engagement .section-header{
+
+    margin-bottom:5rem;
+}
+
+
+/* ====================================
+GRID
+==================================== */
+
+.engagement-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap:2rem;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* ====================================
+CARD
+==================================== */
+
+.engagement-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:2.25rem;
+
+    border-radius:24px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.02)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    transition:
+
+        transform .45s cubic-bezier(.22,1,.36,1),
+
+        border-color .35s,
+
+        box-shadow .45s;
+}
+
+
+/* border animation */
+
+.engagement-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    padding:1px;
+
+    border-radius:inherit;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(108,99,255,.35),
+            transparent,
+            rgba(0,212,255,.25)
+        );
+
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    opacity:0;
+
+    transition:.4s;
+}
+
+.engagement-card:hover{
+
+    transform:
+
+        translateY(-10px);
+
+    border-color:
+
+        rgba(108,99,255,.25);
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.45);
+}
+
+.engagement-card:hover::before{
+
+    opacity:1;
+}
+
+
+/* ====================================
+ICON
+==================================== */
+
+.engagement-icon{
+
+    font-size:3rem;
+
+    margin-bottom:1.5rem;
+
+    line-height:1;
+}
+
+
+/* ====================================
+TITLE
+==================================== */
+
+.engagement-title{
+
+    font-family:var(--font-heading);
+
+    font-size:1.45rem;
+
+    font-weight:700;
+
+    margin-bottom:1rem;
+
+    color:var(--white);
+}
+
+
+/* ====================================
+DESCRIPTION
+==================================== */
+
+.engagement-desc{
+
+    color:
+        rgba(240,239,255,.65);
+
+    line-height:1.8;
+
+    font-size:.95rem;
+}
+
+
+/* ====================================
+HOVER
+==================================== */
+
+.engagement-card:hover
+.engagement-title{
+
+    color:white;
+}
+
+.engagement-card:hover
+.engagement-desc{
+
+    color:
+        rgba(255,255,255,.82);
+}
+
+/* =====================================================
+   CONSULTATION CTA
+===================================================== */
+
+.consultation-cta{
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-top:5rem;
+
+    padding:4rem;
+
+    border-radius:32px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(108,99,255,.08),
+            rgba(0,212,255,.05)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+}
+
+.consultation-cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    top:-180px;
+    right:-180px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108,99,255,.15),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.consultation-cta h3{
+
+    font-family:var(--font-heading);
+
+    font-size:2.3rem;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    margin-bottom:1rem;
+}
+
+.consultation-cta p{
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    line-height:1.9;
+
+    color:rgba(240,239,255,.68);
+
+    font-size:1rem;
+}
+
+
+/* ====================================
+CTA BUTTONS
+==================================== */
+
+.cta-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin-top:2.5rem;
+
+    flex-wrap:wrap;
+}
+
+
+/* PRIMARY */
+
+.primary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.8rem;
+
+    padding:1rem 1.8rem;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-family:var(--font-heading);
+
+    font-weight:600;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    transition:
+        transform .35s,
+        box-shadow .35s;
+}
+
+.primary-btn:hover{
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 25px 50px rgba(108,99,255,.35);
+}
+
+
+/* SECONDARY */
+
+.secondary-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:1rem 1.8rem;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    color:var(--white);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.03);
+
+    transition:.35s;
+}
+
+.secondary-btn:hover{
+
+    background:
+        rgba(255,255,255,.06);
+
+    border-color:
+        rgba(108,99,255,.3);
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* ====================================
+FLOAT ANIMATION
+==================================== */
+
+.engagement-card{
+
+    animation:
+        engagementFloat 8s ease-in-out infinite;
+}
+
+.engagement-card:nth-child(2){
+
+    animation-delay:1.2s;
+}
+
+.engagement-card:nth-child(3){
+
+    animation-delay:2.4s;
+}
+
+.engagement-card:nth-child(4){
+
+    animation-delay:3.6s;
+}
+
+@keyframes engagementFloat{
+
+    0%{
+
+        transform:translateY(0);
+    }
+
+    50%{
+
+        transform:translateY(-5px);
+    }
+
+    100%{
+
+        transform:translateY(0);
+    }
+}
+
+
+/* ====================================
+RESPONSIVE
+==================================== */
+
+@media (max-width:1100px){
+
+    .engagement-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media (max-width:768px){
+
+    #engagement{
+
+        padding-block:6rem;
+    }
+
+    .consultation-cta{
+
+        padding:2.5rem;
+    }
+
+    .consultation-cta h3{
+
+        font-size:1.8rem;
+    }
+
+    .engagement-card{
+
+        padding:1.8rem;
+    }
+
+    .engagement-title{
+
+        font-size:1.3rem;
+    }
+
+    .engagement-icon{
+
+        font-size:2.5rem;
+    }
+
+}
+
+@media (max-width:540px){
+
+    .cta-actions{
+
+        flex-direction:column;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+
+        width:100%;
+    }
+
+    .consultation-cta{
+
+        padding:2rem;
+    }
+
+}
+
+
+/* ====================================
+PERFORMANCE
+==================================== */
+
+.engagement-card,
+.primary-btn,
+.secondary-btn{
+
+    will-change:transform;
+}
+
+
+/* ====================================
+SMOOTH TRANSITIONS
+==================================== */
+
+.engagement-card *{
+
+    transition:
+        color .3s,
+        border-color .3s,
+        background-color .3s;
+}
+
+/* =====================================================
+   PREMIUM DETAILS
+===================================================== */
+
+/* subtle shine */
+
+.engagement-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-60%;
+
+    width:50%;
+
+    height:250%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    transform:rotate(20deg);
+
+    opacity:0;
+
+    transition:1s;
+}
+
+.engagement-card:hover::after{
+
+    top:-30%;
+
+    left:120%;
+
+    opacity:1;
+}
+
+
+/* top accent */
+
+.engagement-card{
+
+    border-top:
+
+        1px solid rgba(255,255,255,.08);
+}
+
+
+/* icon animation */
+
+.engagement-card:hover .engagement-icon{
+
+    transform:
+
+        scale(1.15)
+        rotate(-8deg);
+
+    transition:.45s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* title animation */
+
+.engagement-card:hover .engagement-title{
+
+    transform:
+
+        translateX(6px);
+}
+
+
+/* card spacing */
+
+.engagement-title{
+
+    margin-bottom:1rem;
+
+    transition:.35s;
+}
+
+.engagement-icon{
+
+    transition:.45s;
+}
+
+
+/* ====================================
+SECTION DIVIDER
+==================================== */
+
+#engagement{
+
+    border-top:
+        1px solid rgba(255,255,255,.05);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.05);
+}
+
+
+/* ====================================
+CTA GLOW
+==================================== */
+
+.consultation-cta{
+
+    box-shadow:
+
+        0 50px 120px rgba(0,0,0,.35);
+}
+
+
+/* ====================================
+BUTTON ICON
+==================================== */
+
+.primary-btn::after{
+
+    content:"→";
+
+    margin-left:.4rem;
+
+    transition:.35s;
+}
+
+.primary-btn:hover::after{
+
+    transform:
+
+        translateX(6px);
+}
+
+.secondary-btn::after{
+
+    content:"↗";
+
+    margin-left:.45rem;
+
+    transition:.35s;
+}
+
+.secondary-btn:hover::after{
+
+    transform:
+
+        translateX(5px)
+        translateY(-2px);
+}
+
+
+/* ====================================
+ACCESSIBILITY
+==================================== */
+
+.primary-btn:focus-visible,
+.secondary-btn:focus-visible{
+
+    outline:
+
+        2px solid var(--cyan);
+
+    outline-offset:4px;
+}
+
+
+/* ====================================
+REDUCED MOTION
+==================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+.engagement-card,
+.engagement-card *,
+.primary-btn,
+.secondary-btn{
+
+    animation:none !important;
+
+    transition:none !important;
+
+}
+
+}

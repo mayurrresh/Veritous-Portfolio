@@ -1,0 +1,117 @@
+/* ========================================
+   CSS RESET
+======================================== */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Typography */
+
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Images & Media */
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Form Elements */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Buttons */
+
+button {
+    background: none;
+    border: none;
+}
+
+/* Lists */
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* Links */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Tables */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Text Overflow */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    overflow-wrap: break-word;
+}
+
+/* Textarea */
+
+textarea {
+    resize: vertical;
+}
+
+/* Remove tap highlight on mobile */
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: none) {
+    body {
+        cursor: auto;
+    }
+
+    a,
+    button,
+    input {
+        cursor: pointer;
+    }
+}
+
+body.cursor-disabled {
+    cursor: auto;
+}
+

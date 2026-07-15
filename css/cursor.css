@@ -1,0 +1,60 @@
+/* CURSOR */
+    #cursor {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s, background 0.3s;
+      mix-blend-mode: screen;
+    }
+
+    #cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(108, 99, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: left 0.12s ease-out, top 0.12s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+    }
+
+    #cursor-label {
+      position: fixed;
+      z-index: 9998;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--cyan);
+      padding: 0.2rem 0.55rem;
+      border-radius: 1rem;
+      pointer-events: none;
+      transform: translate(-50%, 14px);
+      opacity: 0;
+      transition: opacity 0.25s, left 0.12s ease-out, top 0.12s ease-out;
+      white-space: nowrap;
+    }
+
+
+    body.cursor-disabled #cursor,
+    body.cursor-disabled #cursor-ring,
+    body.cursor-disabled #cursor-label {
+      display: none !important;
+    }
+
+    body.cursor-disabled {
+      cursor: auto;
+    }
+
+    body.cursor-disabled a,
+    body.cursor-disabled button,
+    body.cursor-disabled input {
+      cursor: pointer;
+    }

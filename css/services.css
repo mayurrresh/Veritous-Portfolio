@@ -1,167 +1,762 @@
-/* ========================================
-   SERVICES SECTION
-======================================== */
+/* =========================================================
+   SERVICES
+   Premium / Editorial / Product Studio
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
 
 #services {
-    padding: 8rem 4rem;
+    position: relative;
+
+    padding-block: clamp(6.5rem, 9vw, 9rem);
+
+    overflow: hidden;
+
+    isolation: isolate;
 }
 
-/* ========================================
+
+/* Ambient light */
+
+#services::before {
+    content: "";
+
+    position: absolute;
+
+    width: 720px;
+    height: 720px;
+
+    left: -26%;
+    top: 8%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108, 99, 255, 0.065),
+            transparent 68%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* Subtle cyan light */
+
+#services::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -25%;
+    bottom: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 212, 255, 0.035),
+            transparent 68%
+        );
+
+    filter: blur(40px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+#services .section-header {
+    position: relative;
+
+    width: min(1240px, 92%);
+    margin-inline: auto;
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 3rem;
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+   ========================================================= */
+
+#services > .section-number {
+    position: absolute;
+
+    top: 2rem;
+    left: max(2rem, calc((100% - 1240px) / 2));
+
+    font-family: var(--mono, monospace);
+
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+
+    color: rgba(240, 239, 255, 0.24);
+}
+
+
+/* =========================================================
+   HEADER TYPOGRAPHY
+   ========================================================= */
+
+#services .section-eyebrow {
+    margin-bottom: 0.8rem;
+}
+
+#services .section-title {
+    max-width: 720px;
+
+    margin: 0;
+
+    text-wrap: balance;
+}
+
+#services .section-note {
+    max-width: 340px;
+
+    margin: 0;
+
+    padding-bottom: 0.25rem;
+
+    font-size: 0.86rem;
+    line-height: 1.8;
+
+    color: rgba(240, 239, 255, 0.43);
+}
+
+
+/* =========================================================
    SERVICES GRID
-======================================== */
+   ========================================================= */
 
 .services-grid {
+    width: min(1240px, 92%);
+    margin-inline: auto;
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 1rem;
 }
 
-/* ========================================
+
+/* =========================================================
    SERVICE CARD
-======================================== */
+   ========================================================= */
 
 .service-card {
     position: relative;
+
+    min-width: 0;
+    min-height: 335px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 2rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.075);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.048),
+            rgba(255, 255, 255, 0.014)
+        );
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 20px 55px rgba(0, 0, 0, 0.14);
+
     overflow: hidden;
 
-    padding: 2.5rem;
-
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 1.25rem;
+    isolation: isolate;
 
     transition:
-        transform .4s cubic-bezier(.23,1,.32,1),
-        border-color .3s ease,
-        box-shadow .4s ease,
-        background .4s ease;
+        transform 0.55s cubic-bezier(.22, 1, .36, 1),
+        border-color 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.5s ease;
 }
+
+
+/* Soft internal light */
 
 .service-card::before {
     content: "";
 
     position: absolute;
-    inset: 0;
+
+    width: 300px;
+    height: 300px;
+
+    left: -150px;
+    top: -150px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108, 99, 255, 0.13),
+            transparent 68%
+        );
+
+    filter: blur(18px);
 
     opacity: 0;
 
-    background: radial-gradient(
-        circle at top left,
-        rgba(108,99,255,.12),
-        transparent 60%
-    );
+    transform: translate3d(0, 0, 0);
 
-    transition: opacity .4s ease;
+    transition:
+        opacity 0.5s ease,
+        transform 0.7s cubic-bezier(.22, 1, .36, 1);
+
+    pointer-events: none;
+
+    z-index: -1;
 }
+
+
+/* Top edge highlight */
+
+.service-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(108, 99, 255, 0.55),
+            rgba(0, 212, 255, 0.38),
+            transparent
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+
+    pointer-events: none;
+}
+
+
+/* Hover */
 
 .service-card:hover {
     transform: translateY(-8px);
 
-    background: var(--card-bg-hover);
+    border-color: rgba(108, 99, 255, 0.22);
 
-    border-color: rgba(108,99,255,.45);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.065),
+            rgba(255, 255, 255, 0.02)
+        );
 
-    box-shadow: 0 24px 60px rgba(108,99,255,.14);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.065),
+        0 32px 75px rgba(0, 0, 0, 0.26),
+        0 0 45px rgba(108, 99, 255, 0.045);
 }
 
 .service-card:hover::before {
     opacity: 1;
+
+    transform: translate3d(28px, 28px, 0);
 }
 
-/* ========================================
-   INDEX
-======================================== */
+.service-card:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   CARD INDEX
+   ========================================================= */
 
 .service-index {
-    margin-bottom: 1.4rem;
+    position: relative;
 
-    font-family: var(--mono);
-    font-size: .72rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    color: rgba(240,239,255,.3);
+    margin-bottom: 2.25rem;
+
+    font-family: var(--mono, monospace);
+
+    font-size: 0.61rem;
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+
+    color: rgba(240, 239, 255, 0.28);
+
+    z-index: 1;
 }
 
-/* ========================================
+
+/* Status dot */
+
+.service-index::after {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    flex: 0 0 5px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 212, 255, 0.58);
+
+    box-shadow:
+        0 0 10px rgba(0, 212, 255, 0.32);
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
    ICON
-======================================== */
+   ========================================================= */
 
 .service-icon {
+    position: relative;
+
+    width: 56px;
+    height: 56px;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 52px;
-    height: 52px;
+    margin-bottom: 1.55rem;
 
-    margin-bottom: 1.5rem;
+    border: 1px solid rgba(108, 99, 255, 0.18);
 
-    border-radius: .75rem;
+    border-radius: 15px;
 
-    font-size: 1.5rem;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(108, 99, 255, 0.14),
+            rgba(0, 212, 255, 0.035)
+        );
 
-    background: linear-gradient(
-        135deg,
-        rgba(108,99,255,.2),
-        rgba(0,212,255,.1)
-    );
+    color: rgba(240, 239, 255, 0.9);
 
-    border: 1px solid rgba(108,99,255,.25);
+    font-size: 1.3rem;
 
-    transition: transform .4s cubic-bezier(.23,1,.32,1);
-}
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 12px 30px rgba(0, 0, 0, 0.15);
 
-.service-card:hover .service-icon {
-    transform: rotate(-8deg) scale(1.06);
-}
-
-/* ========================================
-   CONTENT
-======================================== */
-
-.service-name {
-    margin-bottom: .75rem;
-
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.service-desc {
-    font-size: .88rem;
-    line-height: 1.7;
-
-    color: rgba(240,239,255,.5);
-}
-
-/* ========================================
-   TAG
-======================================== */
-
-.service-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-
-    margin-top: 1.25rem;
-    padding: .3rem .75rem;
-
-    border-radius: 999px;
-    border: 1px solid rgba(0,212,255,.2);
-
-    font-family: var(--mono);
-    font-size: .68rem;
-
-    letter-spacing: .06em;
-    text-transform: uppercase;
-
-    color: var(--cyan);
+    z-index: 1;
 
     transition:
-        transform .3s ease,
-        background .3s ease;
+        transform 0.5s cubic-bezier(.22, 1, .36, 1),
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
+
+/* Tiny icon highlight */
+
+.service-icon::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(255, 255, 255, 0.035);
+
+    pointer-events: none;
+}
+
+
+.service-card:hover .service-icon {
+    transform:
+        translateY(-3px)
+        rotate(-4deg)
+        scale(1.05);
+
+    border-color: rgba(0, 212, 255, 0.32);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(108, 99, 255, 0.21),
+            rgba(0, 212, 255, 0.07)
+        );
+
+    box-shadow:
+        0 14px 34px rgba(0, 0, 0, 0.2),
+        0 0 24px rgba(108, 99, 255, 0.08);
+}
+
+
+/* =========================================================
+   SERVICE NAME
+   ========================================================= */
+
+.service-name {
+    position: relative;
+
+    margin: 0 0 0.7rem;
+
+    font-family:
+        var(--font-heading, "Syne"),
+        sans-serif;
+
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.03em;
+
+    color: rgba(240, 239, 255, 0.93);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   SERVICE DESCRIPTION
+   ========================================================= */
+
+.service-desc {
+    position: relative;
+
+    max-width: 340px;
+
+    margin: 0;
+
+    font-size: 0.86rem;
+
+    line-height: 1.75;
+
+    color: rgba(240, 239, 255, 0.46);
+
+    z-index: 1;
+}
+
+
+/* =========================================================
+   SERVICE TAG
+   ========================================================= */
+
+.service-tag {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    gap: 0.45rem;
+
+    margin-top: auto;
+    padding-top: 1.5rem;
+
+    font-family: var(--mono, monospace);
+
+    font-size: 0.61rem;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.055em;
+
+    text-transform: uppercase;
+
+    color: rgba(0, 212, 255, 0.62);
+
+    z-index: 1;
+
+    transition:
+        color 0.3s ease,
+        gap 0.4s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* Arrow */
+
+.service-tag::after {
+    content: "→";
+
+    font-size: 0.8rem;
+
+    opacity: 0.65;
+
+    transition:
+        transform 0.4s cubic-bezier(.22, 1, .36, 1),
+        opacity 0.3s ease;
+}
+
+
 .service-card:hover .service-tag {
-    transform: translateX(4px);
-    background: rgba(0,212,255,.08);
+    gap: 0.65rem;
+
+    color: var(--cyan);
+}
+
+
+.service-card:hover .service-tag::after {
+    transform: translateX(3px);
+
+    opacity: 1;
+}
+
+
+/* =========================================================
+   REVEAL SAFETY
+   ========================================================= */
+
+/*
+   Global .reveal controls entrance animation.
+   We intentionally don't position or transform it here.
+   This keeps the grid layout independent from animation.
+*/
+
+.services-grid .service-card.reveal {
+    position: relative;
+}
+
+
+/* =========================================================
+   STAGGER
+   ========================================================= */
+
+/*
+   Use animation delays instead of permanent transforms.
+   This prevents cards from being vertically misaligned
+   after the reveal animation has completed.
+*/
+
+.services-grid .service-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.services-grid .service-card:nth-child(2) {
+    transition-delay: 0.06s;
+}
+
+.services-grid .service-card:nth-child(3) {
+    transition-delay: 0.12s;
+}
+
+.services-grid .service-card:nth-child(4) {
+    transition-delay: 0.18s;
+}
+
+.services-grid .service-card:nth-child(5) {
+    transition-delay: 0.24s;
+}
+
+.services-grid .service-card:nth-child(6) {
+    transition-delay: 0.30s;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #services {
+        padding-block: 6rem;
+    }
+
+    #services .section-header {
+        width: min(760px, 92%);
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 1.5rem;
+    }
+
+    #services .section-note {
+        max-width: 520px;
+    }
+
+    #services > .section-number {
+        left: 2rem;
+    }
+
+    .services-grid {
+        width: min(760px, 92%);
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #services {
+        padding-block: 5rem;
+    }
+
+    #services > .section-number {
+        top: 1.5rem;
+        left: 1rem;
+    }
+
+    #services .section-header {
+        width: calc(100% - 2rem);
+
+        margin-bottom: 3rem;
+    }
+
+    .services-grid {
+        width: calc(100% - 2rem);
+
+        grid-template-columns: 1fr;
+
+        gap: 0.85rem;
+    }
+
+    .service-card {
+        min-height: 290px;
+
+        padding: 1.6rem;
+
+        border-radius: 18px;
+    }
+
+    .service-index {
+        margin-bottom: 1.9rem;
+    }
+
+    .service-icon {
+        width: 52px;
+        height: 52px;
+
+        margin-bottom: 1.35rem;
+    }
+
+    .service-name {
+        font-size: 1.18rem;
+    }
+
+    .service-desc {
+        font-size: 0.84rem;
+    }
+
+    .service-tag {
+        padding-top: 1.35rem;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+    .service-card:hover {
+        transform: none;
+
+        border-color: rgba(255, 255, 255, 0.075);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.048),
+                rgba(255, 255, 255, 0.014)
+            );
+
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.045),
+            0 20px 55px rgba(0, 0, 0, 0.14);
+    }
+
+    .service-card:hover::before,
+    .service-card:hover::after {
+        opacity: 0;
+    }
+
+    .service-card:hover .service-icon {
+        transform: none;
+    }
+
+    .service-card:hover .service-tag {
+        gap: 0.45rem;
+        color: rgba(0, 212, 255, 0.62);
+    }
+
+    .service-card:hover .service-tag::after {
+        transform: none;
+        opacity: 0.65;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .service-card,
+    .service-icon,
+    .service-tag,
+    .service-tag::after {
+        transition: none !important;
+    }
 }

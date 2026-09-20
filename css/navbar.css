@@ -7,41 +7,64 @@ nav {
     inset: 0 0 auto 0;
     z-index: 1000;
 
+    width: 100%;
+    height: 88px;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
-    padding: 1.5rem 4rem;
+    padding: 0 48px;
 
     background: linear-gradient(
         to bottom,
-        rgba(5, 5, 8, 0.92),
-        transparent
+        rgba(5, 5, 8, 0.88),
+        rgba(5, 5, 8, 0.18)
     );
 
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
 
     transition:
-        padding .35s ease,
+        height .35s ease,
         background .35s ease,
         backdrop-filter .35s ease,
         border-color .35s ease;
+
+    box-sizing: border-box;
 }
+
+
+/* ========================================
+   INNER ALIGNMENT
+======================================== */
+
+/*
+   Keeps the navbar visually contained on
+   large desktop screens.
+*/
+
+nav > * {
+    flex-shrink: 0;
+}
+
 
 /* ========================================
    SCROLLED STATE
 ======================================== */
 
 nav.scrolled {
-    padding: 1rem 4rem;
+    height: 76px;
 
-    background: rgba(5, 5, 8, .78);
+    background: rgba(5, 5, 8, 0.78);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
-    border-bottom: 1px solid rgba(108,99,255,.15);
+    border-bottom: 1px solid rgba(108, 99, 255, 0.14);
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.12);
 }
+
 
 /* ========================================
    LOGO
@@ -49,23 +72,35 @@ nav.scrolled {
 
 .nav-logo {
     font-family: var(--font-heading);
-    font-size: 1.45rem;
+
+    font-size: 1.7rem;
+    line-height: 1;
+
     font-weight: 800;
-    letter-spacing: -.02em;
+
+    letter-spacing: -0.045em;
+
     user-select: none;
+
+    white-space: nowrap;
 
     background: linear-gradient(
         135deg,
-        var(--white),
-        var(--indigo)
+        var(--white) 0%,
+        #a9a5ff 100%
     );
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
 }
 
 .nav-logo span {
-
     background: linear-gradient(
         135deg,
         var(--cyan),
@@ -73,8 +108,15 @@ nav.scrolled {
     );
 
     -webkit-background-clip: text;
+    background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
+
+.nav-logo:hover {
+    transform: translateY(-1px);
+}
+
 
 /* ========================================
    NAV LINKS
@@ -83,7 +125,12 @@ nav.scrolled {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+
+    gap: 2.35rem;
+
+    margin: 0 auto;
+
+    padding: 0;
 
     list-style: none;
 }
@@ -93,75 +140,106 @@ nav.scrolled {
 }
 
 .nav-links a {
-
     position: relative;
+
+    display: inline-block;
 
     text-decoration: none;
 
-    font-size: .85rem;
-    font-weight: 500;
+    font-family: var(--font-body);
 
-    letter-spacing: .08em;
+    font-size: .76rem;
+    font-weight: 600;
+
+    letter-spacing: .11em;
+
     text-transform: uppercase;
 
-    color: rgba(240,239,255,.60);
+    color: rgba(240, 239, 255, .58);
+
+    padding: .5rem 0;
 
     transition:
-        color .3s ease;
+        color .25s ease,
+        transform .25s ease;
 }
 
 .nav-links a::after {
-
     content: "";
 
     position: absolute;
 
     left: 0;
-    bottom: -.45rem;
+    bottom: .05rem;
 
     width: 100%;
     height: 1px;
 
-    background: var(--cyan);
+    background: linear-gradient(
+        90deg,
+        var(--indigo),
+        var(--cyan)
+    );
 
     transform: scaleX(0);
+
     transform-origin: left;
 
-    transition: transform .3s ease;
+    transition:
+        transform .3s cubic-bezier(.2,.8,.2,1);
 }
 
 .nav-links a:hover {
     color: var(--white);
+
+    transform: translateY(-1px);
 }
 
 .nav-links a:hover::after {
     transform: scaleX(1);
 }
 
+
 /* ========================================
    CTA BUTTON
 ======================================== */
 
 .nav-cta {
-
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    padding: .7rem 1.5rem;
+    min-width: 148px;
+    height: 50px;
+
+    padding: 0 1.35rem;
 
     border-radius: 999px;
 
-    border: 1px solid var(--indigo);
+    border: 1px solid rgba(123, 97, 255, .85);
 
     text-decoration: none;
 
-    font-size: .85rem;
-    font-weight: 600;
+    font-family: var(--font-body);
+
+    font-size: .78rem;
+    font-weight: 650;
+
+    letter-spacing: -.01em;
 
     color: var(--white);
 
-    background: transparent;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 0 0 rgba(108,99,255,0);
 
     transition:
         background .3s ease,
@@ -170,33 +248,112 @@ nav.scrolled {
         box-shadow .3s ease;
 
     cursor: none;
+
+    white-space: nowrap;
+}
+
+.nav-cta::after {
+    content: "↗";
+
+    margin-left: .55rem;
+
+    font-size: .85rem;
+
+    transition:
+        transform .25s ease;
 }
 
 .nav-cta:hover {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(108,99,255,.22),
+            rgba(34,211,238,.10)
+        );
 
-    background: var(--indigo);
-
-    border-color: var(--indigo);
+    border-color: rgba(139, 92, 246, .95);
 
     transform: translateY(-2px);
 
     box-shadow:
-        0 10px 30px rgba(108,99,255,.35);
+        0 12px 35px rgba(108, 99, 255, .20),
+        inset 0 1px 0 rgba(255,255,255,.10);
 }
+
+.nav-cta:hover::after {
+    transform: translate(2px, -2px);
+}
+
 
 /* ========================================
    MOBILE
 ======================================== */
 
-@media (max-width:900px){
+@media (max-width: 1100px) {
 
-    nav,
-    nav.scrolled{
-
-        padding:1.25rem 1.5rem;
+    nav {
+        padding: 0 32px;
     }
 
-    .nav-links{
-        display:none;
+    .nav-links {
+        gap: 1.5rem;
+    }
+
+    .nav-links a {
+        font-size: .7rem;
+    }
+
+    .nav-cta {
+        min-width: 132px;
+        height: 46px;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    nav,
+    nav.scrolled {
+        height: 72px;
+        padding: 0 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-cta {
+        min-width: auto;
+        height: 44px;
+
+        padding: 0 1rem;
+
+        font-size: .72rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    nav,
+    nav.scrolled {
+        padding: 0 1rem;
+    }
+
+    .nav-logo {
+        font-size: 1.35rem;
+    }
+
+    .nav-cta {
+        height: 42px;
+        padding: 0 .85rem;
+    }
+
+    .nav-cta::after {
+        display: none;
     }
 }

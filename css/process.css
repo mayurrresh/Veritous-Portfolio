@@ -1,222 +1,625 @@
-/* PROCESS */
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 4rem;
-      position: relative;
+/* =========================================================
+   PROCESS
+   Premium / Editorial / Precise
+   Written for the supplied #process HTML
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+#process {
+    position: relative;
+
+    padding-block: clamp(7rem, 9vw, 9rem);
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+
+/* Ambient background */
+
+#process::before {
+    content: "";
+
+    position: absolute;
+
+    width: 720px;
+    height: 720px;
+
+    left: 50%;
+    top: 42%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108, 99, 255, 0.055),
+            rgba(0, 212, 255, 0.018) 38%,
+            transparent 70%
+        );
+
+    filter: blur(80px);
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+   ========================================================= */
+
+#process > .section-number {
+    position: absolute;
+
+    top: 2rem;
+    left: max(2rem, calc((100% - 1240px) / 2));
+
+    font-family: var(--mono, monospace);
+
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.15em;
+
+    color: rgba(240, 239, 255, 0.24);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+#process .section-header {
+    position: relative;
+
+    width: min(900px, 92%);
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 1rem;
+}
+
+
+/* Small accent */
+
+#process .section-header::before {
+    content: "";
+
+    width: 42px;
+    height: 2px;
+
+    margin-bottom: 0.25rem;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 18px rgba(108, 99, 255, 0.25);
+}
+
+
+/* Eyebrow */
+
+#process .section-eyebrow {
+    margin: 0;
+
+    font-family: var(--mono, monospace);
+
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: rgba(240, 239, 255, 0.42);
+}
+
+
+/* Heading */
+
+#process .section-title {
+    max-width: 800px;
+
+    margin: 0;
+
+    font-family:
+        var(--font-heading, "Syne"),
+        sans-serif;
+
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+
+    font-weight: 800;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.06em;
+
+    color: var(--white, #f5f6fa);
+
+    text-wrap: balance;
+}
+
+
+/* =========================================================
+   PROCESS STEPS
+   ========================================================= */
+
+.process-steps {
+    position: relative;
+
+    width: min(1240px, 92%);
+
+    margin: clamp(4rem, 5.5vw, 5.5rem) auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 1rem;
+}
+
+
+/* =========================================================
+   CONNECTING LINE
+   ========================================================= */
+
+.process-steps::before {
+    content: "";
+
+    position: absolute;
+
+    /*
+       Align with the center of the 60px step circles.
+    */
+    top: 30px;
+
+    left: 12.5%;
+    right: 12.5%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(108, 99, 255, 0.48) 18%,
+            rgba(108, 99, 255, 0.35) 40%,
+            rgba(0, 212, 255, 0.42) 82%,
+            transparent
+        );
+
+    opacity: 0.65;
+
+    pointer-events: none;
+}
+
+
+/* Small glowing points along the line */
+
+.process-steps::after {
+    content: "";
+
+    position: absolute;
+
+    top: 28px;
+    left: 25%;
+    right: 25%;
+
+    height: 5px;
+
+    background:
+        radial-gradient(
+            circle at 0 50%,
+            rgba(108, 99, 255, 0.65) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(108, 99, 255, 0.5) 0 2px,
+            transparent 3px
+        ),
+        radial-gradient(
+            circle at 100% 50%,
+            rgba(0, 212, 255, 0.65) 0 2px,
+            transparent 3px
+        );
+
+    opacity: 0.55;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   STEP
+   ========================================================= */
+
+.step {
+    position: relative;
+
+    min-width: 0;
+
+    padding: 0 1.35rem 1.5rem;
+
+    text-align: center;
+
+    z-index: 1;
+}
+
+
+/*
+   Do not permanently offset individual steps.
+   The global .reveal animation should control entrance motion.
+*/
+
+
+/* =========================================================
+   STEP NUMBER
+   ========================================================= */
+
+.step-num {
+    position: relative;
+
+    z-index: 2;
+
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 1.7rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(108, 99, 255, 0.28);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(108, 99, 255, 0.18),
+            rgba(0, 212, 255, 0.055)
+        );
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    font-family:
+        var(--font-heading, "Syne"),
+        sans-serif;
+
+    font-size: 0.88rem;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -0.02em;
+
+    color: var(--white, #f5f6fa);
+
+    box-shadow:
+        0 0 0 7px rgba(108, 99, 255, 0.018),
+        0 14px 35px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+    transition:
+        transform 0.45s cubic-bezier(.22, 1, .36, 1),
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Inner ring */
+
+.step-num::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(255, 255, 255, 0.045);
+
+    border-radius: inherit;
+
+    pointer-events: none;
+}
+
+
+/* Cyan status point */
+
+.step-num::after {
+    content: "";
+
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    top: -3px;
+    right: 7px;
+
+    border-radius: 50%;
+
+    background: var(--cyan);
+
+    box-shadow:
+        0 0 12px rgba(0, 212, 255, 0.7);
+
+    opacity: 0.8;
+}
+
+
+.step:hover .step-num {
+    transform: translateY(-5px) scale(1.05);
+
+    border-color: rgba(0, 212, 255, 0.42);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(108, 99, 255, 0.27),
+            rgba(0, 212, 255, 0.10)
+        );
+
+    box-shadow:
+        0 0 0 9px rgba(108, 99, 255, 0.025),
+        0 18px 45px rgba(0, 0, 0, 0.25),
+        0 0 30px rgba(108, 99, 255, 0.10);
+}
+
+
+/* =========================================================
+   STEP TITLE
+   ========================================================= */
+
+.step-title {
+    margin: 0 0 0.7rem;
+
+    font-family:
+        var(--font-heading, "Syne"),
+        sans-serif;
+
+    font-size: 1.08rem;
+    font-weight: 700;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.025em;
+
+    color: rgba(240, 239, 255, 0.92);
+}
+
+
+/* =========================================================
+   STEP DESCRIPTION
+   ========================================================= */
+
+.step-desc {
+    max-width: 245px;
+
+    margin: 0 auto;
+
+    font-size: 0.83rem;
+
+    line-height: 1.75;
+
+    color: rgba(240, 239, 255, 0.43);
+}
+
+
+/* =========================================================
+   SUBTLE STEP MARKER
+   ========================================================= */
+
+.step-title::after {
+    content: "";
+
+    display: block;
+
+    width: 18px;
+    height: 1px;
+
+    margin: 0.9rem auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            transparent
+        );
+
+    opacity: 0.45;
+
+    transition:
+        width 0.4s cubic-bezier(.22, 1, .36, 1),
+        opacity 0.3s ease;
+}
+
+
+.step:hover .step-title::after {
+    width: 32px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================================
+   REVEAL SAFETY
+   ========================================================= */
+
+/*
+   Keep reveal animation separate from process layout.
+   The grid itself should never depend on animation transforms.
+*/
+
+.process-steps .step.reveal {
+    position: relative;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #process {
+        padding-block: 7rem;
     }
 
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 2rem;
-      left: calc(12.5% + 1rem);
-      right: calc(12.5% + 1rem);
-      height: 1px;
-      background: linear-gradient(to right, var(--indigo), var(--cyan));
-      opacity: 0.3;
+    #process > .section-number {
+        left: 2rem;
+    }
+
+    .process-steps {
+        width: min(760px, 92%);
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 4rem 1rem;
+    }
+
+    .process-steps::before,
+    .process-steps::after {
+        display: none;
     }
 
     .step {
-      padding: 0 2rem;
-      text-align: center;
+        padding-inline: 1rem;
     }
 
     .step-num {
-      width: 4rem;
-      height: 4rem;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--indigo), var(--cyan));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.1rem;
-      margin: 0 auto 1.5rem;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 0 32px rgba(108, 99, 255, 0.35);
+        margin-bottom: 1.45rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #process {
+        padding-block: 5.5rem;
     }
 
-    .step-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
+    #process > .section-number {
+        top: 1.5rem;
+        left: 1rem;
+    }
+
+    #process .section-header {
+        width: calc(100% - 2rem);
+    }
+
+    #process .section-title {
+        font-size: clamp(2.5rem, 11vw, 3.7rem);
+
+        line-height: 0.96;
+    }
+
+    .process-steps {
+        width: calc(100% - 2rem);
+
+        grid-template-columns: 1fr;
+
+        gap: 2.8rem;
+
+        margin-top: 3.5rem;
+    }
+
+    .step {
+        padding-inline: 0;
+    }
+
+    .step-num {
+        width: 54px;
+        height: 54px;
+
+        margin-bottom: 1.3rem;
     }
 
     .step-desc {
-      font-size: 0.82rem;
-      color: rgba(240, 239, 255, 0.45);
-      line-height: 1.6;
+        max-width: 320px;
+
+        font-size: 0.84rem;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+    .step:hover .step-num {
+        transform: none;
+
+        border-color: rgba(108, 99, 255, 0.28);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(108, 99, 255, 0.18),
+                rgba(0, 212, 255, 0.055)
+            );
+
+        box-shadow:
+            0 0 0 7px rgba(108, 99, 255, 0.018),
+            0 14px 35px rgba(0, 0, 0, 0.20),
+            inset 0 1px 0 rgba(255, 255, 255, 0.07);
     }
 
-    /* mockup browser/dashboard frame replacing emoji art */
-    .mock-frame {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 0.6rem;
-      background: rgba(10, 10, 18, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    .step:hover .step-title::after {
+        width: 18px;
+        opacity: 0.45;
     }
+}
 
-    .project-card:hover .mock-frame {
-      transform: translateY(-6px) scale(1.03);
-    }
 
-    .mock-bar {
-      display: flex;
-      gap: 0.3rem;
-      padding: 0.55rem 0.7rem;
-      background: rgba(255, 255, 255, 0.04);
-    }
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
 
-    .mock-bar span {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-    }
+@media (prefers-reduced-motion: reduce) {
 
-    .mock-body {
-      padding: 0.9rem 1rem 1.1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .step-num,
+    .step-title::after {
+        transition: none !important;
     }
-
-    .mock-row {
-      height: 8px;
-      border-radius: 3px;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .mock-chart {
-      margin-top: 0.4rem;
-      height: 64px;
-      display: flex;
-      align-items: flex-end;
-      gap: 5px;
-    }
-
-    .mock-chart i {
-      flex: 1;
-      border-radius: 3px 3px 0 0;
-      background: linear-gradient(180deg, var(--cyan), var(--indigo));
-      opacity: 0.85;
-    }
-
-    .mock-kpis {
-      display: flex;
-      gap: 0.6rem;
-      margin-top: 0.3rem;
-    }
-
-    .mock-kpi {
-      flex: 1;
-      border-radius: 0.4rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 0.5rem 0.6rem;
-    }
-
-    .mock-kpi b {
-      display: block;
-      font-family: 'Syne', sans-serif;
-      font-size: 0.95rem;
-      background: linear-gradient(135deg, var(--indigo), var(--cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .mock-kpi small {
-      font-size: 0.58rem;
-      color: rgba(240, 239, 255, 0.35);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .project-glow {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.3;
-    }
-
-    .project-metric {
-      position: absolute;
-      bottom: 1rem;
-      left: 1.25rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      background: rgba(5, 5, 8, 0.55);
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 0.35rem 0.75rem;
-      border-radius: 1rem;
-      z-index: 2;
-    }
-
-    .project-info {
-      padding: 1.75rem 2rem;
-    }
-
-    .project-type {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--indigo);
-      margin-bottom: 0.6rem;
-    }
-
-    .project-name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .project-desc {
-      font-size: 0.85rem;
-      color: rgba(240, 239, 255, 0.45);
-      line-height: 1.6;
-    }
-
-    .project-tech {
-      margin-top: 1rem;
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .tech-tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      padding: 0.25rem 0.6rem;
-      border-radius: 0.5rem;
-      background: rgba(108, 99, 255, 0.1);
-      border: 1px solid rgba(108, 99, 255, 0.15);
-      color: rgba(240, 239, 255, 0.6);
-    }
-
-    .project-cs-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.04em;
-      color: var(--cyan);
-      text-decoration: none;
-    }
+}

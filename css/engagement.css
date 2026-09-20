@@ -1,0 +1,837 @@
+/* =========================================================
+   ENGAGEMENT
+========================================================= */
+
+#engagement {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    padding: clamp(7rem, 10vw, 10rem) 0;
+}
+
+
+/* =========================================================
+   AMBIENT BACKGROUND
+========================================================= */
+
+#engagement::before {
+    content: "";
+
+    position: absolute;
+
+    width: min(900px, 75vw);
+    height: 500px;
+
+    left: 50%;
+    top: 46%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(108, 99, 255, .065),
+            rgba(0, 212, 255, .018) 45%,
+            transparent 72%
+        );
+
+    filter: blur(80px);
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+========================================================= */
+
+#engagement .section-number {
+    position: absolute;
+
+    top: 2rem;
+    left: clamp(1.5rem, 4vw, 4rem);
+
+    font-family: var(--mono);
+    font-size: .65rem;
+    font-weight: 500;
+
+    letter-spacing: .14em;
+
+    color: rgba(240, 239, 255, .25);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#engagement .section-header {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin-inline: auto;
+    margin-bottom: clamp(3.5rem, 5vw, 5rem);
+
+    text-align: center;
+}
+
+
+/* eyebrow */
+
+#engagement .section-eyebrow {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+
+    margin-bottom: 1.2rem;
+
+    font-family: var(--mono);
+    font-size: .68rem;
+    font-weight: 500;
+
+    letter-spacing: .18em;
+    text-transform: uppercase;
+
+    color: rgba(139, 124, 255, .82);
+}
+
+
+#engagement .section-eyebrow::before {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 10px rgba(34, 211, 238, .35);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+#engagement .section-title {
+    margin: 0;
+
+    font-family: var(--font-heading);
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+
+    line-height: .95;
+    letter-spacing: -.065em;
+
+    color: rgba(245, 246, 250, .96);
+
+    text-wrap: balance;
+}
+
+
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+
+#engagement .section-header .section-note {
+    max-width: 720px !important;
+
+    margin: 1.4rem auto 0 !important;
+    padding-bottom: 0 !important;
+
+    font-size: .9rem;
+    line-height: 1.8;
+
+    color: rgba(240, 239, 255, .46);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ENGAGEMENT GRID
+========================================================= */
+
+.engagement-grid {
+    position: relative;
+
+    width: min(1160px, 92%);
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 1px;
+
+    /*
+       One continuous surface rather than four
+       completely disconnected cards.
+    */
+    border: 1px solid rgba(255, 255, 255, .065);
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, .055);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, .18);
+}
+
+
+/* =========================================================
+   CONNECTING LINE
+========================================================= */
+
+.engagement-grid::before {
+    content: "";
+
+    position: absolute;
+
+    left: 12.5%;
+    right: 12.5%;
+    top: 39px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(139, 124, 255, .25) 15%,
+            rgba(34, 211, 238, .22) 50%,
+            rgba(139, 124, 255, .25) 85%,
+            transparent
+        );
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.engagement-card {
+    position: relative;
+
+    min-height: 315px;
+
+    padding: 2.2rem 1.8rem 2rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, .035),
+            rgba(255, 255, 255, .012)
+        );
+
+    overflow: hidden;
+
+    transition:
+        background .4s ease,
+        transform .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* internal light */
+
+.engagement-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(108, 99, 255, .1),
+            transparent 70%
+        );
+
+    opacity: 0;
+
+    transition: opacity .4s ease;
+
+    pointer-events: none;
+}
+
+
+/* top accent */
+
+.engagement-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(139, 124, 255, .35),
+            transparent
+        );
+
+    opacity: 0;
+
+    transition: opacity .4s ease;
+}
+
+
+/* hover */
+
+.engagement-card:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(108, 99, 255, .055),
+            rgba(255, 255, 255, .018)
+        );
+
+    transform: translateY(-4px);
+}
+
+.engagement-card:hover::before,
+.engagement-card:hover::after {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.engagement-icon {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 0 2.2rem;
+
+    border: 1px solid rgba(139, 124, 255, .16);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(108, 99, 255, .12),
+            rgba(34, 211, 238, .035)
+        );
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .055),
+        0 10px 30px rgba(0, 0, 0, .12);
+
+    font-size: 1.45rem;
+    line-height: 1;
+
+    transition:
+        transform .45s cubic-bezier(.22, 1, .36, 1),
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.engagement-card:hover .engagement-icon {
+    transform: translateY(-3px) scale(1.05);
+
+    border-color:
+        rgba(34, 211, 238, .28);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .15),
+        0 0 22px rgba(34, 211, 238, .06);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.engagement-title {
+    position: relative;
+    z-index: 2;
+
+    margin: 0 0 .8rem;
+
+    font-family: var(--font-heading);
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    line-height: 1.2;
+    letter-spacing: -.025em;
+
+    color: rgba(245, 246, 250, .92);
+}
+
+
+/* small accent under title */
+
+.engagement-title::after {
+    content: "";
+
+    display: block;
+
+    width: 24px;
+    height: 1px;
+
+    margin-top: .8rem;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    opacity: .6;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.engagement-desc {
+    position: relative;
+    z-index: 2;
+
+    max-width: 245px;
+
+    margin: 0;
+
+    font-size: .82rem;
+    line-height: 1.75;
+
+    color: rgba(240, 239, 255, .43);
+}
+
+
+/* =========================================================
+   STEP NUMBERS
+========================================================= */
+
+.engagement-card:nth-child(1)::marker,
+.engagement-card:nth-child(2)::marker,
+.engagement-card:nth-child(3)::marker,
+.engagement-card:nth-child(4)::marker {
+    display: none;
+}
+
+
+/* =========================================================
+   CONSULTATION CTA
+========================================================= */
+
+.consultation-cta {
+    position: relative;
+
+    width: min(920px, 92%);
+
+    margin: clamp(4rem, 6vw, 5.5rem) auto 0;
+
+    padding: clamp(2.8rem, 5vw, 4.5rem);
+
+    text-align: center;
+
+    border: 1px solid rgba(139, 124, 255, .13);
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(108, 99, 255, .11),
+            transparent 55%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, .04),
+            rgba(255, 255, 255, .012)
+        );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, .22),
+        inset 0 1px 0 rgba(255, 255, 255, .05);
+
+    overflow: hidden;
+}
+
+
+/* CTA top glow */
+
+.consultation-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 120px;
+
+    left: 50%;
+    top: -90px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(108, 99, 255, .2),
+            transparent 70%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   CTA TITLE
+========================================================= */
+
+.consultation-cta h3 {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    font-family: var(--font-heading);
+
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+
+    line-height: 1.05;
+    letter-spacing: -.045em;
+
+    color: rgba(245, 246, 250, .95);
+}
+
+
+/* =========================================================
+   CTA DESCRIPTION
+========================================================= */
+
+.consultation-cta > p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin: 1rem auto 0;
+
+    font-size: .86rem;
+    line-height: 1.75;
+
+    color: rgba(240, 239, 255, .45);
+}
+
+
+/* =========================================================
+   CTA ACTIONS
+========================================================= */
+
+.cta-actions {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: .8rem;
+
+    margin-top: 2rem;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+#engagement .primary-btn,
+#engagement .secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 1.35rem;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    font-family: var(--font-body);
+    font-size: .78rem;
+    font-weight: 600;
+
+    letter-spacing: .01em;
+
+    transition:
+        transform .35s cubic-bezier(.22, 1, .36, 1),
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .35s ease,
+        color .3s ease;
+}
+
+
+#engagement .primary-btn {
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--indigo),
+            #7067e8
+        );
+
+    border: 1px solid rgba(139, 124, 255, .55);
+
+    box-shadow:
+        0 10px 30px rgba(108, 99, 255, .16);
+}
+
+
+#engagement .primary-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 16px 38px rgba(108, 99, 255, .23),
+        0 0 25px rgba(108, 99, 255, .08);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+========================================================= */
+
+#engagement .secondary-btn {
+    color: rgba(240, 239, 255, .7);
+
+    border: 1px solid rgba(255, 255, 255, .09);
+
+    background:
+        rgba(255, 255, 255, .025);
+}
+
+
+#engagement .secondary-btn:hover {
+    transform: translateY(-3px);
+
+    color: rgba(255, 255, 255, .92);
+
+    border-color:
+        rgba(139, 124, 255, .24);
+
+    background:
+        rgba(139, 124, 255, .055);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .engagement-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .engagement-grid::before {
+        display: none;
+    }
+
+    .engagement-card {
+        min-height: 280px;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    #engagement {
+        padding: 5.5rem 0;
+    }
+
+    #engagement .section-number {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    #engagement .section-title {
+        font-size: clamp(2.2rem, 8vw, 3rem);
+    }
+
+    #engagement .section-header {
+        width: 92%;
+    }
+
+    .engagement-grid {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        border-radius: 20px;
+    }
+
+    .engagement-card {
+        min-height: auto;
+
+        padding: 2rem 1.6rem;
+    }
+
+    .engagement-icon {
+        margin-bottom: 1.6rem;
+    }
+
+    .engagement-desc {
+        max-width: 100%;
+    }
+
+    .consultation-cta {
+        width: 92%;
+
+        padding: 2.5rem 1.5rem;
+
+        border-radius: 22px;
+    }
+
+    .consultation-cta > p {
+        font-size: .82rem;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    #engagement .primary-btn,
+    #engagement .secondary-btn {
+        width: min(280px, 100%);
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    #engagement {
+        padding: 4.5rem 0;
+    }
+
+    #engagement .section-title {
+        font-size: 1.95rem;
+    }
+
+    #engagement .section-header .section-note {
+        font-size: .8rem;
+    }
+
+    .engagement-card {
+        padding: 1.8rem 1.35rem;
+    }
+
+    .engagement-icon {
+        width: 52px;
+        height: 52px;
+
+        font-size: 1.25rem;
+    }
+
+    .engagement-title {
+        font-size: 1rem;
+    }
+
+    .engagement-desc {
+        font-size: .78rem;
+    }
+
+    .consultation-cta h3 {
+        font-size: 1.65rem;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+
+    .engagement-card:hover {
+        transform: none;
+    }
+
+    .engagement-card:hover .engagement-icon {
+        transform: none;
+    }
+
+    #engagement .primary-btn:hover,
+    #engagement .secondary-btn:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .engagement-card,
+    .engagement-icon,
+    .primary-btn,
+    .secondary-btn {
+        transition: none !important;
+    }
+}

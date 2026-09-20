@@ -1,105 +1,434 @@
-/* ========================================
-   LARGE TABLETS
-======================================== */
+/* =========================================================
+   VERITOUS — RESPONSIVE SYSTEM
+   Final global responsive overrides
+   ========================================================= */
+
+
+/* =========================================================
+   LARGE TABLETS / SMALL LAPTOPS
+   ========================================================= */
 
 @media (max-width: 1100px) {
 
-    .footer-top {
-        grid-template-columns: 1fr 1fr;
+    /* -----------------------------------------------------
+       GLOBAL CONTAINER
+    ----------------------------------------------------- */
+
+    .container {
+        width: min(100% - 3rem, 1040px);
     }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    .footer-top {
+        grid-template-columns: 1.3fr 1fr 1fr;
+        gap: 2.5rem;
+    }
+
+
+    /* -----------------------------------------------------
+       PRICING
+    ----------------------------------------------------- */
 
     .pricing-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+
+    /* -----------------------------------------------------
+       FOUNDER
+    ----------------------------------------------------- */
+
     #founder {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 3rem;
     }
 
     .founder-photo {
         max-width: 360px;
-        margin: 0 auto;
+        margin-inline: auto;
+    }
+
+
+    /* -----------------------------------------------------
+       PROJECTS
+    ----------------------------------------------------- */
+
+    .work-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* ========================================
+
+/* =========================================================
    TABLETS
-======================================== */
+   ========================================================= */
 
 @media (max-width: 900px) {
 
-    /* Navigation */
+    /* -----------------------------------------------------
+       GLOBAL
+    ----------------------------------------------------- */
+
+    .container {
+        width: min(100% - 3rem, 760px);
+    }
+
+    section {
+        padding-block: 6rem;
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION
+    ----------------------------------------------------- */
 
     nav,
-    nav.scrolled {
-        padding: 1.25rem 1.5rem;
+    nav.scrolled,
+    #nav,
+    #nav.scrolled {
+        height: 72px;
+        padding-inline: 1.5rem;
     }
 
     .nav-links {
         display: none;
     }
 
-    /* Hero */
+    .nav-cta {
+        min-width: 132px;
+        height: 44px;
+    }
+
+
+    /* -----------------------------------------------------
+       HERO
+    ----------------------------------------------------- */
 
     #hero {
-        padding: 0 1.5rem;
+        min-height: 100svh;
+
+        padding:
+            7rem
+            1.5rem
+            5rem;
     }
 
     .hero-title {
-        font-size: clamp(2.5rem, 12vw, 4rem);
+        max-width: 760px;
+
+        font-size:
+            clamp(
+                3rem,
+                8vw,
+                4.8rem
+            );
+
+        line-height: 0.94;
+
+        letter-spacing: -0.06em;
     }
 
     .hero-sub {
+        max-width: 620px;
+
         font-size: 1rem;
     }
 
     .hero-actions {
+        flex-wrap: wrap;
+    }
+
+    .hero-trust {
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+    }
+
+    .hero-orb {
+        width: 520px;
+        height: 520px;
+    }
+
+
+    /* -----------------------------------------------------
+       STATS
+    ----------------------------------------------------- */
+
+    #stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* -----------------------------------------------------
+       SECTION HEADERS
+    ----------------------------------------------------- */
+
+    .section-header {
         flex-direction: column;
+        align-items: flex-start;
+
+        gap: 1.25rem;
+    }
+
+    .section-note {
+        max-width: 600px;
+    }
+
+
+    /* -----------------------------------------------------
+       COMMON GRIDS
+    ----------------------------------------------------- */
+
+    .services-grid,
+    .testi-grid,
+    .why-grid,
+    .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* -----------------------------------------------------
+       PROCESS
+    ----------------------------------------------------- */
+
+    .process-steps {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 3.5rem 1rem;
+    }
+
+    .process-steps::before {
+        display: none;
+    }
+
+
+    /* -----------------------------------------------------
+       FOUNDER
+    ----------------------------------------------------- */
+
+    #founder {
+        grid-template-columns: 1fr;
+
+        gap: 3rem;
+    }
+
+    .founder-photo {
+        width: min(100%, 360px);
+        margin-inline: auto;
+    }
+
+
+    /* -----------------------------------------------------
+       WORK / PROJECTS
+    ----------------------------------------------------- */
+
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* -----------------------------------------------------
+       FAQ
+    ----------------------------------------------------- */
+
+    #faq {
+        width: min(100% - 3rem, 760px);
+    }
+
+
+    /* -----------------------------------------------------
+       CTA
+    ----------------------------------------------------- */
+
+    .cta-email {
+        flex-wrap: wrap;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    footer {
+        padding-inline: 1.5rem;
+    }
+
+    .footer-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 2.5rem 1.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 1rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------------------------------
+       GLOBAL
+    ----------------------------------------------------- */
+
+    html {
+        scroll-padding-top: 76px;
+    }
+
+    section {
+        padding-block: 5rem;
+    }
+
+    .container {
+        width: min(100% - 2rem, 600px);
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION
+    ----------------------------------------------------- */
+
+    nav,
+    nav.scrolled,
+    #nav,
+    #nav.scrolled {
+        height: 68px;
+
+        padding-inline: 1rem;
+    }
+
+    .nav-logo {
+        font-size: 1.45rem;
+    }
+
+    .nav-cta {
+        min-width: auto;
+
+        height: 42px;
+
+        padding-inline: 1rem;
+
+        font-size: 0.68rem;
+    }
+
+
+    /* -----------------------------------------------------
+       HERO
+    ----------------------------------------------------- */
+
+    #hero {
+        min-height: 100svh;
+
+        padding:
+            6.5rem
+            1rem
+            4rem;
+    }
+
+    .hero-title {
+        max-width: 100%;
+
+        font-size:
+            clamp(
+                2.75rem,
+                10.5vw,
+                4rem
+            );
+
+        line-height: 0.95;
+
+        letter-spacing: -0.055em;
+    }
+
+    .hero-sub {
+        max-width: 100%;
+
+        font-size: 0.94rem;
+
+        line-height: 1.7;
+    }
+
+    .hero-actions {
         width: 100%;
+
+        flex-direction: column;
+
+        align-items: stretch;
     }
 
     .btn-primary,
     .btn-ghost {
         width: 100%;
-        text-align: center;
     }
 
     .hero-trust {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: .75rem;
+        justify-content: flex-start;
     }
 
     .hero-orb {
-        width: 500px;
-        height: 500px;
+        width: 380px;
+        height: 380px;
+
+        opacity: 0.7;
+
+        filter: blur(65px);
     }
 
-    /* Stats */
+
+    /* -----------------------------------------------------
+       STATS
+    ----------------------------------------------------- */
 
     #stats {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 2rem;
+        grid-template-columns: 1fr;
+
+        padding-inline: 1rem;
     }
 
-    /* Sections */
 
-    #services,
-    #why,
-    #founder,
-    #process,
-    #work,
-    #testimonials,
-    #stack,
-    #pricing,
-    #faq,
-    #badges,
-    #cta {
-        padding: 4rem 1.5rem;
+    /* -----------------------------------------------------
+       SECTION HEADERS
+    ----------------------------------------------------- */
+
+    .section-header {
+        margin-bottom: 2.75rem;
     }
 
-    /* Grids */
+    .section-title {
+        max-width: 100%;
+
+        font-size:
+            clamp(
+                2rem,
+                9vw,
+                3rem
+            );
+
+        line-height: 1;
+    }
+
+    .section-note {
+        max-width: 100%;
+
+        font-size: 0.86rem;
+    }
+
+
+    /* -----------------------------------------------------
+       GRIDS
+    ----------------------------------------------------- */
 
     .services-grid,
     .work-grid,
@@ -109,119 +438,288 @@
         grid-template-columns: 1fr;
     }
 
-    .process-steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem 0;
-    }
 
-    .process-steps::before {
-        display: none;
-    }
-
-    /* Generic */
-
-    .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    /* Footer */
-
-    footer {
-        padding: 3rem 1.5rem 2rem;
-    }
-
-    .footer-top {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem 1rem;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    /* CTA */
-
-    .cta-email {
-        flex-direction: column;
-    }
-}
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 768px) {
+    /* -----------------------------------------------------
+       PROCESS
+    ----------------------------------------------------- */
 
     .process-steps {
         grid-template-columns: 1fr;
+
+        gap: 2.8rem;
     }
 
-    #stats {
-        grid-template-columns: 1fr;
-    }
 
-    .footer-top {
-        grid-template-columns: 1fr;
-    }
+    /* -----------------------------------------------------
+       FOUNDER
+    ----------------------------------------------------- */
 
     .founder-links {
         flex-wrap: wrap;
+
+        gap: 0.6rem;
     }
+
+
+    /* -----------------------------------------------------
+       CARDS
+    ----------------------------------------------------- */
+
+    .service-card,
+    .project-card,
+    .testi-card,
+    .price-card {
+        min-width: 0;
+    }
+
+
+    /* -----------------------------------------------------
+       CTA
+    ----------------------------------------------------- */
 
     .cta-title {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size:
+            clamp(
+                2.2rem,
+                10vw,
+                3.4rem
+            );
     }
 
-    .section-title {
-        font-size: clamp(1.8rem, 8vw, 2.6rem);
+    .cta-email {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    .footer-top {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        text-align: left;
     }
 }
 
-/* ========================================
+
+/* =========================================================
    SMALL PHONES
-======================================== */
+   ========================================================= */
 
 @media (max-width: 480px) {
+
+    /* -----------------------------------------------------
+       GLOBAL
+    ----------------------------------------------------- */
 
     body {
         cursor: auto;
     }
 
     section {
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-block: 4.5rem;
     }
+
+    .container {
+        width: min(100% - 1.5rem, 440px);
+    }
+
+
+    /* -----------------------------------------------------
+       NAVIGATION
+    ----------------------------------------------------- */
 
     nav,
-    nav.scrolled {
-        padding: 1rem;
+    nav.scrolled,
+    #nav,
+    #nav.scrolled {
+        height: 64px;
+
+        padding-inline: 0.85rem;
     }
 
-    .service-card,
-    .project-card,
-    .testi-card,
-    .price-card {
-        padding: 1.5rem;
+    .nav-logo {
+        font-size: 1.3rem;
     }
 
-    .project-info {
-        padding: 1.5rem;
+    .nav-cta {
+        height: 40px;
+
+        padding-inline: 0.85rem;
+
+        font-size: 0.62rem;
     }
 
-    .mock-frame {
-        max-width: 100%;
+
+    /* -----------------------------------------------------
+       HERO
+    ----------------------------------------------------- */
+
+    #hero {
+        padding:
+            6rem
+            0.75rem
+            3.5rem;
     }
 
-    .hero-actions {
-        gap: .75rem;
+    .hero-title {
+        font-size:
+            clamp(
+                2.5rem,
+                12vw,
+                3.4rem
+            );
+
+        letter-spacing: -0.05em;
     }
+
+    .hero-sub {
+        font-size: 0.9rem;
+    }
+
+    .hero-orb {
+        width: 300px;
+        height: 300px;
+
+        opacity: 0.55;
+    }
+
+
+    /* -----------------------------------------------------
+       BUTTONS
+    ----------------------------------------------------- */
 
     .btn-primary,
     .btn-ghost,
     .nav-cta {
         width: 100%;
+    }
+
+
+    /* -----------------------------------------------------
+       CARDS
+    ----------------------------------------------------- */
+
+    .service-card,
+    .project-card,
+    .testi-card,
+    .price-card {
+        padding: 1.35rem;
+    }
+
+    .project-info {
+        padding: 1.35rem;
+    }
+
+
+    /* -----------------------------------------------------
+       MOCKUPS
+    ----------------------------------------------------- */
+
+    .mock-frame {
+        max-width: 100%;
+    }
+
+
+    /* -----------------------------------------------------
+       FAQ
+    ----------------------------------------------------- */
+
+    #faq {
+        width: min(100% - 1.5rem, 440px);
+    }
+
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    footer {
+        padding-inline: 0.85rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+
+    .nav-cta {
+        padding-inline: 0.7rem;
+    }
+
+    .hero-title {
+        font-size: 2.35rem;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none), (pointer: coarse) {
+
+    body {
+        cursor: auto;
+    }
+
+    #cursor,
+    #cursor-ring,
+    #cursor-label {
+        display: none !important;
+    }
+
+    .nav-cta,
+    .btn-primary,
+    .btn-ghost,
+    button,
+    a {
+        cursor: pointer;
+    }
+
+    /*
+       Disable hover-only transforms on touch.
+       Prevents sticky hover states on mobile.
+    */
+
+    .project-card:hover .mock-frame,
+    .step:hover .step-num {
+        transform: none;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .hero-orb,
+    .logo-marquee {
+        animation: none !important;
+    }
+
+    .project-card:hover .mock-frame,
+    .step:hover .step-num {
+        transform: none !important;
     }
 }

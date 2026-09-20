@@ -1,141 +1,470 @@
-/* ========================================
-   GLOBAL STYLES
-======================================== */
+/* =========================================================
+   VERITOUS — GLOBAL FOUNDATION
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT / DOCUMENT
+   ========================================================= */
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+
+    background: var(--black);
+    color-scheme: dark;
+
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
 }
 
 body {
-    background: var(--black);
+    position: relative;
+
+    min-height: 100vh;
+    margin: 0;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            rgba(108, 99, 255, 0.035),
+            transparent 38%
+        ),
+        var(--black);
+
     color: var(--white);
+
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.6;
-    overflow-x: hidden;
-    cursor: none;
-    position: relative;
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    cursor: none;
 }
 
-/* ========================================
+
+/* Prevent accidental horizontal overflow */
+
+body,
+html {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(108, 99, 255, 0.55),
+            rgba(0, 212, 255, 0.45)
+        );
+
+    border: 2px solid var(--black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            180deg,
+            var(--indigo),
+            var(--cyan)
+        );
+}
+
+
+/* Firefox */
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(108, 99, 255, 0.5) var(--black);
+}
+
+
+/* =========================================================
    GLOBAL ELEMENTS
-======================================== */
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas {
+    display: block;
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    color: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 
 section {
     position: relative;
     z-index: 1;
 
-    padding-block: 8rem;
+    padding-block: clamp(6rem, 9vw, 9rem);
+
+    isolation: isolate;
 }
 
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+
+/*
+   Soft divider between major sections.
+   Individual sections can override this if needed.
+*/
+
+section + section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: min(1280px, 88%);
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.055),
+            transparent
+        );
+
+    pointer-events: none;
 }
 
-::selection {
-    background: var(--indigo);
-    color: var(--white);
-}
 
-/* ========================================
-   LAYOUT
-======================================== */
+/* =========================================================
+   CONTAINER
+   ========================================================= */
 
 .container {
     width: min(1280px, calc(100% - 4rem));
-    margin: 0 auto;
+
+    margin-inline: auto;
 }
 
-/* ========================================
-   GRAIN OVERLAY
-======================================== */
+
+/* Larger screens */
+
+@media (min-width: 1600px) {
+    .container {
+        width: min(1360px, calc(100% - 6rem));
+    }
+}
+
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+    background: rgba(108, 99, 255, 0.85);
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: rgba(108, 99, 255, 0.85);
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   GRAIN / FILM TEXTURE
+   ========================================================= */
 
 #grain {
     position: fixed;
     inset: 0;
+
     z-index: 9997;
+
+    width: 100%;
+    height: 100%;
+
     pointer-events: none;
-    opacity: 0.035;
+
+    opacity: 0.028;
+
     mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+
+    background-repeat: repeat;
 }
 
-/* ========================================
+
+/* =========================================================
    SCROLL PROGRESS
-======================================== */
+   ========================================================= */
 
 #progress {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, var(--indigo), var(--cyan));
+
     z-index: 10001;
-    transition: width .1s linear;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--indigo),
+            #8c7cff 45%,
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 12px rgba(0, 212, 255, 0.35);
+
+    transform-origin: left center;
+
+    transition:
+        width 0.1s linear;
 }
 
-/* ========================================
-   COMMON SECTION STYLES
-======================================== */
+
+/* =========================================================
+   COMMON SECTION HEADER
+   ========================================================= */
 
 .section-header {
+    position: relative;
+
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
-    gap: 2rem;
-    margin-bottom: 4rem;
+    justify-content: space-between;
+
+    gap: 3rem;
+
+    margin-bottom: clamp(3rem, 5vw, 4.5rem);
 }
+
+
+/* Small eyebrow */
 
 .section-eyebrow {
-    font-family: var(--mono);
-    font-size: 0.72rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+
+    margin-bottom: 1rem;
+
+    font-family: var(--mono, monospace);
+
+    font-size: 0.68rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--indigo);
-    margin-bottom: 0.8rem;
+
+    color: rgba(0, 212, 255, 0.72);
 }
+
+
+/* Eyebrow indicator */
+
+.section-eyebrow::before {
+    content: "";
+
+    width: 22px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--indigo)
+        );
+
+    box-shadow:
+        0 0 10px rgba(0, 212, 255, 0.25);
+}
+
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
 
 .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 3.5rem);
+    max-width: 850px;
+
+    margin: 0;
+
+    font-family:
+        var(--font-heading, 'Syne'),
+        sans-serif;
+
+    font-size: clamp(2.35rem, 4.5vw, 4.4rem);
+
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+
+    text-wrap: balance;
 }
+
+
+/* Optional gradient title */
+
+.section-title.gradient,
+.gradient-title {
+    background:
+        linear-gradient(
+            135deg,
+            #f5f2ff 0%,
+            #b6a8ff 48%,
+            #70ddff 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+
+/* =========================================================
+   SECTION NOTE
+   ========================================================= */
 
 .section-note {
-    max-width: 280px;
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: rgba(240, 239, 255, 0.45);
-    padding-bottom: 0.5rem;
+    max-width: 330px;
+
+    margin: 0;
+
+    padding-bottom: 0.35rem;
+
+    font-size: 0.9rem;
+    line-height: 1.75;
+
+    color: rgba(240, 239, 255, 0.48);
 }
 
-/* ========================================
-   ACCESSIBILITY
-======================================== */
+
+/* =========================================================
+   GENERIC TEXT
+   ========================================================= */
+
+p {
+    margin-top: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    text-decoration: none;
+}
+
+a:not(.nav-cta):not(.btn):not(.button):focus-visible {
+    border-radius: 3px;
+}
+
+
+/* =========================================================
+   FOCUS / ACCESSIBILITY
+   ========================================================= */
+
+:focus {
+    outline: none;
+}
 
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+select:focus-visible {
     outline: 2px solid var(--cyan);
-    outline-offset: 3px;
+
+    outline-offset: 4px;
+
+    box-shadow:
+        0 0 0 5px rgba(0, 212, 255, 0.08);
 }
 
-/* ========================================
-   UTILITY CLASSES
-======================================== */
+
+/* =========================================================
+   UTILITY — TEXT
+   ========================================================= */
 
 .text-center {
     text-align: center;
 }
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+
+/* =========================================================
+   UTILITY — DISPLAY
+   ========================================================= */
 
 .hidden {
     display: none !important;
@@ -145,7 +474,145 @@ textarea:focus-visible {
     display: flex;
 }
 
+.inline-flex {
+    display: inline-flex;
+}
+
 .grid {
     display: grid;
 }
 
+
+/* =========================================================
+   UTILITY — VISIBILITY
+   ========================================================= */
+
+.sr-only {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+}
+
+
+/* =========================================================
+   UTILITY — CONTAINMENT
+   ========================================================= */
+
+.no-overflow {
+    overflow: hidden;
+}
+
+.relative {
+    position: relative;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    section {
+        padding-block: 6rem;
+    }
+
+    .container {
+        width: min(100% - 3rem, 760px);
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 1.25rem;
+
+        margin-bottom: 3rem;
+    }
+
+    .section-note {
+        max-width: 600px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    html {
+        scroll-padding-top: 76px;
+    }
+
+    body {
+        font-size: 15px;
+        cursor: auto;
+    }
+
+    section {
+        padding-block: 5rem;
+    }
+
+    .container {
+        width: min(100% - 2rem, 560px);
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+        line-height: 1;
+        letter-spacing: -0.045em;
+    }
+
+    .section-eyebrow {
+        font-size: 0.62rem;
+    }
+
+    .section-note {
+        font-size: 0.86rem;
+    }
+
+    /*
+       Custom cursor should disappear on touch devices.
+    */
+
+    #cursor,
+    #cursor-ring,
+    #cursor-label {
+        display: none !important;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    #grain {
+        display: none;
+    }
+}

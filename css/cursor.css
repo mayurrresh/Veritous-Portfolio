@@ -1,60 +1,393 @@
-/* CURSOR */
-    #cursor {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background: var(--cyan);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s, background 0.3s;
-      mix-blend-mode: screen;
-    }
+/* =========================================================
+   VERITOUS — CUSTOM CURSOR
+========================================================= */
 
-    #cursor-ring {
-      position: fixed;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(108, 99, 255, 0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: left 0.12s ease-out, top 0.12s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
-    }
+/* ---------- Core ---------- */
 
+#cursor {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            var(--cyan) 45%,
+            rgba(99,216,255,.8) 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    transform:
+        translate3d(-50%, -50%, 0);
+
+    mix-blend-mode: screen;
+
+    box-shadow:
+        0 0 10px rgba(99,216,255,.65),
+        0 0 24px rgba(99,216,255,.25);
+
+    transition:
+        width .3s cubic-bezier(.22,1,.36,1),
+        height .3s cubic-bezier(.22,1,.36,1),
+        opacity .25s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+
+    will-change:
+        transform;
+}
+
+
+/* =========================================================
+   OUTER RING
+========================================================= */
+
+#cursor-ring {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(139,124,255,.55);
+
+    background:
+        rgba(139,124,255,.015);
+
+    pointer-events: none;
+
+    z-index: 99998;
+
+    transform:
+        translate3d(-50%, -50%, 0);
+
+    backdrop-filter:
+        blur(1px);
+
+    -webkit-backdrop-filter:
+        blur(1px);
+
+    box-shadow:
+        0 0 20px rgba(108,99,255,.08),
+        inset 0 0 15px rgba(108,99,255,.025);
+
+    transition:
+        width .45s cubic-bezier(.22,1,.36,1),
+        height .45s cubic-bezier(.22,1,.36,1),
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .35s ease,
+        opacity .25s ease;
+
+    will-change:
+        transform;
+}
+
+
+/* =========================================================
+   RING ACCENT
+========================================================= */
+
+#cursor-ring::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,.045);
+
+    opacity: .7;
+}
+
+
+/* =========================================================
+   CONTEXT LABEL
+========================================================= */
+
+#cursor-label {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    z-index: 99997;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 24px;
+
+    padding:
+        .2rem
+        .6rem;
+
+    border-radius: 999px;
+
+    background:
+        rgba(7,8,13,.82);
+
+    border:
+        1px solid rgba(139,124,255,.25);
+
+    color:
+        rgba(235,239,255,.82);
+
+    font-family:
+        var(--mono);
+
+    font-size: .56rem;
+
+    font-weight: 500;
+
+    letter-spacing: .1em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    transform:
+        translate3d(-50%, 19px, 0);
+
+    opacity: 0;
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.18);
+
+    transition:
+        opacity .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+
+    will-change:
+        transform;
+}
+
+
+/* =========================================================
+   HOVER — GENERAL INTERACTIVE ELEMENT
+========================================================= */
+
+body.cursor-hover #cursor {
+    width: 11px;
+    height: 11px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 0 14px rgba(255,255,255,.85),
+        0 0 30px rgba(99,216,255,.35);
+}
+
+body.cursor-hover #cursor-ring {
+    width: 58px;
+    height: 58px;
+
+    border-color:
+        rgba(103,232,249,.65);
+
+    background:
+        rgba(99,216,255,.025);
+
+    box-shadow:
+        0 0 30px rgba(99,216,255,.10),
+        inset 0 0 20px rgba(99,216,255,.025);
+}
+
+
+/* =========================================================
+   LABEL VISIBLE
+========================================================= */
+
+body.cursor-label-visible #cursor-label {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   PRIMARY CTA
+========================================================= */
+
+body.cursor-primary #cursor-ring {
+    width: 64px;
+    height: 64px;
+
+    border-color:
+        rgba(139,124,255,.8);
+
+    background:
+        rgba(139,124,255,.035);
+
+    box-shadow:
+        0 0 35px rgba(108,99,255,.14);
+}
+
+body.cursor-primary #cursor {
+    width: 9px;
+    height: 9px;
+}
+
+
+/* =========================================================
+   IMAGE / PROJECT HOVER
+========================================================= */
+
+body.cursor-image #cursor-ring {
+    width: 72px;
+    height: 72px;
+
+    border-color:
+        rgba(103,232,249,.65);
+
+    background:
+        rgba(103,232,249,.025);
+}
+
+body.cursor-image #cursor-label {
+    border-color:
+        rgba(103,232,249,.3);
+
+    color:
+        rgba(155,239,255,.9);
+}
+
+
+/* =========================================================
+   CURSOR OVER DARK / LIGHT ELEMENTS
+========================================================= */
+
+body.cursor-light #cursor {
+    background:
+        #ffffff;
+
+    mix-blend-mode:
+        difference;
+}
+
+body.cursor-light #cursor-ring {
+    border-color:
+        rgba(255,255,255,.75);
+}
+
+
+/* =========================================================
+   CLICK FEEDBACK
+========================================================= */
+
+body.cursor-click #cursor-ring {
+    width: 28px;
+    height: 28px;
+
+    opacity: .7;
+
+    border-color:
+        rgba(255,255,255,.8);
+}
+
+body.cursor-click #cursor {
+    width: 12px;
+    height: 12px;
+}
+
+
+/* =========================================================
+   HIDDEN STATE
+========================================================= */
+
+body.cursor-hidden #cursor,
+body.cursor-hidden #cursor-ring,
+body.cursor-hidden #cursor-label {
+    opacity: 0;
+}
+
+
+/* =========================================================
+   DISABLED
+========================================================= */
+
+body.cursor-disabled #cursor,
+body.cursor-disabled #cursor-ring,
+body.cursor-disabled #cursor-label {
+    display: none !important;
+}
+
+body.cursor-disabled {
+    cursor: auto;
+}
+
+body.cursor-disabled a,
+body.cursor-disabled button,
+body.cursor-disabled input,
+body.cursor-disabled textarea,
+body.cursor-disabled select {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   MOBILE / TOUCH
+========================================================= */
+
+@media (hover: none), (pointer: coarse) {
+
+    #cursor,
+    #cursor-ring,
     #cursor-label {
-      position: fixed;
-      z-index: 9998;
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--black);
-      background: var(--cyan);
-      padding: 0.2rem 0.55rem;
-      border-radius: 1rem;
-      pointer-events: none;
-      transform: translate(-50%, 14px);
-      opacity: 0;
-      transition: opacity 0.25s, left 0.12s ease-out, top 0.12s ease-out;
-      white-space: nowrap;
+        display: none !important;
     }
 
-
-    body.cursor-disabled #cursor,
-    body.cursor-disabled #cursor-ring,
-    body.cursor-disabled #cursor-label {
-      display: none !important;
+    body {
+        cursor: auto;
     }
 
-    body.cursor-disabled {
-      cursor: auto;
+    a,
+    button,
+    input,
+    textarea,
+    select {
+        cursor: pointer;
     }
+}
 
-    body.cursor-disabled a,
-    body.cursor-disabled button,
-    body.cursor-disabled input {
-      cursor: pointer;
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #cursor,
+    #cursor-ring,
+    #cursor-label {
+        transition: none !important;
     }
+}

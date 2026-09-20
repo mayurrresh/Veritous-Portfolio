@@ -1,96 +1,912 @@
-/* ===========================
-   KEYFRAME ANIMATIONS
-=========================== */
+/* =========================================================
+   VERITOUS — MOTION SYSTEM
+========================================================= */
+
+/*
+   Motion principles:
+   - Slow, controlled entrances
+   - Soft easing instead of linear movement
+   - Small movement distances
+   - No excessive bouncing
+   - Ambient effects run continuously
+   - Content reveals are staggered
+*/
+
+
+/* =========================================================
+   CORE EASING
+========================================================= */
+
+:root {
+    --ease-smooth: cubic-bezier(.22, 1, .36, 1);
+    --ease-soft: cubic-bezier(.16, 1, .3, 1);
+    --ease-standard: cubic-bezier(.4, 0, .2, 1);
+    --ease-elastic: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+
+/* =========================================================
+   HERO — AMBIENT ORB
+========================================================= */
 
 @keyframes orbBreathe {
-  0%,
-  100% {
-    transform: translate(-50%, -55%) scale(1);
-    opacity: 0.9;
-  }
 
-  50% {
-    transform: translate(-50%, -55%) scale(1.08);
-    opacity: 1;
-  }
+    0%,
+    100% {
+        transform:
+            translate(-50%, -55%)
+            scale(1);
+
+        opacity: .72;
+    }
+
+    50% {
+        transform:
+            translate(-50%, -55%)
+            scale(1.08);
+
+        opacity: .9;
+    }
 }
+
+
+/* =========================================================
+   SECONDARY ORB / FLOATING LIGHT
+========================================================= */
+
+@keyframes ambientFloat {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(0, -18px, 0)
+            scale(1.025);
+    }
+}
+
+
+/* =========================================================
+   SOFT ROTATION
+========================================================= */
+
+@keyframes slowRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   HERO TITLE ENTRANCE
+========================================================= */
+
+@keyframes heroTitleReveal {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(34px)
+            scale(.985);
+
+        filter:
+            blur(12px);
+    }
+
+    65% {
+        filter:
+            blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter:
+            blur(0);
+    }
+}
+
+
+/* =========================================================
+   FADE UP
+========================================================= */
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
 }
 
-@keyframes scrollBounce {
-  0%,
-  100% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
 
-  50% {
-    transform: scaleY(0.6);
-    transform-origin: top;
-  }
+/* =========================================================
+   SOFT FADE
+========================================================= */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
+
+
+/* =========================================================
+   SCALE IN
+========================================================= */
+
+@keyframes scaleIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(.94);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   BLUR REVEAL
+========================================================= */
+
+@keyframes blurReveal {
+
+    from {
+        opacity: 0;
+
+        filter:
+            blur(12px);
+
+        transform:
+            translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+
+        filter:
+            blur(0);
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   SLIDE FROM LEFT
+========================================================= */
+
+@keyframes slideInLeft {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-28px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
+   SLIDE FROM RIGHT
+========================================================= */
+
+@keyframes slideInRight {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(28px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(0);
+    }
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+@keyframes scrollPulse {
+
+    0% {
+        transform:
+            scaleY(.35);
+
+        transform-origin:
+            top;
+
+        opacity: .25;
+    }
+
+    45% {
+        transform:
+            scaleY(1);
+
+        transform-origin:
+            top;
+
+        opacity: .9;
+    }
+
+    100% {
+        transform:
+            scaleY(.35);
+
+        transform-origin:
+            bottom;
+
+        opacity: .25;
+    }
+}
+
+
+/* =========================================================
+   GLOW PULSE
+========================================================= */
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: .7;
+
+        box-shadow:
+            0 0 0
+            rgba(99, 216, 255, 0);
+    }
+
+    50% {
+        opacity: 1;
+
+        box-shadow:
+            0 0 18px
+            rgba(99, 216, 255, .35);
+    }
+}
+
+
+/* =========================================================
+   STATUS DOT
+========================================================= */
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+
+        opacity: .8;
+
+        box-shadow:
+            0 0 7px
+            rgba(74, 222, 128, .45);
+    }
+
+    50% {
+        transform:
+            scale(1.18);
+
+        opacity: 1;
+
+        box-shadow:
+            0 0 15px
+            rgba(74, 222, 128, .8);
+    }
+}
+
+
+/* =========================================================
+   TICKER
+========================================================= */
 
 @keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
 
-  100% {
-    transform: translateX(-50%);
-  }
+    from {
+        transform:
+            translate3d(0, 0, 0);
+    }
+
+    to {
+        transform:
+            translate3d(-50%, 0, 0);
+    }
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
 
-  50% {
-    opacity: 0.4;
-    transform: scale(1.3);
-  }
+/* =========================================================
+   SHIMMER
+========================================================= */
+
+@keyframes shimmer {
+
+    0% {
+        transform:
+            translateX(-120%);
+    }
+
+    100% {
+        transform:
+            translateX(120%);
+    }
 }
 
-/* ===========================
-   SCROLL REVEAL
-=========================== */
+
+/* =========================================================
+   CARD LIGHT
+========================================================= */
+
+@keyframes cardGlow {
+
+    0%,
+    100% {
+        opacity: .25;
+    }
+
+    50% {
+        opacity: .55;
+    }
+}
+
+
+/* =========================================================
+   FLOATING PARTICLE
+========================================================= */
+
+@keyframes particleFloat {
+
+    0%,
+    100% {
+        transform:
+            translate3d(0, 0, 0);
+
+        opacity: .35;
+    }
+
+    50% {
+        transform:
+            translate3d(0, -14px, 0);
+
+        opacity: .8;
+    }
+}
+
+
+/* =========================================================
+   REVEAL SYSTEM
+========================================================= */
 
 .reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 0.8s cubic-bezier(0.23, 1, 0.32, 1),
-    transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+
+    opacity: 0;
+
+    transform:
+        translateY(30px);
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity .85s var(--ease-smooth),
+        transform .85s var(--ease-smooth),
+        filter .85s var(--ease-smooth);
 }
+
 
 .reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    filter:
+        blur(0);
 }
 
-/* ===========================
+
+/* =========================================================
+   REVEAL — LEFT
+========================================================= */
+
+.reveal-left {
+
+    opacity: 0;
+
+    transform:
+        translateX(-30px);
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity .85s var(--ease-smooth),
+        transform .85s var(--ease-smooth),
+        filter .85s var(--ease-smooth);
+}
+
+
+.reveal-left.visible {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   REVEAL — RIGHT
+========================================================= */
+
+.reveal-right {
+
+    opacity: 0;
+
+    transform:
+        translateX(30px);
+
+    filter:
+        blur(4px);
+
+    transition:
+        opacity .85s var(--ease-smooth),
+        transform .85s var(--ease-smooth),
+        filter .85s var(--ease-smooth);
+}
+
+
+.reveal-right.visible {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   REVEAL — SCALE
+========================================================= */
+
+.reveal-scale {
+
+    opacity: 0;
+
+    transform:
+        scale(.94);
+
+    filter:
+        blur(5px);
+
+    transition:
+        opacity .8s var(--ease-smooth),
+        transform .9s var(--ease-smooth),
+        filter .8s var(--ease-smooth);
+}
+
+
+.reveal-scale.visible {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    filter:
+        blur(0);
+}
+
+
+/* =========================================================
+   STAGGER SYSTEM
+========================================================= */
+
+/*
+   Works beautifully with:
+   .why-card.reveal
+   .service-card.reveal
+   .project-card.reveal
+*/
+
+.reveal:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.reveal:nth-child(2) {
+    transition-delay: .08s;
+}
+
+.reveal:nth-child(3) {
+    transition-delay: .16s;
+}
+
+.reveal:nth-child(4) {
+    transition-delay: .24s;
+}
+
+.reveal:nth-child(5) {
+    transition-delay: .32s;
+}
+
+.reveal:nth-child(6) {
+    transition-delay: .40s;
+}
+
+
+/* =========================================================
+   HERO ENTRANCE SEQUENCE
+========================================================= */
+
+.hero-kicker {
+    animation:
+        fadeUp .8s .05s both var(--ease-smooth);
+}
+
+
+.hero-title {
+    animation:
+        heroTitleReveal 1.05s .12s both var(--ease-soft);
+}
+
+
+.hero-description {
+    animation:
+        fadeUp .9s .30s both var(--ease-smooth);
+}
+
+
+.hero-actions {
+    animation:
+        fadeUp .9s .40s both var(--ease-smooth);
+}
+
+
+.hero-proof {
+    animation:
+        fadeUp .9s .50s both var(--ease-smooth);
+}
+
+
+.hero-scroll {
+    animation:
+        fadeUp .9s .60s both var(--ease-smooth);
+}
+
+
+/* =========================================================
+   HERO BACKGROUND
+========================================================= */
+
+.hero-orb {
+
+    animation:
+        orbBreathe 10s
+        ease-in-out
+        infinite;
+}
+
+
+.hero-gradient {
+
+    animation:
+        ambientFloat 14s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   STATUS DOT
+========================================================= */
+
+.status-dot {
+
+    animation:
+        statusPulse 2.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   SCROLL LINE
+========================================================= */
+
+.scroll-line {
+
+    transform-origin:
+        top;
+
+    animation:
+        scrollPulse 2.4s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   HOVER MOTION
+========================================================= */
+
+.btn,
+.nav-cta,
+.why-card,
+.service-card,
+.project-card,
+.engagement-card,
+.founder-card {
+
+    will-change:
+        transform;
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+========================================================= */
+
+.btn span {
+
+    transition:
+        transform .35s var(--ease-smooth);
+}
+
+
+.btn:hover span {
+
+    transform:
+        translate(3px, -3px);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+.project-card img {
+
+    transition:
+        transform .8s var(--ease-smooth),
+        filter .6s ease;
+}
+
+
+.project-card:hover img {
+
+    transform:
+        scale(1.045);
+
+    filter:
+        saturate(1.08);
+}
+
+
+/* =========================================================
+   CARD ICON
+========================================================= */
+
+.why-icon,
+.service-icon {
+
+    will-change:
+        transform;
+
+    transition:
+        transform .5s var(--ease-elastic),
+        box-shadow .4s ease,
+        background .4s ease;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav {
+
+    transition:
+        height .45s var(--ease-smooth),
+        padding .45s var(--ease-smooth),
+        background .4s ease,
+        border-color .4s ease,
+        box-shadow .45s ease;
+}
+
+
+.nav-logo {
+
+    transition:
+        opacity .3s ease,
+        transform .4s var(--ease-smooth);
+}
+
+
+.nav-logo:hover {
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   LINK UNDERLINE
+========================================================= */
+
+.nav-links a::after {
+
+    transform-origin:
+        left center;
+
+    transition:
+        transform .4s var(--ease-smooth);
+}
+
+
+/* =========================================================
+   GRADIENT SHIMMER
+========================================================= */
+
+.gradient-shimmer {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.gradient-shimmer::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 45%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform:
+        translateX(-120%);
+
+    pointer-events: none;
+}
+
+
+.gradient-shimmer:hover::after {
+
+    animation:
+        shimmer .8s
+        var(--ease-smooth);
+}
+
+
+/* =========================================================
+   IMAGE / MEDIA HOVER
+========================================================= */
+
+.media-hover {
+
+    overflow: hidden;
+}
+
+
+.media-hover img {
+
+    transition:
+        transform .9s var(--ease-smooth),
+        filter .6s ease;
+}
+
+
+.media-hover:hover img {
+
+    transform:
+        scale(1.045);
+
+    filter:
+        brightness(1.04)
+        saturate(1.05);
+}
+
+
+/* =========================================================
    ACCESSIBILITY
-=========================== */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        scroll-behavior:
+            auto !important;
+    }
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
+
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        filter: none !important;
+    }
 }

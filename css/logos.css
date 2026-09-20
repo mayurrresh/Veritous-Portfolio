@@ -1,25 +1,224 @@
-/* LOGO MARQUEE — "trusted by" strip */
+/* =========================================================
+   LOGO MARQUEE — TRUST / ECOSYSTEM STRIP
+   ========================================================= */
+
+#logos {
+    position: relative;
+    padding: 2.8rem 0;
+
+    overflow: hidden;
+    isolation: isolate;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.055);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.012),
+            rgba(255, 255, 255, 0)
+        );
+}
+
+
+/* =========================================================
+   EDGE FADE
+   ========================================================= */
+
+#logos::before,
+#logos::after {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 140px;
+
+    z-index: 3;
+    pointer-events: none;
+}
+
+#logos::before {
+    left: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--black, #050508),
+            transparent
+        );
+}
+
+#logos::after {
+    right: 0;
+
+    background:
+        linear-gradient(
+            270deg,
+            var(--black, #050508),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   OPTIONAL LABEL
+   ========================================================= */
+
+.logos-label {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 1.6rem;
+
+    text-align: center;
+
+    font-family: var(--mono, monospace);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    color: rgba(240, 239, 255, 0.3);
+}
+
+
+/* =========================================================
+   MARQUEE TRACK
+   ========================================================= */
+
+.logo-marquee {
+    display: flex;
+    align-items: center;
+
+    width: max-content;
+
+    gap: clamp(3rem, 5vw, 5.5rem);
+
+    animation:
+        ticker 36s linear infinite;
+
+    will-change: transform;
+}
+
+
+/* =========================================================
+   LOGO ITEM
+   ========================================================= */
+
+.logo-item {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    white-space: nowrap;
+
+    font-family:
+        var(--font-heading, 'Syne'),
+        sans-serif;
+
+    font-size: clamp(0.95rem, 1.15vw, 1.12rem);
+    font-weight: 650;
+
+    letter-spacing: -0.025em;
+
+    color: rgba(240, 239, 255, 0.28);
+
+    transition:
+        color 0.35s ease,
+        opacity 0.35s ease,
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Small separator */
+
+.logo-item::after {
+    content: "";
+
+    width: 4px;
+    height: 4px;
+
+    margin-left: clamp(3rem, 5vw, 5.5rem);
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--indigo, #6c63ff),
+            var(--cyan, #00d4ff)
+        );
+
+    opacity: 0.45;
+
+    box-shadow:
+        0 0 12px rgba(0, 212, 255, 0.2);
+}
+
+
+/* Hover */
+
+.logo-item:hover {
+    color: rgba(240, 239, 255, 0.7);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   PAUSE ON HOVER
+   ========================================================= */
+
+#logos:hover .logo-marquee {
+    animation-play-state: paused;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
     #logos {
-      padding: 2.5rem 0;
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
-      overflow: hidden;
+        padding: 2.2rem 0;
+    }
+
+    #logos::before,
+    #logos::after {
+        width: 60px;
     }
 
     .logo-marquee {
-      display: flex;
-      gap: 5rem;
-      width: max-content;
-      animation: ticker 32s linear infinite;
-      align-items: center;
+        gap: 3rem;
+        animation-duration: 30s;
     }
 
     .logo-item {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
-      color: rgba(240, 239, 255, 0.28);
-      white-space: nowrap;
-      transition: color 0.3s;
+        font-size: 0.9rem;
     }
+
+    .logo-item::after {
+        margin-left: 3rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .logo-marquee {
+        animation: none;
+    }
+
+    .logo-item {
+        transition: none;
+    }
+}

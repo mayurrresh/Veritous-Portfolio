@@ -1,32 +1,582 @@
-/* BADGES */
+/* =========================================================
+   BADGES / AREAS OF EXPERTISE
+========================================================= */
+
+#badges {
+    position: relative;
+    padding: clamp(6rem, 9vw, 8.5rem) 0;
+    overflow: hidden;
+    isolation: isolate;
+
+    border-top: 1px solid rgba(255, 255, 255, .055);
+    border-bottom: 1px solid rgba(255, 255, 255, .055);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, .008),
+            rgba(255, 255, 255, .022),
+            rgba(255, 255, 255, .008)
+        );
+}
+
+
+/* =========================================================
+   AMBIENT LIGHT
+========================================================= */
+
+#badges::before {
+    content: "";
+    position: absolute;
+
+    width: min(760px, 70vw);
+    height: 320px;
+
+    left: 50%;
+    top: 52%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(108, 99, 255, .075),
+            rgba(0, 212, 255, .025) 45%,
+            transparent 72%
+        );
+
+    filter: blur(70px);
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+
+/* =========================================================
+   SUBTLE GRID
+========================================================= */
+
+#badges::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, .014) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, .014) 1px,
+            transparent 1px
+        );
+
+    background-size: 64px 64px;
+
+    opacity: .2;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 25%,
+            black 75%,
+            transparent
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 25%,
+            black 75%,
+            transparent
+        );
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+========================================================= */
+
+#badges .section-number {
+    position: absolute;
+
+    top: 2rem;
+    left: clamp(1.5rem, 4vw, 4rem);
+
+    font-family: var(--mono);
+    font-size: .65rem;
+    font-weight: 500;
+    letter-spacing: .14em;
+
+    color: rgba(240, 239, 255, .25);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#badges .section-header {
+    position: relative;
+    z-index: 2;
+
+    width: min(900px, 92%);
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* eyebrow */
+
+#badges .section-eyebrow {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+
+    margin-bottom: 1.2rem;
+
+    font-family: var(--mono);
+    font-size: .68rem;
+    font-weight: 500;
+
+    letter-spacing: .18em;
+    text-transform: uppercase;
+
+    color: rgba(139, 124, 255, .82);
+}
+
+
+/* tiny indicator */
+
+#badges .section-eyebrow::before {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--indigo),
+        var(--cyan)
+    );
+
+    box-shadow:
+        0 0 10px rgba(34, 211, 238, .35);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+#badges .section-title {
+    max-width: 780px;
+
+    margin: 0;
+
+    font-family: var(--font-heading);
+
+    /*
+       Overrides the inline style from the HTML
+       with a more refined scale.
+    */
+    font-size: clamp(2rem, 3.5vw, 3.25rem) !important;
+
+    line-height: 1.02;
+    letter-spacing: -.055em;
+
+    color: rgba(245, 246, 250, .95);
+
+    text-wrap: balance;
+}
+
+
+/* subtle title highlight */
+
+#badges .section-title::after {
+    content: "";
+
+    display: block;
+
+    width: 42px;
+    height: 1px;
+
+    margin: 1.5rem auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    opacity: .7;
+
+    box-shadow:
+        0 0 12px rgba(34, 211, 238, .25);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+#badges .section-note {
+    max-width: 700px !important;
+
+    margin: 1.35rem auto 0 !important;
+    padding-bottom: 0 !important;
+
+    font-size: .9rem;
+    line-height: 1.8;
+
+    color: rgba(240, 239, 255, .46);
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   BADGE ROW
+========================================================= */
+
+.badges-row {
+    position: relative;
+    z-index: 2;
+
+    width: min(1080px, 92%);
+
+    margin: 3.2rem auto 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: .65rem;
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.badge-pill {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 1.05rem;
+
+    border: 1px solid rgba(255, 255, 255, .075);
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, .045),
+            rgba(255, 255, 255, .015)
+        );
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .045),
+        0 8px 28px rgba(0, 0, 0, .08);
+
+    font-family: var(--mono);
+    font-size: .67rem;
+    font-weight: 500;
+
+    letter-spacing: .045em;
+
+    color: rgba(240, 239, 255, .54);
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    transition:
+        transform .4s cubic-bezier(.22, 1, .36, 1),
+        color .3s ease,
+        border-color .35s ease,
+        background .35s ease,
+        box-shadow .4s ease;
+}
+
+
+/* =========================================================
+   BADGE SHINE
+========================================================= */
+
+.badge-pill::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    width: 35%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, .09),
+            transparent
+        );
+
+    transform:
+        translateX(-180%)
+        skewX(-20deg);
+
+    transition:
+        transform .75s cubic-bezier(.22, 1, .36, 1);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   STATUS DOT
+========================================================= */
+
+.badge-pill::after {
+    content: "";
+
+    width: 5px;
+    height: 5px;
+
+    margin-left: .55rem;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--indigo),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 9px rgba(34, 211, 238, .3);
+
+    opacity: .65;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.badge-pill:hover {
+    transform: translateY(-3px);
+
+    color: rgba(255, 255, 255, .84);
+
+    border-color:
+        rgba(139, 124, 255, .25);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(139, 124, 255, .085),
+            rgba(34, 211, 238, .035)
+        );
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, .18),
+        0 0 25px rgba(108, 99, 255, .045),
+        inset 0 1px 0 rgba(255, 255, 255, .07);
+}
+
+.badge-pill:hover::before {
+    transform:
+        translateX(380%)
+        skewX(-20deg);
+}
+
+.badge-pill:hover::after {
+    opacity: 1;
+
+    transform: scale(1.25);
+
+    box-shadow:
+        0 0 13px rgba(34, 211, 238, .65);
+}
+
+
+/* =========================================================
+   BADGE STAGGER
+========================================================= */
+
+.badge-pill:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.badge-pill:nth-child(2) {
+    transition-delay: .02s;
+}
+
+.badge-pill:nth-child(3) {
+    transition-delay: .04s;
+}
+
+.badge-pill:nth-child(4) {
+    transition-delay: .06s;
+}
+
+.badge-pill:nth-child(5) {
+    transition-delay: .08s;
+}
+
+.badge-pill:nth-child(6) {
+    transition-delay: .1s;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
     #badges {
-      padding: 4rem 4rem;
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
+        padding: 5rem 0;
+    }
+
+    #badges .section-number {
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    #badges .section-title {
+        font-size: clamp(1.9rem, 7vw, 2.5rem) !important;
+    }
+
+    #badges .section-note {
+        font-size: .84rem;
+        line-height: 1.7;
     }
 
     .badges-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
+        width: min(92%, 620px);
+        margin-top: 2.5rem;
+
+        gap: .55rem;
     }
 
     .badge-pill {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.1rem;
-      border: 1px solid var(--card-border);
-      border-radius: 2rem;
-      font-family: var(--mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.04em;
-      color: rgba(240, 239, 255, 0.55);
-      background: var(--card-bg);
+        min-height: 40px;
+        padding: 0 .85rem;
+
+        font-size: .61rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    #badges {
+        padding: 4.5rem 0;
     }
 
-    .badge-pill b {
-      color: var(--cyan);
+    #badges .section-header {
+        width: 88%;
     }
+
+    #badges .section-title {
+        font-size: 1.8rem !important;
+        line-height: 1.05;
+    }
+
+    #badges .section-note {
+        font-size: .8rem;
+    }
+
+    .badges-row {
+        width: 88%;
+        justify-content: center;
+
+        gap: .5rem;
+    }
+
+    .badge-pill {
+        min-height: 38px;
+        padding: 0 .72rem;
+
+        font-size: .56rem;
+        letter-spacing: .025em;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+
+    .badge-pill:hover {
+        transform: none;
+    }
+
+    .badge-pill:hover::before {
+        transform: translateX(-180%) skewX(-20deg);
+    }
+
+    .badge-pill:hover::after {
+        transform: none;
+        opacity: .65;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .badge-pill,
+    .badge-pill::before,
+    .badge-pill::after {
+        transition: none !important;
+    }
+}

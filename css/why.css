@@ -1,7 +1,6 @@
 /* =========================================================
    WHY VERITOUS
-   Premium / Editorial / Confidence-driven
-   Written for the supplied #why HTML
+   Premium / Editorial / Engineering-led
    ========================================================= */
 
 
@@ -11,39 +10,38 @@
 
 #why {
     position: relative;
-
-    padding-block: clamp(7rem, 10vw, 10rem);
-
+    padding-block: clamp(5.5rem, 7vw, 7.5rem);
     overflow: hidden;
-
     isolation: isolate;
 
     background:
         radial-gradient(
-            ellipse 70% 55% at 50% 0%,
-            rgba(108, 99, 255, 0.075),
-            transparent 70%
+            ellipse 65% 45% at 50% 0%,
+            rgba(108, 99, 255, 0.055),
+            transparent 72%
         ),
         linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.012),
-            transparent 38%
+            rgba(255, 255, 255, 0.008),
+            transparent 45%
         );
 }
 
 
-/* Ambient light */
+/* =========================================================
+   AMBIENT LIGHT
+   ========================================================= */
 
 #why::before {
     content: "";
 
     position: absolute;
 
-    width: 720px;
-    height: 720px;
+    width: 620px;
+    height: 620px;
 
     left: 50%;
-    top: 30%;
+    top: 28%;
 
     transform: translate(-50%, -50%);
 
@@ -52,8 +50,8 @@
     background:
         radial-gradient(
             circle,
-            rgba(108, 99, 255, 0.065),
-            rgba(0, 212, 255, 0.02) 40%,
+            rgba(108, 99, 255, 0.045),
+            rgba(34, 211, 238, 0.012) 42%,
             transparent 70%
         );
 
@@ -65,7 +63,9 @@
 }
 
 
-/* Bottom fade */
+/* =========================================================
+   BOTTOM FADE
+   ========================================================= */
 
 #why::after {
     content: "";
@@ -76,13 +76,13 @@
     right: 0;
     bottom: 0;
 
-    height: 180px;
+    height: 120px;
 
     background:
         linear-gradient(
             to bottom,
             transparent,
-            rgba(5, 6, 10, 0.65)
+            rgba(5, 6, 10, 0.55)
         );
 
     pointer-events: none;
@@ -103,14 +103,14 @@
 
     font-family: var(--mono, monospace);
 
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 600;
 
     line-height: 1;
 
     letter-spacing: 0.15em;
 
-    color: rgba(240, 239, 255, 0.24);
+    color: rgba(240, 239, 255, 0.2);
 }
 
 
@@ -121,16 +121,15 @@
 #why .section-header {
     position: relative;
 
-    max-width: 960px;
-
-    margin: 0 auto clamp(3.5rem, 5vw, 5rem);
+    width: min(900px, 92%);
+    margin: 0 auto clamp(2.8rem, 4vw, 4rem);
 
     display: flex;
     flex-direction: column;
 
     align-items: center;
 
-    gap: 1.2rem;
+    gap: 0.9rem;
 
     text-align: center;
 }
@@ -141,10 +140,10 @@
 #why .section-header::before {
     content: "";
 
-    width: 42px;
-    height: 2px;
+    width: 34px;
+    height: 1px;
 
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.3rem;
 
     border-radius: 999px;
 
@@ -156,34 +155,38 @@
         );
 
     box-shadow:
-        0 0 18px rgba(108, 99, 255, 0.28);
+        0 0 14px rgba(108, 99, 255, 0.2);
 }
 
 
-/* Eyebrow */
+/* =========================================================
+   EYEBROW
+   ========================================================= */
 
 #why .section-eyebrow {
     margin: 0;
 
     font-family: var(--mono, monospace);
 
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     font-weight: 600;
 
     line-height: 1;
 
-    letter-spacing: 0.18em;
+    letter-spacing: 0.17em;
 
     text-transform: uppercase;
 
-    color: rgba(240, 239, 255, 0.42);
+    color: rgba(240, 239, 255, 0.4);
 }
 
 
-/* Heading */
+/* =========================================================
+   HEADING
+   ========================================================= */
 
 #why .section-title {
-    max-width: 900px;
+    max-width: 850px;
 
     margin: 0;
 
@@ -191,11 +194,11 @@
         var(--font-heading, "Syne"),
         sans-serif;
 
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(2.7rem, 4.6vw, 4.5rem);
 
     font-weight: 800;
 
-    line-height: 0.94;
+    line-height: 0.95;
 
     letter-spacing: -0.065em;
 
@@ -223,18 +226,20 @@
 }
 
 
-/* Description */
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
 #why .section-note {
     max-width: 650px;
 
-    margin: 0.3rem auto 0;
+    margin: 0.25rem auto 0;
 
-    font-size: 0.96rem;
+    font-size: 0.9rem;
 
-    line-height: 1.8;
+    line-height: 1.75;
 
-    color: rgba(240, 239, 255, 0.48);
+    color: rgba(240, 239, 255, 0.44);
 }
 
 
@@ -245,7 +250,7 @@
 .why-grid {
     position: relative;
 
-    width: min(1240px, 92%);
+    width: min(1200px, 92%);
 
     margin-inline: auto;
 
@@ -254,7 +259,7 @@
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 1rem;
+    gap: 0.9rem;
 }
 
 
@@ -266,74 +271,76 @@
     position: relative;
 
     min-width: 0;
-    min-height: 305px;
+    min-height: 275px;
 
     display: flex;
     flex-direction: column;
 
-    padding: 2rem;
+    padding: 1.8rem;
 
-    border: 1px solid rgba(255, 255, 255, 0.075);
+    border: 1px solid rgba(255, 255, 255, 0.065);
 
-    border-radius: 22px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.048),
-            rgba(255, 255, 255, 0.014)
+            rgba(255, 255, 255, 0.04),
+            rgba(255, 255, 255, 0.012)
         );
 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.045),
-        0 20px 55px rgba(0, 0, 0, 0.12);
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 18px 50px rgba(0, 0, 0, 0.1);
 
     overflow: hidden;
 
     isolation: isolate;
 
     transition:
-        transform 0.5s cubic-bezier(.22, 1, .36, 1),
+        transform 0.45s cubic-bezier(.22, 1, .36, 1),
         border-color 0.35s ease,
-        background 0.4s ease,
-        box-shadow 0.45s ease;
+        background 0.35s ease,
+        box-shadow 0.4s ease;
 }
 
 
-/* Internal light */
+/* =========================================================
+   CARD INTERNAL LIGHT
+   ========================================================= */
 
 .why-card::before {
     content: "";
 
     position: absolute;
 
-    width: 280px;
-    height: 280px;
+    width: 250px;
+    height: 250px;
 
-    top: -160px;
-    right: -130px;
+    top: -150px;
+    right: -120px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(108, 99, 255, 0.14),
+            rgba(108, 99, 255, 0.11),
             transparent 68%
         );
 
-    filter: blur(18px);
+    filter: blur(20px);
 
     opacity: 0;
 
     transform: translate3d(0, 0, 0);
 
     transition:
-        opacity 0.5s ease,
-        transform 0.65s cubic-bezier(.22, 1, .36, 1);
+        opacity 0.45s ease,
+        transform 0.6s cubic-bezier(.22, 1, .36, 1);
 
     pointer-events: none;
 
@@ -341,7 +348,9 @@
 }
 
 
-/* Top edge */
+/* =========================================================
+   CARD TOP EDGE
+   ========================================================= */
 
 .why-card::after {
     content: "";
@@ -358,48 +367,48 @@
         linear-gradient(
             90deg,
             transparent,
-            rgba(139, 124, 255, 0.58),
-            rgba(103, 232, 249, 0.38),
+            rgba(139, 124, 255, 0.5),
+            rgba(103, 232, 249, 0.32),
             transparent
         );
 
     opacity: 0;
 
-    transition: opacity 0.4s ease;
+    transition: opacity 0.35s ease;
 
     pointer-events: none;
 }
 
 
-/* Hover */
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
 
 .why-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-6px);
 
-    border-color: rgba(139, 124, 255, 0.22);
+    border-color: rgba(139, 124, 255, 0.18);
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.065),
-            rgba(255, 255, 255, 0.02)
+            rgba(255, 255, 255, 0.055),
+            rgba(255, 255, 255, 0.018)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.065),
-        0 30px 75px rgba(0, 0, 0, 0.25),
-        0 0 42px rgba(108, 99, 255, 0.045);
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 26px 65px rgba(0, 0, 0, 0.2),
+        0 0 35px rgba(108, 99, 255, 0.035);
 }
-
 
 .why-card:hover::before {
     opacity: 1;
 
     transform:
-        translate3d(-18px, 18px, 0)
-        scale(1.2);
+        translate3d(-15px, 15px, 0)
+        scale(1.15);
 }
-
 
 .why-card:hover::after {
     opacity: 1;
@@ -413,46 +422,46 @@
 .why-icon {
     position: relative;
 
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
 
-    flex: 0 0 56px;
+    flex: 0 0 52px;
 
     display: grid;
     place-items: center;
 
-    margin-bottom: 1.7rem;
+    margin-bottom: 1.45rem;
 
-    border: 1px solid rgba(139, 124, 255, 0.17);
+    border: 1px solid rgba(139, 124, 255, 0.15);
 
-    border-radius: 16px;
+    border-radius: 15px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(139, 124, 255, 0.14),
-            rgba(34, 211, 238, 0.04)
+            rgba(139, 124, 255, 0.12),
+            rgba(34, 211, 238, 0.035)
         );
 
-    color: rgba(240, 239, 255, 0.88);
+    color: rgba(240, 239, 255, 0.86);
 
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 12px 30px rgba(0, 0, 0, 0.14);
+        inset 0 1px 0 rgba(255, 255, 255, 0.055),
+        0 10px 25px rgba(0, 0, 0, 0.12);
 
     z-index: 1;
 
     transition:
-        transform 0.5s cubic-bezier(.22, 1, .36, 1),
-        background 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+        transform 0.45s cubic-bezier(.22, 1, .36, 1),
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 
-/* Inner icon border */
+/* Inner border */
 
 .why-icon::before {
     content: "";
@@ -461,33 +470,34 @@
 
     inset: 5px;
 
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.035);
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     pointer-events: none;
 }
 
 
+/* Icon hover */
+
 .why-card:hover .why-icon {
     transform:
-        translateY(-3px)
-        rotate(-4deg)
-        scale(1.05);
+        translateY(-2px)
+        scale(1.04);
 
-    border-color: rgba(103, 232, 249, 0.28);
+    border-color: rgba(103, 232, 249, 0.24);
 
     background:
         linear-gradient(
             145deg,
-            rgba(139, 124, 255, 0.22),
-            rgba(34, 211, 238, 0.075)
+            rgba(139, 124, 255, 0.19),
+            rgba(34, 211, 238, 0.06)
         );
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        0 16px 38px rgba(0, 0, 0, 0.20),
-        0 0 24px rgba(108, 99, 255, 0.08);
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 14px 32px rgba(0, 0, 0, 0.18),
+        0 0 22px rgba(108, 99, 255, 0.06);
 }
 
 
@@ -498,13 +508,13 @@
 .why-card h3 {
     position: relative;
 
-    margin: 0 0 0.75rem;
+    margin: 0 0 0.65rem;
 
     font-family:
         var(--font-heading, "Syne"),
         sans-serif;
 
-    font-size: clamp(1.12rem, 1.35vw, 1.3rem);
+    font-size: clamp(1.05rem, 1.3vw, 1.22rem);
 
     font-weight: 700;
 
@@ -518,84 +528,54 @@
 }
 
 
-.why-card p {
-    position: relative;
-
-    max-width: 340px;
-
-    margin: 0;
-
-    font-size: 0.88rem;
-
-    line-height: 1.78;
-
-    color: rgba(216, 221, 232, 0.52);
-
-    z-index: 1;
-}
-
-
-/* =========================================================
-   CARD BOTTOM INDICATOR
-   ========================================================= */
-
-.why-card::marker {
-    display: none;
-}
-
-
-/* Add a quiet visual endpoint without requiring extra HTML */
+/* Small editorial line */
 
 .why-card h3::after {
     content: "";
 
     display: block;
 
-    width: 20px;
+    width: 18px;
     height: 1px;
 
-    margin-top: 0.9rem;
+    margin-top: 0.75rem;
 
     background:
         linear-gradient(
             90deg,
-            rgba(0, 212, 255, 0.65),
+            rgba(34, 211, 238, 0.6),
             transparent
         );
 
-    opacity: 0.45;
+    opacity: 0.4;
 
     transition:
         width 0.4s cubic-bezier(.22, 1, .36, 1),
         opacity 0.3s ease;
 }
 
-
 .why-card:hover h3::after {
-    width: 34px;
-
-    opacity: 0.8;
+    width: 30px;
+    opacity: 0.75;
 }
 
 
-/* =========================================================
-   GRID RHYTHM
-   ========================================================= */
+/* Description */
 
-/*
-   Keep the grid visually interesting without permanently
-   moving cards away from their row alignment.
-*/
+.why-card p {
+    position: relative;
 
-.why-card:nth-child(2),
-.why-card:nth-child(5) {
-    transform: translateY(14px);
-}
+    max-width: 330px;
 
+    margin: 0;
 
-.why-card:nth-child(2):hover,
-.why-card:nth-child(5):hover {
-    transform: translateY(6px);
+    font-size: 0.84rem;
+
+    line-height: 1.75;
+
+    color: rgba(216, 221, 232, 0.5);
+
+    z-index: 1;
 }
 
 
@@ -608,6 +588,15 @@
 }
 
 
+/*
+   Do NOT permanently offset cards here.
+
+   The global reveal system controls their entrance.
+   This keeps the row aligned and prevents animation
+   systems from fighting each other.
+*/
+
+
 /* =========================================================
    TABLET
    ========================================================= */
@@ -615,7 +604,7 @@
 @media (max-width: 1100px) {
 
     #why {
-        padding-block: 8rem;
+        padding-block: 6.5rem;
     }
 
     #why > .section-number {
@@ -627,14 +616,8 @@
             repeat(2, minmax(0, 1fr));
     }
 
-    .why-card:nth-child(2),
-    .why-card:nth-child(5) {
-        transform: none;
-    }
-
-    .why-card:nth-child(2):hover,
-    .why-card:nth-child(5):hover {
-        transform: translateY(-8px);
+    .why-card {
+        min-height: 265px;
     }
 }
 
@@ -646,7 +629,7 @@
 @media (max-width: 768px) {
 
     #why {
-        padding-block: 6.5rem;
+        padding-block: 5.5rem;
     }
 
     #why > .section-number {
@@ -655,16 +638,16 @@
     }
 
     #why .section-header {
-        margin-bottom: 3.5rem;
+        margin-bottom: 3rem;
     }
 
     #why .section-title {
-        font-size: clamp(2.6rem, 9vw, 4rem);
+        font-size: clamp(2.45rem, 9vw, 3.7rem);
         letter-spacing: -0.06em;
     }
 
     #why .section-note {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 
     .why-grid {
@@ -672,25 +655,15 @@
 
         grid-template-columns: 1fr;
 
-        gap: 0.85rem;
+        gap: 0.8rem;
     }
 
     .why-card {
-        min-height: 270px;
+        min-height: 250px;
 
-        padding: 1.7rem;
+        padding: 1.65rem;
 
-        border-radius: 20px;
-    }
-
-    .why-card:nth-child(2),
-    .why-card:nth-child(5) {
-        transform: none;
-    }
-
-    .why-card:nth-child(2):hover,
-    .why-card:nth-child(5):hover {
-        transform: translateY(-7px);
+        border-radius: 19px;
     }
 }
 
@@ -702,7 +675,7 @@
 @media (max-width: 480px) {
 
     #why {
-        padding-block: 5.5rem;
+        padding-block: 5rem;
     }
 
     #why > .section-number {
@@ -710,41 +683,41 @@
     }
 
     #why .section-header {
-        margin-bottom: 3rem;
+        margin-bottom: 2.7rem;
     }
 
     #why .section-title {
-        font-size: 2.45rem;
-        line-height: 0.96;
+        font-size: 2.35rem;
+        line-height: 0.97;
     }
 
     .why-card {
-        min-height: 245px;
+        min-height: 235px;
 
-        padding: 1.5rem;
+        padding: 1.45rem;
 
-        border-radius: 18px;
+        border-radius: 17px;
     }
 
     .why-icon {
-        width: 52px;
-        height: 52px;
+        width: 50px;
+        height: 50px;
 
-        flex-basis: 52px;
+        flex-basis: 50px;
 
-        margin-bottom: 1.4rem;
+        margin-bottom: 1.25rem;
 
-        border-radius: 15px;
+        border-radius: 14px;
 
-        font-size: 1.2rem;
+        font-size: 1.15rem;
     }
 
     .why-card h3 {
-        font-size: 1.12rem;
+        font-size: 1.08rem;
     }
 
     .why-card p {
-        font-size: 0.86rem;
+        font-size: 0.84rem;
     }
 }
 
@@ -758,23 +731,18 @@
     .why-card:hover {
         transform: none;
 
-        border-color: rgba(255, 255, 255, 0.075);
+        border-color: rgba(255, 255, 255, 0.065);
 
         background:
             linear-gradient(
                 145deg,
-                rgba(255, 255, 255, 0.048),
-                rgba(255, 255, 255, 0.014)
+                rgba(255, 255, 255, 0.04),
+                rgba(255, 255, 255, 0.012)
             );
 
         box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.045),
-            0 20px 55px rgba(0, 0, 0, 0.12);
-    }
-
-    .why-card:nth-child(2),
-    .why-card:nth-child(5) {
-        transform: none;
+            inset 0 1px 0 rgba(255, 255, 255, 0.035),
+            0 18px 50px rgba(0, 0, 0, 0.1);
     }
 
     .why-card:hover::before,
@@ -787,8 +755,8 @@
     }
 
     .why-card:hover h3::after {
-        width: 20px;
-        opacity: 0.45;
+        width: 18px;
+        opacity: 0.4;
     }
 }
 
@@ -807,8 +775,7 @@
         transition: none !important;
     }
 
-    .why-card:nth-child(2),
-    .why-card:nth-child(5) {
-        transform: none !important;
+    .why-card:hover {
+        transform: none;
     }
 }

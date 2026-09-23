@@ -378,6 +378,123 @@ body {
     var(--vp-bg);
 }
 
+/* ---------- Cinematic Hero Video ---------- */
+
+#hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-video {
+  position: absolute;
+  inset: -3%;
+  width: 106%;
+  height: 106%;
+  object-fit: cover;
+  object-position: center;
+  opacity: .34;
+  filter:
+    brightness(.68)
+    contrast(1.08)
+    saturate(.78);
+  transform: scale(1.02);
+  pointer-events: none;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5,6,10,.48) 0%,
+      rgba(5,6,10,.18) 28%,
+      rgba(5,6,10,.24) 62%,
+      rgba(5,6,10,.82) 100%
+    );
+  pointer-events: none;
+}
+
+.hero-video-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 48% 55% at 50% 46%,
+      rgba(5,6,10,.58) 0%,
+      rgba(5,6,10,.38) 34%,
+      rgba(5,6,10,.10) 64%,
+      transparent 100%
+    );
+  pointer-events: none;
+}
+
+.hero-gradient,
+.hero-grid,
+.hero-noise {
+  pointer-events: none;
+}
+
+.hero-gradient {
+  opacity: .12;
+}
+
+.hero-grid {
+  opacity: .045;
+}
+
+.hero-noise {
+  opacity: .025;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 6;
+}
+
+@media (max-width: 760px) {
+  .hero-video {
+    inset: -2%;
+    width: 104%;
+    height: 104%;
+    opacity: .28;
+    filter:
+      brightness(.62)
+      contrast(1.05)
+      saturate(.72);
+  }
+
+  .hero-video-vignette {
+    background:
+      radial-gradient(
+        ellipse 75% 55% at 50% 45%,
+        rgba(5,6,10,.62) 0%,
+        rgba(5,6,10,.38) 48%,
+        transparent 100%
+      );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video {
+    opacity: .25;
+  }
+}
+
 /* ---------- Navbar ---------- */
 
 #nav,
@@ -951,6 +1068,135 @@ body {
   }
 }
 </style>
+
+<style id="veritous-index-enhancement">
+/* =========================================================
+   VERITOUS — SINGLE PAGE PREMIUM POLISH
+   ========================================================= */
+
+/* Keep every navigation action on this page. */
+.nav-links a,
+.nav-cta,
+.hero-actions a,
+.footer-column a,
+.footer-bottom-links a {
+  scroll-behavior: smooth;
+}
+
+/* More deliberate section rhythm. */
+#services, #why, #founder, #process, #work, #badges, #stack, #engagement, #faq, #cta {
+  position: relative;
+  scroll-margin-top: 96px;
+}
+
+/* Premium section transitions without adding another visual system. */
+#services::before,
+#why::before,
+#founder::before,
+#process::before,
+#work::before,
+#badges::before,
+#stack::before,
+#engagement::before,
+#faq::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(760px, 72vw);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(139,124,255,.12), rgba(99,216,255,.08), transparent);
+  pointer-events: none;
+}
+
+/* Stronger but still restrained project interaction. */
+.project-card {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(139,124,255,0);
+  pointer-events: none;
+  transition: border-color .45s ease, box-shadow .45s ease;
+}
+
+.project-card:hover::after {
+  border-color: rgba(139,124,255,.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+/* Founder imagery gets a cleaner premium frame. */
+.founder-avatar {
+  overflow: hidden;
+}
+
+.founder-avatar img {
+  transition: transform .7s cubic-bezier(.22,1,.36,1), filter .5s ease;
+}
+
+.founder-card:hover .founder-avatar img {
+  transform: scale(1.045);
+  filter: saturate(1.04) contrast(1.02);
+}
+
+/* Footer enhancement — matched to footer.css structure. */
+#footer {
+  margin-top: 0;
+}
+
+.footer-cta-button {
+  flex-shrink: 0;
+}
+
+.footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+}
+
+.footer-status i {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 10px rgba(34,211,238,.45);
+}
+
+/* Make the one-page footer feel like the final section, not a separate site. */
+.footer-column a[href="#services"] {
+  cursor: pointer;
+}
+
+/* Mobile touch polish. */
+@media (max-width: 760px) {
+  .footer-cta {
+    gap: 2rem;
+  }
+
+  .footer-cta-copy {
+    width: 100%;
+  }
+
+  .footer-main {
+    row-gap: 2.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card::after,
+  .founder-avatar img {
+    transition: none !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -963,8 +1209,6 @@ body {
   <div id="cursor-ring"></div>
   <div id="cursor-label"></div>
 
-  <!-- Three.js background canvas -->
-  <div class="hero-orb"></div>
 
   <!-- NAV -->
   <nav id="nav">
@@ -983,11 +1227,25 @@ body {
   <!-- HERO -->
   <section id="hero" class="hero">
 
-    <!-- Background Layers -->
+    <!-- Cinematic Hero Background -->
     <div class="hero-bg">
-      <div class="hero-gradient"></div>
-      <div class="hero-grid"></div>
-      <div class="hero-noise"></div>
+
+      <video
+        id="hero-video"
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="assets/videos/gemini_generated_video_2ee2ee4b.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-video-overlay"></div>
+      <div class="hero-video-vignette"></div>
+
     </div>
 
     <div class="container">
@@ -1093,7 +1351,6 @@ body {
 
   <!-- SERVICES -->
   <section id="services">
-    <span class="section-number">01</span>
     <div class="section-header reveal">
       <div>
         <p class="section-eyebrow">What We Do</p>
@@ -1150,7 +1407,6 @@ body {
 
   <!-- WHY US -->
   <section id="why">
-    <span class="section-number">02</span>
 
     <div class="container">
 
@@ -1275,7 +1531,6 @@ body {
      FOUNDERS
 =========================== -->
   <section id="founder">
-    <span class="section-number">03</span>
 
     <!-- Left Side -->
     <div class="founder-showcase reveal">
@@ -1365,7 +1620,6 @@ body {
 
   <!-- PROCESS -->
   <section id="process">
-    <span class="section-number">04</span>
     <div class="section-header reveal"
       style="text-align:center; justify-content:center; flex-direction:column; align-items:center;">
       <p class="section-eyebrow">How We Work</p>
@@ -1404,7 +1658,6 @@ body {
      WORK
 ========================================= -->
   <section id="work">
-    <span class="section-number">05</span>
 
     <div class="container">
 
@@ -1444,7 +1697,7 @@ body {
 
             <div class="project-image">
 
-              <img src="images/vaf-dashboard.webp" alt="Volunteer Management Platform">
+              <img src="assets/images/volunteer.png" alt="Volunteer Management Platform">
 
             </div>
 
@@ -1488,9 +1741,9 @@ body {
 
             </div>
 
-            <a href="case-studies/vaf.html" class="project-cs-link">
+            <a href="#cta" class="project-cs-link">
 
-              View Case Study
+              Discuss This Project ↗
 
             </a>
 
@@ -1512,7 +1765,7 @@ body {
 
             <div class="project-image">
 
-              <img src="images/hotel-dashboard.webp" alt="Hotel Management Platform">
+              <img src="assets/images/hotel-dashboard.webp" alt="Hotel Management Platform">
 
             </div>
 
@@ -1551,9 +1804,9 @@ body {
 
             </div>
 
-            <a href="case-studies/hotel.html" class="project-cs-link">
+            <a href="#cta" class="project-cs-link">
 
-              View Case Study
+              Discuss This Project ↗
 
             </a>
 
@@ -1615,9 +1868,9 @@ body {
 
             </div>
 
-            <a href="case-studies/quickgpt.html" class="project-cs-link">
+            <a href="#cta" class="project-cs-link">
 
-              View Case Study
+              Discuss This Project ↗
 
             </a>
 
@@ -1697,7 +1950,6 @@ body {
   <!-- TRUST BADGES -->
   <!-- INDUSTRIES -->
   <section id="badges">
-    <span class="section-number">06</span>
 
     <div class="section-header reveal"
       style="text-align:center; justify-content:center; flex-direction:column; align-items:center; margin-bottom:0;">
@@ -1754,7 +2006,6 @@ body {
 
   <!-- TECH STACK TICKER -->
   <section id="stack">
-    <span class="section-number">07</span>
     <div class="section-header reveal"
       style="text-align:center; justify-content:center; flex-direction:column; align-items:center;">
       <p class="section-eyebrow">Our Stack</p>
@@ -1770,7 +2021,6 @@ body {
   <!-- PRICING -->
   <!-- ENGAGEMENT -->
   <section id="engagement">
-    <span class="section-number">08</span>
     <div class="container">
 
       <div class="section-header reveal"
@@ -1931,7 +2181,6 @@ body {
 
   <!-- FAQ -->
   <section id="faq">
-    <span class="section-number">09</span>
     <div class="section-header reveal" style="flex-direction:column; align-items:flex-start;">
       <p class="section-eyebrow">Good to Know</p>
       <h2 class="section-title">Questions, answered.</h2>
@@ -2060,171 +2309,112 @@ body {
 
   </section>
 
-  <!-- FOOTER -->
-  <!-- =========================================
+  <!-- =====================================================
      FOOTER
-========================================= -->
-  <footer id="footer">
+     ===================================================== -->
+<footer id="footer">
 
-    <div class="container">
+  <div class="container">
 
-      <div class="footer-top">
+    <!-- Footer Top -->
+    <div class="footer-top">
 
-        <div class="footer-brand">
+      <!-- Brand -->
+      <div class="footer-brand">
 
-          <h2 class="footer-logo">
-            VERITOUS
-          </h2>
+        <a href="#hero"
+           class="footer-logo"
+           aria-label="Veritous home">
+          VERITOUS
+        </a>
 
-          <p class="footer-desc">
+        <p class="footer-desc">
+          Digital products, software, and AI engineering
+          for ambitious organizations.
+        </p>
 
-            Building modern software, AI solutions and scalable
-            digital products for startups, NGOs and growing
-            businesses.
-
-          </p>
-
-          <div class="footer-social">
-
-            <a href="https://linkedin.com" target="_blank">
-              LinkedIn
-            </a>
-
-            <a href="https://github.com" target="_blank">
-              GitHub
-            </a>
-
-            <a href="mailto:hello@veritous.com">
-              Email
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <!-- COMPANY -->
-
-        <div class="footer-column">
-
-          <h4>
-            Company
-          </h4>
-
-          <a href="#services">
-            Services
-          </a>
-
-          <a href="#process">
-            Process
-          </a>
-
-          <a href="#work">
-            Projects
-          </a>
-
-          <a href="#faq">
-            FAQ
-          </a>
-
-        </div>
-
-
-        <!-- SOLUTIONS -->
-
-        <div class="footer-column">
-
-          <h4>
-            Solutions
-          </h4>
-
-          <a href="#">
-            Web Applications
-          </a>
-
-          <a href="#">
-            AI Solutions
-          </a>
-
-          <a href="#">
-            SaaS Development
-          </a>
-
-          <a href="#">
-            Automation
-          </a>
-
-        </div>
-
-
-        <!-- CONTACT -->
-
-        <div class="footer-column">
-
-          <h4>
-            Contact
-          </h4>
-
-          <p>
-
-            Pune, Maharashtra
-
-          </p>
-
-          <a href="mailto:hello@veritous.com">
-
-            hello@veritous.com
-
-          </a>
-
-          <p>
-
-            Response within 24 hours
-
-          </p>
-
+        <div class="footer-social">
+          <a href="#services">Services</a>
+          <a href="#work">Projects</a>
+          <a href="#process">Process</a>
+          <a href="#faq">FAQ</a>
         </div>
 
       </div>
 
 
-      <div class="footer-divider"></div>
+      <!-- Company -->
+      <div class="footer-column">
+
+        <h4>Company</h4>
+
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#work">Projects</a>
+        <a href="#faq">FAQ</a>
+
+      </div>
 
 
-      <div class="footer-bottom">
+      <!-- Solutions -->
+      <div class="footer-column">
 
-        <p>
+        <h4>Solutions</h4>
 
-          © 2026 Veritous. Crafted with passion in India.
+        <a href="#services">Web Applications</a>
+        <a href="#services">AI Solutions</a>
+        <a href="#services">SaaS Development</a>
+        <a href="#services">Automation</a>
 
-        </p>
+      </div>
 
-        <div class="footer-bottom-links">
 
-          <a href="#">
-            Privacy Policy
-          </a>
+      <!-- Contact -->
+      <div class="footer-column">
 
-          <a href="#">
-            Terms of Service
-          </a>
+        <h4>Contact</h4>
 
-        </div>
+        <p>Pune, Maharashtra</p>
+        <p>India</p>
+
+        <a href="mailto:hello@veritous.com">
+          hello@veritous.com
+        </a>
 
       </div>
 
     </div>
 
-  </footer>
 
-  <!-- Three.js Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Divider -->
+    <div class="footer-divider"></div>
+
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Veritous. All rights reserved.
+      </p>
+
+      <div class="footer-bottom-links">
+
+        <a href="#hero">Home</a>
+
+        <a href="#cta">Contact</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
 
   <!-- JavaScript Files -->
   <script src="./js/navbar.js"></script>
   <script src="./js/cursor.js"></script>
   <script src="./js/magnetic.js"></script>
-  <script src="./js/three-background.js"></script>
   <script src="./js/counters.js"></script>
   <script src="./js/reveal.js"></script>
   <script src="./js/ticker.js"></script>

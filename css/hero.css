@@ -1,9 +1,18 @@
 /* =========================================================
-   HERO — CINEMATIC PRODUCT ENGINEERING
-========================================================= */
+   VERITOUS — HERO
+   Cinematic / Responsive / Premium
+   ========================================================= */
+
+
+/* =========================================================
+   HERO FOUNDATION
+   ========================================================= */
 
 #hero {
     position: relative;
+    width: 100%;
+    max-width: 100%;
+
     min-height: 100svh;
 
     display: flex;
@@ -12,125 +21,143 @@
     overflow: hidden;
     isolation: isolate;
 
-    padding:
-        7rem 0
-        5rem;
+    padding: 7rem 0 5rem;
+
+    box-sizing: border-box;
 }
 
 
 /* =========================================================
    BACKGROUND
-========================================================= */
+   ========================================================= */
 
 .hero-bg {
     position: absolute;
     inset: 0;
 
-    overflow: hidden;
-
     z-index: 0;
+
+    overflow: hidden;
 
     pointer-events: none;
 }
 
 
-/* Three.js */
+/* =========================================================
+   CINEMATIC VIDEO
+   ========================================================= */
 
-#hero-canvas {
+.hero-video {
     position: absolute;
     inset: 0;
 
     width: 100%;
     height: 100%;
 
-    display: block;
+    object-fit: cover;
+    object-position: center center;
 
-    opacity: .82;
+    opacity: .34;
+
+    filter:
+        brightness(.68)
+        contrast(1.08)
+        saturate(.78);
+
+    transform: scale(1.015);
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+/* Dark cinematic layer */
+
+.hero-video-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 6, 10, .52) 0%,
+            rgba(5, 6, 10, .18) 28%,
+            rgba(5, 6, 10, .25) 62%,
+            rgba(5, 6, 10, .84) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* Center readability */
+
+.hero-video-vignette {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            ellipse 48% 56% at 50% 45%,
+            rgba(5, 6, 10, .62) 0%,
+            rgba(5, 6, 10, .42) 34%,
+            rgba(5, 6, 10, .12) 65%,
+            transparent 100%
+        );
 
     pointer-events: none;
 }
 
 
 /* =========================================================
-   ATMOSPHERIC LIGHT
-========================================================= */
+   ATMOSPHERIC GRADIENT
+   ========================================================= */
 
-.hero-orb {
+.hero-gradient {
     position: absolute;
-
-    width: min(850px, 80vw);
-    height: min(850px, 80vw);
-
-    left: 50%;
-    top: 47%;
-
-    transform:
-        translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(108, 99, 255, .14),
-            rgba(34, 211, 238, .035) 38%,
-            transparent 70%
-        );
-
-    filter: blur(70px);
-
-    opacity: .9;
-
-    animation:
-        orbFloat 12s ease-in-out infinite;
-}
-
-
-.hero-aurora {
-    position: absolute;
-
-    inset: -30%;
+    inset: -20%;
 
     background:
         radial-gradient(
             ellipse at 18% 35%,
-            rgba(34, 211, 238, .065),
-            transparent 32%
-        ),
-        radial-gradient(
-            ellipse at 82% 25%,
-            rgba(108, 99, 255, .09),
+            rgba(34, 211, 238, .055),
             transparent 34%
         ),
         radial-gradient(
+            ellipse at 82% 25%,
+            rgba(108, 99, 255, .085),
+            transparent 35%
+        ),
+        radial-gradient(
             ellipse at 50% 85%,
-            rgba(108, 99, 255, .045),
-            transparent 40%
+            rgba(108, 99, 255, .04),
+            transparent 42%
         );
 
-    filter: blur(100px);
+    opacity: .5;
 
-    opacity: .75;
+    pointer-events: none;
 
     animation:
-        auroraDrift 18s ease-in-out infinite alternate;
+        heroAmbientDrift 20s ease-in-out infinite alternate;
 }
 
 
 /* =========================================================
-   HERO GRID
-========================================================= */
+   GRID
+   ========================================================= */
 
 .hero-grid {
     position: absolute;
 
     left: -10%;
     right: -10%;
-    bottom: -18%;
+    bottom: -20%;
 
-    height: 62%;
+    height: 60%;
 
-    opacity: .16;
+    opacity: .055;
 
     transform:
         perspective(900px)
@@ -149,8 +176,7 @@
             transparent 1px
         );
 
-    background-size:
-        72px 72px;
+    background-size: 72px 72px;
 
     mask-image:
         linear-gradient(
@@ -167,56 +193,97 @@
         );
 
     animation:
-        gridDrift 30s linear infinite;
-}
-
-
-/* =========================================================
-   CINEMATIC VIGNETTE
-========================================================= */
-
-.hero-bg::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse at center,
-            transparent 20%,
-            rgba(5, 5, 8, .18) 65%,
-            rgba(5, 5, 8, .72) 100%
-        );
+        heroGridDrift 30s linear infinite;
 
     pointer-events: none;
 }
 
 
 /* =========================================================
-   CONTENT
-========================================================= */
+   NOISE
+   ========================================================= */
+
+.hero-noise {
+    position: absolute;
+    inset: 0;
+
+    opacity: .025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LEGACY THREE.JS SUPPORT
+   ========================================================= */
+
+#hero-canvas {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    opacity: .12;
+
+    pointer-events: none;
+}
+
+
+/* Old atmospheric orb is intentionally disabled.
+   The cinematic video provides the visual depth now. */
+
+.hero-orb {
+    display: none !important;
+}
+
+
+/* =========================================================
+   HERO CONTAINER
+   ========================================================= */
 
 #hero .container {
     position: relative;
+
     z-index: 5;
 
-    width: min(1280px, 92%);
+    width: min(
+        1280px,
+        calc(100% - 4rem)
+    );
 
-    margin: 0 auto;
+    max-width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    box-sizing: border-box;
 }
 
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
 
 .hero-content {
     position: relative;
 
-    width: min(980px, 100%);
+    z-index: 6;
 
-    margin: 0 auto;
+    width: min(980px, 100%);
+    max-width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
 
     display: flex;
     flex-direction: column;
@@ -224,27 +291,29 @@
 
     text-align: center;
 
-    gap: 0;
+    min-width: 0;
+
+    box-sizing: border-box;
 }
 
 
 /* =========================================================
-   BADGE
-========================================================= */
+   KICKER
+   ========================================================= */
 
-.hero-badge {
-    position: relative;
-
+.hero-kicker {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
-    gap: .65rem;
+    gap: .6rem;
 
-    min-height: 36px;
+    min-height: 34px;
 
-    padding:
-        0 .9rem;
+    max-width: 100%;
+
+    padding: 0 .85rem;
 
     margin-bottom: 2rem;
 
@@ -264,66 +333,88 @@
         0 8px 30px rgba(0, 0, 0, .12);
 
     font-family: var(--mono);
-
-    font-size: .65rem;
+    font-size: .62rem;
     font-weight: 500;
 
-    letter-spacing: .17em;
+    line-height: 1.2;
+
+    letter-spacing: .16em;
+
     text-transform: uppercase;
 
-    color: rgba(240, 239, 255, .62);
+    color:
+        rgba(240, 239, 255, .62);
+
+    white-space: normal;
+
+    text-align: center;
+
+    box-sizing: border-box;
 }
 
 
-/* badge glow */
-
-.hero-badge::before {
+.hero-kicker::before {
     content: "";
 
-    position: absolute;
-    inset: -1px;
-
-    border-radius: inherit;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(139, 124, 255, .18),
-            transparent
-        );
-
-    opacity: .7;
-
-    pointer-events: none;
-}
-
-
-/* status dot */
-
-.badge-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
 
     flex: 0 0 auto;
 
     border-radius: 50%;
 
-    background:
-        var(--cyan);
+    background: var(--cyan);
 
     box-shadow:
         0 0 0 4px rgba(34, 211, 238, .06),
-        0 0 14px rgba(34, 211, 238, .7);
+        0 0 14px rgba(34, 211, 238, .65);
 
     animation:
-        statusPulse 2.4s ease-in-out infinite;
+        heroStatusPulse 2.4s ease-in-out infinite;
+}
+
+
+/* If HTML contains a dedicated status dot */
+
+.hero-kicker .status-dot {
+    width: 5px;
+    height: 5px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background: var(--cyan);
+
+    box-shadow:
+        0 0 0 4px rgba(34, 211, 238, .06),
+        0 0 14px rgba(34, 211, 238, .65);
+
+    animation:
+        heroStatusPulse 2.4s ease-in-out infinite;
+}
+
+
+/* Avoid double dots when status-dot exists */
+
+.hero-kicker:has(.status-dot)::before {
+    display: none;
 }
 
 
 /* =========================================================
-   TITLE
-========================================================= */
+   HEADING
+   ========================================================= */
+
+.hero-heading {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
 
 .hero-title {
     position: relative;
@@ -333,7 +424,9 @@
     width: 100%;
     max-width: 1050px;
 
-    margin: 0;
+    min-width: 0;
+
+    margin: 0 auto;
 
     font-family:
         var(--font-heading),
@@ -342,36 +435,54 @@
 
     font-weight: 800;
 
+    /*
+       Desktop:
+       large enough to feel premium,
+       but not absurdly oversized.
+    */
+
     font-size:
         clamp(
             3.6rem,
-            7vw,
-            7rem
+            6.1vw,
+            6.4rem
         );
 
-    line-height: .89;
+    line-height: .91;
 
-    letter-spacing: -.075em;
+    letter-spacing: -.072em;
 
     color:
         rgba(245, 246, 250, .97);
 
+    text-align: center;
+
     text-wrap: balance;
+
+    overflow-wrap: normal;
+    word-break: normal;
+
+    box-sizing: border-box;
 }
 
 
-/* individual lines */
+/* Individual title lines */
 
 .hero-title .line {
     display: block;
 
+    width: 100%;
+    max-width: 100%;
+
     white-space: normal;
 
     text-align: center;
+
+    box-sizing: border-box;
 }
 
 
-/* second line */
+/* Gradient line */
 
 .hero-title .gradient-text {
     background:
@@ -392,8 +503,8 @@
 
 
 /* =========================================================
-   TITLE GLOW
-========================================================= */
+   SUBTLE TITLE LIGHT
+   ========================================================= */
 
 .hero-title::after {
     content: "";
@@ -404,7 +515,7 @@
     height: 35%;
 
     left: 50%;
-    bottom: -5%;
+    bottom: -8%;
 
     transform:
         translateX(-50%);
@@ -426,27 +537,34 @@
 
 /* =========================================================
    DESCRIPTION
-========================================================= */
+   ========================================================= */
 
 .hero-description {
+    width: 100%;
     max-width: 620px;
 
     margin:
         2rem auto 0;
 
     font-size:
-        clamp(.92rem, 1.25vw, 1.05rem);
+        clamp(.9rem, 1.15vw, 1.04rem);
 
     line-height: 1.8;
 
     color:
         rgba(240, 239, 255, .5);
+
+    text-align: center;
+
+    overflow-wrap: break-word;
+
+    box-sizing: border-box;
 }
 
 
 /* =========================================================
    ACTIONS
-========================================================= */
+   ========================================================= */
 
 .hero-actions {
     display: flex;
@@ -456,13 +574,16 @@
 
     gap: .7rem;
 
+    width: 100%;
+    max-width: 100%;
+
     margin-top: 2rem;
+
+    flex-wrap: wrap;
+
+    box-sizing: border-box;
 }
 
-
-/* =========================================================
-   HERO BUTTONS
-========================================================= */
 
 .hero-actions .btn {
     position: relative;
@@ -473,8 +594,11 @@
         0 1.4rem;
 
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
+    gap: .55rem;
 
     border-radius: 999px;
 
@@ -483,15 +607,21 @@
     font-size: .77rem;
     font-weight: 600;
 
+    white-space: nowrap;
+
     transition:
         transform .4s cubic-bezier(.22, 1, .36, 1),
         background .3s ease,
         border-color .3s ease,
         box-shadow .4s ease;
+
+    box-sizing: border-box;
 }
 
 
-/* primary */
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
 
 .hero-actions .btn-primary {
     color: #fff;
@@ -521,25 +651,29 @@
 }
 
 
-/* arrow */
+/*
+   IMPORTANT:
+   No ::after arrow here.
+   Your HTML already contains the arrow/icon.
+*/
 
-.hero-actions .btn-primary::after {
-    content: "→";
-
-    margin-left: .65rem;
+.hero-actions .btn-primary span {
+    display: inline-flex;
 
     transition:
-        transform .35s ease;
+        transform .35s cubic-bezier(.22, 1, .36, 1);
 }
 
 
-.hero-actions .btn-primary:hover::after {
+.hero-actions .btn-primary:hover span {
     transform:
-        translateX(5px);
+        translate(3px, -2px);
 }
 
 
-/* secondary */
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
 
 .hero-actions .btn-secondary {
     color:
@@ -573,18 +707,130 @@
 }
 
 
+.hero-actions .btn-secondary span {
+    transition:
+        transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+.hero-actions .btn-secondary:hover span {
+    transform:
+        translateY(3px);
+}
+
+
 /* =========================================================
-   TRUST / PROOF
-========================================================= */
+   HERO PROOF
+   ========================================================= */
+
+.hero-proof {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 620px;
+
+    margin-top: 3rem;
+
+    padding-top: 1.5rem;
+
+    border-top:
+        1px solid rgba(255, 255, 255, .055);
+
+    box-sizing: border-box;
+}
+
+
+.proof-item {
+    position: relative;
+
+    min-width: 105px;
+
+    padding:
+        0 1.25rem;
+
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+
+    gap: .3rem;
+
+    box-sizing: border-box;
+}
+
+
+.proof-item + .proof-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 10%;
+
+    width: 1px;
+    height: 80%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255, 255, 255, .08),
+            transparent
+        );
+}
+
+
+.proof-item strong {
+    font-family:
+        var(--font-heading),
+        "Syne",
+        sans-serif;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    line-height: 1;
+
+    color:
+        rgba(255, 255, 255, .9);
+}
+
+
+.proof-item span {
+    font-family: var(--mono);
+
+    font-size: .55rem;
+    font-weight: 500;
+
+    letter-spacing: .09em;
+
+    text-transform: uppercase;
+
+    text-align: center;
+
+    color:
+        rgba(240, 239, 255, .32);
+}
+
+
+/* =========================================================
+   LEGACY TRUST SUPPORT
+   ========================================================= */
 
 .hero-trust {
     position: relative;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    gap: 0;
+    width: 100%;
 
     margin-top: 3rem;
 
@@ -595,17 +841,16 @@
 }
 
 
-/* vertical separators */
-
 .trust-item {
     position: relative;
 
     min-width: 105px;
 
     padding:
-        0 1.35rem;
+        0 1.25rem;
 
     display: flex;
+
     flex-direction: column;
     align-items: center;
 
@@ -634,12 +879,13 @@
 }
 
 
-/* value */
-
 .trust-item strong {
-    font-family: var(--font-heading);
+    font-family:
+        var(--font-heading),
+        "Syne",
+        sans-serif;
 
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
 
     line-height: 1;
@@ -649,16 +895,17 @@
 }
 
 
-/* label */
-
 .trust-item span {
     font-family: var(--mono);
 
-    font-size: .57rem;
+    font-size: .55rem;
     font-weight: 500;
 
-    letter-spacing: .1em;
+    letter-spacing: .09em;
+
     text-transform: uppercase;
+
+    text-align: center;
 
     color:
         rgba(240, 239, 255, .32);
@@ -666,26 +913,14 @@
 
 
 /* =========================================================
-   REMOVE OLD VISUAL SYSTEM
-========================================================= */
-
-.hero-visual,
-.glass-window,
-.window-header,
-.metric-card {
-    display: none;
-}
-
-
-/* =========================================================
    SCROLL INDICATOR
-========================================================= */
+   ========================================================= */
 
 .hero-scroll {
     position: absolute;
 
     left: 50%;
-    bottom: 1.7rem;
+    bottom: 1.5rem;
 
     transform:
         translateX(-50%);
@@ -693,6 +928,7 @@
     z-index: 6;
 
     display: flex;
+
     flex-direction: column;
     align-items: center;
 
@@ -706,22 +942,71 @@
     font-size: .55rem;
 
     letter-spacing: .15em;
+
     text-transform: uppercase;
+
+    white-space: nowrap;
 }
 
 
-.scroll-indicator {
+/* Current markup */
+
+.scroll-line {
     position: relative;
 
     width: 1px;
-    height: 48px;
+    height: 44px;
 
     overflow: hidden;
 
     background:
         linear-gradient(
             to bottom,
-            rgba(255, 255, 255, .35),
+            rgba(255, 255, 255, .3),
+            transparent
+        );
+}
+
+
+.scroll-line::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: -100%;
+
+    width: 1px;
+    height: 45%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--cyan)
+        );
+
+    animation:
+        heroScrollTravel 2.2s
+        cubic-bezier(.65, 0, .35, 1)
+        infinite;
+}
+
+
+/* Compatibility with old markup */
+
+.scroll-indicator {
+    position: relative;
+
+    width: 1px;
+    height: 44px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, .3),
             transparent
         );
 }
@@ -746,34 +1031,545 @@
         );
 
     animation:
-        scrollTravel 2.2s
+        heroScrollTravel 2.2s
         cubic-bezier(.65, 0, .35, 1)
         infinite;
 }
 
 
 /* =========================================================
-   ANIMATIONS
-========================================================= */
+   OLD VISUAL SYSTEM
+   ========================================================= */
 
-@keyframes orbFloat {
-
-    0%,
-    100% {
-        transform:
-            translate(-50%, -50%)
-            scale(1);
-    }
-
-    50% {
-        transform:
-            translate(-50%, -50%)
-            scale(1.08);
-    }
+.hero-visual,
+.glass-window,
+.window-header,
+.metric-card {
+    display: none;
 }
 
 
-@keyframes auroraDrift {
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    #hero .container {
+        width:
+            min(
+                92%,
+                1000px
+            );
+    }
+
+
+    .hero-title {
+        font-size:
+            clamp(
+                3.25rem,
+                7vw,
+                5.3rem
+            );
+
+        line-height: .92;
+
+        letter-spacing: -.065em;
+    }
+
+
+    .hero-description {
+        max-width: 580px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    #hero {
+        min-height: 100svh;
+
+        padding:
+            7rem 0
+            4.5rem;
+    }
+
+
+    #hero .container {
+        width: 100%;
+        max-width: 760px;
+
+        padding:
+            0 28px;
+    }
+
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 0;
+
+        box-sizing: border-box;
+    }
+
+
+    .hero-title {
+        font-size:
+            clamp(
+                3rem,
+                8vw,
+                5rem
+            );
+
+        line-height: .92;
+
+        letter-spacing: -.06em;
+    }
+
+
+    .hero-description {
+        font-size: .95rem;
+
+        line-height: 1.75;
+    }
+
+
+    .hero-grid {
+        bottom: -8%;
+
+        height: 48%;
+
+        background-size:
+            58px 58px;
+    }
+
+
+    .hero-scroll {
+        bottom: 1rem;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+    #hero {
+        min-height: 100svh;
+
+        padding:
+            7.25rem 0
+            4rem;
+    }
+
+
+    #hero .container {
+        width: 100%;
+        max-width: 100%;
+
+        padding:
+            0 24px;
+    }
+
+
+    .hero-content {
+        width: 100%;
+        max-width: 100%;
+
+        min-width: 0;
+    }
+
+
+    /* Video becomes slightly darker on mobile */
+
+    .hero-video {
+        inset: -2%;
+
+        width: 104%;
+        height: 104%;
+
+        opacity: .28;
+
+        filter:
+            brightness(.62)
+            contrast(1.05)
+            saturate(.72);
+    }
+
+
+    .hero-video-vignette {
+        background:
+            radial-gradient(
+                ellipse 75% 55% at 50% 45%,
+                rgba(5, 6, 10, .65) 0%,
+                rgba(5, 6, 10, .4) 48%,
+                transparent 100%
+            );
+    }
+
+
+    .hero-kicker {
+        max-width: 100%;
+
+        min-height: 32px;
+
+        margin-bottom: 1.6rem;
+
+        padding:
+            .5rem .75rem;
+
+        font-size: .56rem;
+
+        letter-spacing: .13em;
+
+        line-height: 1.35;
+    }
+
+
+    /*
+       IMPORTANT MOBILE SIZE
+
+       At ~600px:
+       10.5vw ≈ 63px
+
+       This keeps the headline large,
+       but prevents the old 12vw / 13vw
+       rules from becoming oversized.
+    */
+
+    .hero-title {
+        width: 100%;
+        max-width: 100%;
+
+        font-size:
+            clamp(
+                2.65rem,
+                10.5vw,
+                3.65rem
+            );
+
+        line-height: .92;
+
+        letter-spacing: -.06em;
+
+        text-wrap: balance;
+    }
+
+
+    .hero-title .line {
+        width: 100%;
+        max-width: 100%;
+
+        white-space: normal;
+    }
+
+
+    .hero-description {
+        width: 100%;
+        max-width: 500px;
+
+        margin-top: 1.5rem;
+
+        padding: 0;
+
+        font-size: .86rem;
+
+        line-height: 1.7;
+    }
+
+
+    .hero-actions {
+        width: 100%;
+        max-width: 340px;
+
+        margin-top: 1.8rem;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: .65rem;
+    }
+
+
+    .hero-actions .btn {
+        width: 100%;
+
+        min-width: 0;
+
+        min-height: 50px;
+    }
+
+
+    .hero-proof,
+    .hero-trust {
+        width: 100%;
+
+        max-width: 100%;
+
+        margin-top: 2.5rem;
+
+        padding-top: 1.3rem;
+    }
+
+
+    .proof-item,
+    .trust-item {
+        min-width: 0;
+
+        flex: 1;
+
+        padding:
+            0 .7rem;
+    }
+
+
+    .proof-item strong,
+    .trust-item strong {
+        font-size: 1rem;
+    }
+
+
+    .proof-item span,
+    .trust-item span {
+        font-size: .49rem;
+
+        letter-spacing: .065em;
+
+        line-height: 1.35;
+    }
+
+
+    .hero-grid {
+        bottom: -2%;
+
+        height: 42%;
+
+        opacity: .045;
+
+        background-size:
+            48px 48px;
+    }
+
+
+    .hero-scroll {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    #hero {
+        padding:
+            6.75rem 0
+            3.5rem;
+    }
+
+
+    #hero .container {
+        padding:
+            0 18px;
+    }
+
+
+    .hero-kicker {
+        max-width: 94%;
+
+        font-size: .53rem;
+
+        letter-spacing: .115em;
+    }
+
+
+    .hero-title {
+        font-size:
+            clamp(
+                2.4rem,
+                10.8vw,
+                3.1rem
+            );
+
+        line-height: .93;
+
+        letter-spacing: -.058em;
+    }
+
+
+    .hero-description {
+        max-width: 430px;
+
+        font-size: .82rem;
+
+        line-height: 1.68;
+    }
+
+
+    .hero-actions {
+        max-width: 330px;
+    }
+
+
+    .hero-proof,
+    .hero-trust {
+        margin-top: 2.25rem;
+    }
+
+
+    .proof-item,
+    .trust-item {
+        padding:
+            0 .45rem;
+    }
+
+
+    .proof-item strong,
+    .trust-item strong {
+        font-size: .92rem;
+    }
+
+
+    .proof-item span,
+    .trust-item span {
+        font-size: .44rem;
+
+        letter-spacing: .045em;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    #hero {
+        padding-top: 6.4rem;
+    }
+
+
+    #hero .container {
+        padding:
+            0 16px;
+    }
+
+
+    .hero-title {
+        font-size:
+            clamp(
+                2.25rem,
+                10.8vw,
+                2.8rem
+            );
+
+        line-height: .94;
+    }
+
+
+    .hero-description {
+        font-size: .79rem;
+    }
+
+
+    .hero-actions {
+        max-width: 310px;
+    }
+
+
+    .proof-item,
+    .trust-item {
+        padding:
+            0 .3rem;
+    }
+
+
+    .proof-item span,
+    .trust-item span {
+        font-size: .41rem;
+    }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+    .hero-actions .btn-primary:hover,
+    .hero-actions .btn-secondary:hover {
+        transform: none;
+    }
+
+
+    .hero-actions .btn-primary:hover span,
+    .hero-actions .btn-secondary:hover span {
+        transform: none;
+    }
+
+}
+
+
+/* =========================================================
+   HARD OVERFLOW PROTECTION
+   ========================================================= */
+
+#hero,
+#hero .container,
+.hero-content,
+.hero-heading,
+.hero-title,
+.hero-description,
+.hero-actions,
+.hero-proof {
+    max-width: 100%;
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
+
+.hero-title,
+.hero-title .line {
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+
+.hero-description {
+    overflow-wrap: break-word;
+}
+
+
+.hero-actions a {
+    max-width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes heroAmbientDrift {
 
     0% {
         transform:
@@ -792,10 +1588,11 @@
             translate3d(-1%, 1%, 0)
             scale(1.04);
     }
+
 }
 
 
-@keyframes gridDrift {
+@keyframes heroGridDrift {
 
     from {
         background-position:
@@ -808,13 +1605,37 @@
             0 72px,
             72px 0;
     }
+
 }
 
 
-@keyframes scrollTravel {
+@keyframes heroStatusPulse {
+
+    0%,
+    100% {
+        opacity: .65;
+
+        box-shadow:
+            0 0 0 4px rgba(34, 211, 238, .05),
+            0 0 10px rgba(34, 211, 238, .45);
+    }
+
+    50% {
+        opacity: 1;
+
+        box-shadow:
+            0 0 0 5px rgba(34, 211, 238, .08),
+            0 0 17px rgba(34, 211, 238, .75);
+    }
+
+}
+
+
+@keyframes heroScrollTravel {
 
     0% {
         transform: translateY(0);
+
         opacity: 0;
     }
 
@@ -827,386 +1648,34 @@
     }
 
     100% {
-        transform: translateY(240%);
+        transform:
+            translateY(240%);
+
         opacity: 0;
     }
-}
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    #hero {
-        min-height: 100svh;
-
-        padding:
-            7rem 0
-            5rem;
-    }
-
-    #hero .container {
-        width: min(92%, 700px);
-    }
-
-    .hero-title {
-        font-size:
-            clamp(
-                3.1rem,
-                9vw,
-                5.4rem
-            );
-    }
-
-    .hero-description {
-        max-width: 560px;
-    }
-
-    .hero-grid {
-        bottom: -8%;
-
-        height: 50%;
-
-        background-size:
-            58px 58px;
-    }
-
-    .hero-scroll {
-        bottom: 1rem;
-    }
-}
-
-
-@media (max-width: 600px) {
-
-    #hero {
-        padding:
-            6.5rem 0
-            4.5rem;
-    }
-
-    #hero .container {
-        width: 90%;
-    }
-
-    .hero-badge {
-        margin-bottom: 1.5rem;
-
-        font-size: .57rem;
-        letter-spacing: .13em;
-    }
-
-    .hero-title {
-        font-size:
-            clamp(
-                2.65rem,
-                12vw,
-                4rem
-            );
-
-        line-height: .93;
-
-        letter-spacing: -.065em;
-    }
-
-    .hero-description {
-        margin-top: 1.5rem;
-
-        font-size: .83rem;
-
-        line-height: 1.75;
-    }
-
-    .hero-actions {
-        width: 100%;
-
-        flex-direction: column;
-
-        margin-top: 1.7rem;
-    }
-
-    .hero-actions .btn {
-        width: min(320px, 100%);
-    }
-
-    .hero-trust {
-        width: 100%;
-
-        margin-top: 2.5rem;
-    }
-
-    .trust-item {
-        min-width: 0;
-
-        flex: 1;
-
-        padding: 0 .7rem;
-    }
-
-    .trust-item strong {
-        font-size: 1rem;
-    }
-
-    .trust-item span {
-        font-size: .49rem;
-
-        letter-spacing: .07em;
-    }
-
-    .hero-grid {
-        bottom: -2%;
-
-        height: 42%;
-
-        opacity: .11;
-
-        background-size:
-            48px 48px;
-    }
-
-    .hero-orb {
-        width: 600px;
-        height: 600px;
-
-        opacity: .65;
-
-        filter: blur(80px);
-    }
-
-    .hero-scroll {
-        display: none;
-    }
-}
-
-
-@media (max-width: 380px) {
-
-    .hero-title {
-        font-size: 2.45rem;
-    }
-
-    .hero-trust {
-        gap: 0;
-    }
-
-    .trust-item {
-        padding: 0 .45rem;
-    }
-
-    .trust-item strong {
-        font-size: .9rem;
-    }
-
-    .trust-item span {
-        font-size: .45rem;
-    }
-}
-
-
-/* =========================================================
-   TOUCH DEVICES
-========================================================= */
-
-@media (hover: none) {
-
-    .hero-actions .btn-primary:hover,
-    .hero-actions .btn-secondary:hover {
-        transform: none;
-    }
 }
 
 
 /* =========================================================
    REDUCED MOTION
-========================================================= */
+   ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .hero-orb,
-    .hero-aurora,
+    .hero-gradient,
     .hero-grid,
-    .badge-dot,
+    .hero-kicker::before,
+    .hero-kicker .status-dot,
+    .scroll-line::after,
     .scroll-indicator::after {
         animation: none !important;
     }
 
+
     .hero-actions .btn,
-    .hero-actions .btn::after {
+    .hero-actions .btn span {
         transition: none !important;
     }
-}
 
-/* =========================================================
-   VERITOUS — CINEMATIC HERO VIDEO
-========================================================= */
-
-#hero {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-}
-/* ---------------------------------------------------------
-   VIDEO LAYER
---------------------------------------------------------- */
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-
-    overflow: hidden;
-
-    pointer-events: none;
-}
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-
-  opacity: .34;
-
-  filter:
-    brightness(.68)
-    contrast(1.08)
-    saturate(.78);
-
-  transform: scale(1.015);
-  pointer-events: none;
-}
-/* ---------------------------------------------------------
-   DARK CINEMATIC OVERLAY
---------------------------------------------------------- */
-.hero-video-overlay {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(5, 6, 10, .48) 0%,
-            rgba(5, 6, 10, .18) 28%,
-            rgba(5, 6, 10, .24) 62%,
-            rgba(5, 6, 10, .82) 100%
-        );
-
-    pointer-events: none;
-}
-
-
-/* ---------------------------------------------------------
-   CENTER PROTECTION
-
-   Keeps the headline readable while allowing the video
-   to remain visible around it.
---------------------------------------------------------- */
-
-.hero-video-vignette {
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse 48% 55% at 50% 46%,
-            rgba(5, 6, 10, .58) 0%,
-            rgba(5, 6, 10, .38) 34%,
-            rgba(5, 6, 10, .10) 64%,
-            transparent 100%
-        );
-
-    pointer-events: none;
-}
-
-
-/* ---------------------------------------------------------
-   OLD THREE.JS / GRID ATMOSPHERE
-
-   Keep the existing visual language, but make it subtle
-   enough that it doesn't fight the video.
---------------------------------------------------------- */
-
-.hero-gradient,
-.hero-grid,
-.hero-noise {
-    pointer-events: none;
-}
-
-.hero-gradient {
-    opacity: .22;
-}
-
-.hero-grid {
-    opacity: .055;
-}
-
-.hero-noise {
-    opacity: .025;
-}
-
-
-/* Old orb is no longer needed */
-
-.hero-orb {
-    display: none !important;
-}
-
-
-/* ---------------------------------------------------------
-   HERO CONTENT MUST SIT ABOVE VIDEO
---------------------------------------------------------- */
-
-#hero .container {
-    position: relative;
-    z-index: 5;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 6;
-}
-
-
-/* ---------------------------------------------------------
-   MOBILE
---------------------------------------------------------- */
-
-@media (max-width: 760px) {
-
-    .hero-video {
-        inset: -2%;
-        width: 104%;
-        height: 104%;
-
-        opacity: .28;
-
-        filter:
-            brightness(.62)
-            contrast(1.05)
-            saturate(.72);
-    }
-
-    .hero-video-vignette {
-        background:
-            radial-gradient(
-                ellipse 75% 55% at 50% 45%,
-                rgba(5, 6, 10, .62) 0%,
-                rgba(5, 6, 10, .38) 48%,
-                transparent 100%
-            );
-    }
-}
-
-
-/* ---------------------------------------------------------
-   REDUCED MOTION
---------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .hero-video {
-        opacity: .25;
-    }
 }

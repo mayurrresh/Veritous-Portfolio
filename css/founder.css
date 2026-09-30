@@ -634,7 +634,6 @@
 /* Quote mark */
 
 .founder-quote::before {
-    content: "“";
 
     position: absolute;
 

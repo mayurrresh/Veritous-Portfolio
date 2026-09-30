@@ -2,10 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Veritous — Independent Software & AI Engineering</title>
   <meta name="description" content="Veritous is an independent software studio founded and built by Mayuresh Kahar, creating websites, SaaS products, AI solutions, and custom software.">
+  <meta name="author" content="Mayuresh Kahar">
+  <meta name="theme-color" content="#05060a">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://veritous.com/">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Veritous">
+  <meta property="og:title" content="Veritous — Independent Software & AI Engineering">
+  <meta property="og:description" content="One founder. One engineer. Real products. Websites, SaaS, AI applications and custom software built directly by Mayuresh Kahar.">
+  <meta property="og:url" content="https://veritous.com/">
+  <meta property="og:image" content="https://veritous.com/assets/images/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Veritous — Independent Software & AI Engineering">
+  <meta name="twitter:description" content="Websites, SaaS, AI applications and custom software, built directly by the founder.">
+  <meta name="twitter:image" content="https://veritous.com/assets/images/og-cover.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://veritous.com/#business",
+        "name": "Veritous",
+        "url": "https://veritous.com/",
+        "description": "Independent software studio building websites, SaaS products, AI applications and custom software.",
+        "email": "hello@veritous.com",
+        "founder": { "@id": "https://veritous.com/#founder" },
+        "areaServed": "Worldwide",
+        "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressRegion": "Maharashtra", "addressCountry": "IN" },
+        "knowsAbout": ["Web development", "Custom software", "AI applications", "SaaS", "Cloud deployment", "UI/UX"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://veritous.com/#founder",
+        "name": "Mayuresh Kahar",
+        "jobTitle": "Founder & Software Engineer",
+        "worksFor": { "@id": "https://veritous.com/#business" },
+        "sameAs": [
+          "https://www.linkedin.com/in/mayuresh-kahar-b37aa922/",
+          "https://github.com/mayurrresh"
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,17 +86,8 @@
 
   <!--
     VERITOUS — SINGLE FOUNDER REBUILD
-
-    Positioning:
-    - One founder
-    - One developer
-    - Direct communication
-    - No claimed team
-    - No fake agency language
-    - No "we", "our team", "senior engineers", "handoffs", "roster", etc.
-
-    The existing component CSS is retained so this file remains compatible
-    with the current project structure.
+    Positioning: one founder, one developer, direct communication.
+    No claimed team, no agency language.
   -->
   <style>
     :root {
@@ -61,10 +101,7 @@
       --solo-green: #4ade80;
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 88px;
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; -webkit-text-size-adjust: 100%; }
 
     body {
       background:
@@ -73,30 +110,50 @@
         var(--solo-bg);
       color: var(--solo-text);
       overflow-x: hidden;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
+    a { -webkit-tap-highlight-color: transparent; }
 
-    #services,
-    #why,
-    #founder,
-    #process,
-    #work,
-    #badges,
-    #stack,
-    #engagement,
-    #faq,
-    #cta {
+    ::selection { background: rgba(139,124,255,.35); color: #fff; }
+
+    #services, #why, #founder, #process, #work, #badges, #stack, #engagement, #faq, #cta {
       position: relative;
       scroll-margin-top: 96px;
     }
 
-    /* -------------------------------------------------------
-       NAV
-    ------------------------------------------------------- */
+    /* Below-the-fold sections skip rendering work until needed */
+    #why, #process, #badges, #stack, #engagement, #faq {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 700px;
+    }
 
+    /* -------- ACCESSIBILITY -------- */
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: .7rem 1rem;
+      border-radius: 999px;
+      background: #fff;
+      color: #05060a;
+      font: 600 .8rem/1 Inter, sans-serif;
+      transform: translateY(-160%);
+      transition: transform .25s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    :focus-visible {
+      outline: 2px solid var(--solo-cyan);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    .nav-links a[aria-current="true"] { color: #fff; }
+
+    /* -------- NAV -------- */
     #nav {
       height: 82px;
       padding: 0 clamp(20px, 4vw, 64px);
@@ -106,40 +163,27 @@
       -webkit-backdrop-filter: blur(22px) saturate(130%);
       z-index: 100;
     }
-
     #nav.scrolled {
       height: 72px;
       background: rgba(5,6,10,.84);
       border-bottom-color: rgba(139,124,255,.12);
       box-shadow: 0 16px 50px rgba(0,0,0,.18);
     }
-
     .nav-logo {
       font-family: "Syne", sans-serif;
       font-weight: 800;
       letter-spacing: -.055em;
       font-size: clamp(1.5rem, 1.8vw, 1.9rem);
     }
-
-    .nav-logo span {
-      opacity: .42;
-    }
-
-    .nav-links {
-      gap: clamp(1.1rem, 2.1vw, 2.3rem);
-    }
-
+    .nav-logo span { opacity: .42; }
+    .nav-links { gap: clamp(1.1rem, 2.1vw, 2.3rem); }
     .nav-links a {
       font-size: .72rem;
       font-weight: 600;
       letter-spacing: .12em;
       color: rgba(240,239,255,.55);
     }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
+    .nav-links a:hover { color: #fff; }
     .nav-cta {
       min-width: 145px;
       height: 46px;
@@ -148,10 +192,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
     }
 
-    /* -------------------------------------------------------
-       HERO
-    ------------------------------------------------------- */
-
+    /* -------- HERO -------- */
     #hero {
       min-height: 100svh;
       padding: 8.5rem 0 5rem;
@@ -159,19 +200,8 @@
       overflow: hidden;
       isolation: isolate;
     }
-
-    #hero .container {
-      width: min(1380px, 92%);
-      position: relative;
-      z-index: 5;
-    }
-
-    .hero-content {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-      padding-top: 1rem;
-      text-align: center;
-    }
+    #hero .container { width: min(1380px, 92%); position: relative; z-index: 5; }
+    .hero-content { width: min(1120px, 100%); margin: 0 auto; padding-top: 1rem; text-align: center; }
 
     .hero-kicker {
       display: inline-flex;
@@ -188,16 +218,11 @@
       letter-spacing: .18em;
       text-transform: uppercase;
     }
-
     .status-dot {
-      width: 6px;
-      height: 6px;
-      flex: 0 0 auto;
-      border-radius: 50%;
+      width: 6px; height: 6px; flex: 0 0 auto; border-radius: 50%;
       background: var(--solo-green);
       box-shadow: 0 0 14px rgba(74,222,128,.7);
     }
-
     .hero-title {
       max-width: 1180px;
       margin: 0 auto;
@@ -209,13 +234,7 @@
       text-align: center;
       text-wrap: balance;
     }
-
-    .hero-title .line {
-      display: block;
-      width: 100%;
-      white-space: normal;
-    }
-
+    .hero-title .line { display: block; width: 100%; white-space: normal; }
     .hero-title .gradient-text {
       background: linear-gradient(105deg,#f2efff 0%,#b29aff 34%,#879cff 63%,#67dcff 100%);
       -webkit-background-clip: text;
@@ -224,7 +243,6 @@
       color: transparent;
       filter: drop-shadow(0 18px 45px rgba(112,91,255,.09));
     }
-
     .hero-description {
       max-width: 680px;
       margin: 2rem auto 0;
@@ -233,19 +251,8 @@
       line-height: 1.8;
       text-align: center;
     }
-
-    .hero-actions {
-      justify-content: center;
-      margin-top: 2rem;
-      gap: .7rem;
-    }
-
-    .hero-actions .btn {
-      min-height: 52px;
-      padding: 0 1.3rem;
-      border-radius: 999px;
-    }
-
+    .hero-actions { justify-content: center; margin-top: 2rem; gap: .7rem; }
+    .hero-actions .btn { min-height: 52px; padding: 0 1.3rem; border-radius: 999px; }
     .hero-proof {
       justify-content: center;
       max-width: 620px;
@@ -254,147 +261,55 @@
       border-top: 1px solid rgba(255,255,255,.055);
       gap: 0;
     }
+    .proof-item { min-width: 150px; padding: 0 1.1rem; text-align: center; }
+    .proof-item strong { color: rgba(255,255,255,.9); font-family: "Syne", sans-serif; font-size: 1.05rem; }
+    .proof-item span { color: rgba(177,184,199,.42); font-size: .59rem; text-transform: uppercase; letter-spacing: .08em; }
+    .proof-divider { height: 25px; background: rgba(255,255,255,.10); }
 
-    .proof-item {
-      min-width: 150px;
-      padding: 0 1.1rem;
-      text-align: center;
-    }
-
-    .proof-item strong {
-      color: rgba(255,255,255,.9);
-      font-family: "Syne", sans-serif;
-      font-size: 1.05rem;
-    }
-
-    .proof-item span {
-      color: rgba(177,184,199,.42);
-      font-size: .59rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    .proof-divider {
-      height: 25px;
-      background: rgba(255,255,255,.10);
-    }
-
-    /* -------------------------------------------------------
-       VALUE STRIP
-    ------------------------------------------------------- */
-
+    /* -------- VALUE STRIP -------- */
     .value-strip {
       position: relative;
       z-index: 5;
       border-top: 1px solid rgba(255,255,255,.055);
       border-bottom: 1px solid rgba(255,255,255,.055);
-      background: linear-gradient(
-        90deg,
-        rgba(255,255,255,.012),
-        rgba(139,124,255,.025),
-        rgba(255,255,255,.012)
-      );
+      background: linear-gradient(90deg, rgba(255,255,255,.012), rgba(139,124,255,.025), rgba(255,255,255,.012));
     }
+    .value-strip-inner { min-height: 78px; gap: 2rem; }
+    .value-label { color: rgba(177,184,199,.42); font: 600 .61rem/1 Inter,sans-serif; letter-spacing: .15em; }
+    .value-points { color: rgba(205,211,225,.62); font-size: .77rem; }
 
-    .value-strip-inner {
-      min-height: 78px;
-      gap: 2rem;
-    }
+    /* -------- GLOBAL SECTION LANGUAGE -------- */
+    .section-number { color: rgba(255,255,255,.10); }
+    .section-note { color: rgba(205,211,225,.55); }
+    #services .section-note { max-width: 600px; }
 
-    .value-label {
-      color: rgba(177,184,199,.42);
-      font: 600 .61rem/1 Inter,sans-serif;
-      letter-spacing: .15em;
-    }
-
-    .value-points {
-      color: rgba(205,211,225,.62);
-      font-size: .77rem;
-    }
-
-    /* -------------------------------------------------------
-       GLOBAL SECTION LANGUAGE
-    ------------------------------------------------------- */
-
-    .section-number {
-      color: rgba(255,255,255,.10);
-    }
-
-    .section-note {
-      color: rgba(205,211,225,.55);
-    }
-
-    /* -------------------------------------------------------
-       SERVICES — SOLO DELIVERY
-    ------------------------------------------------------- */
-
-    #services .section-note {
-      max-width: 600px;
-    }
-
-    .service-card,
-    .why-card,
-    .project-card,
-    .engagement-card,
-    .faq-item,
-    .founder-card {
+    .service-card, .why-card, .project-card, .engagement-card, .faq-item, .founder-card {
       transition:
         transform .5s cubic-bezier(.22,1,.36,1),
         border-color .4s ease,
         background .4s ease,
         box-shadow .5s ease;
     }
-
-    .service-card:hover,
-    .why-card:hover,
-    .engagement-card:hover,
-    .founder-card:hover {
+    .service-card:hover, .why-card:hover, .engagement-card:hover, .founder-card:hover {
       transform: translateY(-6px);
       border-color: rgba(139,124,255,.24);
       box-shadow: 0 22px 70px rgba(0,0,0,.22);
     }
 
-    /* -------------------------------------------------------
-       WHY — REPLACES FAKE TEAM CLAIMS
-    ------------------------------------------------------- */
+    #why .why-card h3 { margin-bottom: .65rem; }
 
-    #why .why-card h3 {
-      margin-bottom: .65rem;
-    }
-
-    /* -------------------------------------------------------
-       FOUNDER
-    ------------------------------------------------------- */
-
+    /* -------- FOUNDER -------- */
     #founder {
       display: grid;
       grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
       gap: clamp(3rem, 7vw, 8rem);
       align-items: center;
     }
-
-    #founder .founder-showcase {
-      display: flex;
-      justify-content: center;
-    }
-
-    #founder .founder-card {
-      width: min(100%, 390px);
-      text-align: center;
-    }
-
-    #founder .founder-avatar {
-      overflow: hidden;
-    }
-
-    #founder .founder-avatar img {
-      transition: transform .7s cubic-bezier(.22,1,.36,1), filter .5s ease;
-    }
-
-    #founder .founder-card:hover .founder-avatar img {
-      transform: scale(1.035);
-      filter: saturate(1.04) contrast(1.02);
-    }
+    #founder .founder-showcase { display: flex; justify-content: center; }
+    #founder .founder-card { width: min(100%, 390px); text-align: center; }
+    #founder .founder-avatar { overflow: hidden; }
+    #founder .founder-avatar img { transition: transform .7s cubic-bezier(.22,1,.36,1), filter .5s ease; }
+    #founder .founder-card:hover .founder-avatar img { transform: scale(1.035); filter: saturate(1.04) contrast(1.02); }
 
     .founder-eyebrow {
       color: rgba(99,216,255,.7);
@@ -402,11 +317,7 @@
       letter-spacing: .16em;
       text-transform: uppercase;
     }
-
-    .founder-role {
-      color: rgba(205,211,225,.48);
-    }
-
+    .founder-role { color: rgba(205,211,225,.48); }
     .founder-quote {
       position: relative;
       margin: 0;
@@ -414,7 +325,6 @@
       max-width: 920px;
       border-left: 1px solid rgba(139,124,255,.55);
     }
-
     .founder-quote-mark {
       position: absolute;
       top: -0.35rem;
@@ -427,7 +337,6 @@
       transition: transform .35s ease;
       pointer-events: none;
     }
-
     .founder-quote p {
       margin: 0;
       max-width: 860px;
@@ -438,124 +347,31 @@
       letter-spacing: -.025em;
       color: rgba(238,238,246,.72);
     }
+    .founder-quote-line { display: block; width: 28px; height: 1px; margin-top: 1.6rem; background: var(--solo-cyan); opacity: .65; }
+    .founder-quote:hover .founder-quote-mark { transform: translateY(-2px); }
 
-    .founder-quote-line {
-      display: block;
-      width: 28px;
-      height: 1px;
-      margin-top: 1.6rem;
-      background: var(--solo-cyan);
-      opacity: .65;
-    }
+    /* -------- WORK -------- */
+    .work-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .project-card { min-width: 0; overflow: hidden; isolation: isolate; }
+    .project-card:hover { transform: translateY(-8px); box-shadow: 0 28px 80px rgba(0,0,0,.28); }
+    .project-image { overflow: hidden; border-radius: inherit; }
+    .project-image img { transition: transform .7s cubic-bezier(.22,1,.36,1), filter .5s ease; }
+    .project-card:hover .project-image img { transform: scale(1.045); filter: saturate(1.06); }
+    .project-cs-link { transition: gap .25s ease, color .25s ease; }
+    .project-cs-link:hover { gap: .7rem; }
 
-    .founder-quote:hover .founder-quote-mark {
-      transform: translateY(-2px);
-    }
+    /* -------- PROCESS -------- */
+    #process .section-header { margin-bottom: 4rem; }
+    .step-desc { color: rgba(205,211,225,.53); }
 
-    /* -------------------------------------------------------
-       WORK — THREE OWNED / PRESENTABLE PROJECTS
-       ------------------------------------------------------- */
+    #badges .section-note { max-width: 720px; }
+    .consultation-cta { position: relative; overflow: hidden; }
+    .faq-answer-inner { color: rgba(205,211,225,.56); }
 
-    .work-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .project-card {
-      min-width: 0;
-    }
-
-
-    /* -------------------------------------------------------
-       PROCESS — SOLO FOUNDER
-    ------------------------------------------------------- */
-
-    #process .section-header {
-      margin-bottom: 4rem;
-    }
-
-    .step-desc {
-      color: rgba(205,211,225,.53);
-    }
-
-    /* -------------------------------------------------------
-       WORK
-    ------------------------------------------------------- */
-
-    .project-card {
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 28px 80px rgba(0,0,0,.28);
-    }
-
-    .project-image {
-      overflow: hidden;
-      border-radius: inherit;
-    }
-
-    .project-image img {
-      transition: transform .7s cubic-bezier(.22,1,.36,1), filter .5s ease;
-    }
-
-    .project-card:hover .project-image img {
-      transform: scale(1.045);
-      filter: saturate(1.06);
-    }
-
-    .project-cs-link {
-      transition: gap .25s ease, color .25s ease;
-    }
-
-    .project-cs-link:hover {
-      gap: .7rem;
-    }
-
-    /* -------------------------------------------------------
-       SOLO EXPERTISE
-    ------------------------------------------------------- */
-
-    #badges .section-note {
-      max-width: 720px;
-    }
-
-    /* -------------------------------------------------------
-       ENGAGEMENT
-    ------------------------------------------------------- */
-
-    .consultation-cta {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* -------------------------------------------------------
-       FAQ
-    ------------------------------------------------------- */
-
-    .faq-answer-inner {
-      color: rgba(205,211,225,.56);
-    }
-
-    /* -------------------------------------------------------
-       CTA
-    ------------------------------------------------------- */
-
-    #cta {
-      position: relative;
-      overflow: hidden;
-    }
-
-    #cta .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    .cta-title {
-      letter-spacing: -.055em;
-    }
-
+    /* -------- CTA -------- */
+    #cta { position: relative; overflow: hidden; }
+    #cta .container { position: relative; z-index: 1; }
+    .cta-title { letter-spacing: -.055em; }
     .cta-title span {
       background: linear-gradient(100deg,#a78bfa,#67e8f9);
       -webkit-background-clip: text;
@@ -563,214 +379,91 @@
       color: transparent;
     }
 
-    /* -------------------------------------------------------
-       FOOTER
-    ------------------------------------------------------- */
+    /* -------- FOOTER -------- */
+    #footer { margin-top: 0; }
+    .footer-desc { max-width: 330px; }
+    .footer-social a, .footer-column a { transition: color .2s ease, transform .2s ease; }
+    .footer-social a:hover, .footer-column a:hover { color: #fff; transform: translateX(2px); }
 
-    #footer {
-      margin-top: 0;
-    }
-
-    .footer-desc {
-      max-width: 330px;
-    }
-
-    .footer-social a,
-    .footer-column a {
-      transition: color .2s ease, transform .2s ease;
-    }
-
-    .footer-social a:hover,
-    .footer-column a:hover {
-      color: #fff;
-      transform: translateX(2px);
-    }
-
-    /* -------------------------------------------------------
-       MOBILE
-    ------------------------------------------------------- */
-
+    /* -------- RESPONSIVE -------- */
     @media (max-width: 1100px) {
-      .work-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
     @media (max-width: 900px) {
-      .work-grid {
-        grid-template-columns: 1fr;
-      }
-
-      #founder {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      #founder .founder-showcase {
-        order: 1;
-      }
-
-      #founder .founder-content {
-        order: 2;
-      }
+      .work-grid { grid-template-columns: 1fr; }
+      #founder { grid-template-columns: 1fr; gap: 3rem; }
+      #founder .founder-showcase { order: 1; }
+      #founder .founder-content { order: 2; }
     }
-
     @media (max-width: 760px) {
-      #nav,
-      #nav.scrolled {
-        height: 72px;
-        padding: 0 20px;
-      }
-
-      .nav-logo {
-        font-size: 1.45rem;
-      }
-
-      .nav-cta {
-        min-width: auto;
-        height: 44px;
-        padding: 0 1rem;
-      }
-
-      #hero {
-        min-height: 100svh;
-        padding: 7.5rem 0 4rem;
-      }
-
-      .hero-content {
-        padding-top: 0;
-      }
-
-      .hero-title {
-        font-size: clamp(2.7rem, 10.5vw, 4.1rem);
-        line-height: .93;
-        letter-spacing: -.06em;
-      }
-
-      .hero-description {
-        max-width: 540px;
-        font-size: .88rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        width: min(330px,100%);
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .hero-proof {
-        gap: 0;
-      }
-
-      .proof-item {
-        min-width: 0;
-        flex: 1;
-        padding: 0 .55rem;
-      }
-
-      .proof-item strong {
-        font-size: .95rem;
-      }
-
-      .proof-item span {
-        font-size: .47rem;
-        line-height: 1.35;
-      }
-
-      .value-strip-inner {
-        padding: 1.2rem 0;
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .value-points {
-        justify-content: flex-start;
-        gap: .55rem .8rem;
-      }
-
-      #founder {
-        gap: 2.5rem;
-      }
+      #nav, #nav.scrolled { height: 72px; padding: 0 20px; }
+      .nav-logo { font-size: 1.45rem; }
+      .nav-cta { min-width: auto; height: 44px; padding: 0 1rem; }
+      #hero { min-height: 100svh; padding: 7.5rem 0 4rem; }
+      .hero-content { padding-top: 0; }
+      .hero-title { font-size: clamp(2.7rem, 10.5vw, 4.1rem); line-height: .93; letter-spacing: -.06em; }
+      .hero-description { max-width: 540px; font-size: .88rem; }
+      .hero-actions { flex-direction: column; width: min(330px,100%); margin-left: auto; margin-right: auto; }
+      .hero-actions .btn { width: 100%; }
+      .hero-proof { gap: 0; }
+      .proof-item { min-width: 0; flex: 1; padding: 0 .55rem; }
+      .proof-item strong { font-size: .95rem; }
+      .proof-item span { font-size: .47rem; line-height: 1.35; }
+      .value-strip-inner { padding: 1.2rem 0; align-items: flex-start; flex-direction: column; }
+      .value-points { justify-content: flex-start; gap: .55rem .8rem; }
+      #founder { gap: 2.5rem; }
     }
-
     @media (max-width: 560px) {
-      .founder-quote {
-        padding-left: 1.35rem;
-      }
-
-      .founder-quote-mark {
-        left: -0.48rem;
-        top: -0.25rem;
-        font-size: 2.5rem;
-      }
-
-      .founder-quote p {
-        font-size: 1.08rem;
-        line-height: 1.65;
-      }
-
-      .founder-quote-line {
-        margin-top: 1.25rem;
-      }
-
-      #hero {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      .hero-title {
-        font-size: clamp(2.35rem, 10.8vw, 3.25rem);
-      }
-
-      .hero-proof {
-        margin-top: 2.2rem;
-      }
-
-      .proof-item span {
-        letter-spacing: .035em;
-      }
-
-      .section-number {
-        top: 2rem;
-        right: 1.5rem;
-      }
+      .founder-quote { padding-left: 1.35rem; }
+      .founder-quote-mark { left: -0.48rem; top: -0.25rem; font-size: 2.5rem; }
+      .founder-quote p { font-size: 1.08rem; line-height: 1.65; }
+      .founder-quote-line { margin-top: 1.25rem; }
+      #hero { padding-left: 14px; padding-right: 14px; }
+      .hero-title { font-size: clamp(2.35rem, 10.8vw, 3.25rem); }
+      .hero-proof { margin-top: 2.2rem; }
+      .proof-item span { letter-spacing: .035em; }
+      .section-number { top: 2rem; right: 1.5rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
       }
     }
+
+    @media print {
+      #grain, #progress, #cursor, #cursor-ring, #cursor-label, #nav, .hero-bg { display: none !important; }
+      body { background: #fff; color: #000; }
+    }
   </style>
+
+  <!-- If JavaScript is unavailable, never leave content hidden -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+      .faq-answer { max-height: none !important; }
+      #cursor, #cursor-ring, #cursor-label { display: none !important; }
+    </style>
+  </noscript>
 </head>
 
 <body>
 
-  <div id="grain"></div>
-  <div id="progress"></div>
+  <a href="#services" class="skip-link">Skip to content</a>
 
-  <div id="cursor"></div>
-  <div id="cursor-ring"></div>
-  <div id="cursor-label"></div>
+  <div id="grain" aria-hidden="true"></div>
+  <div id="progress" aria-hidden="true"></div>
 
-  <!-- =====================================================
-       NAVIGATION
-       ===================================================== -->
-  <nav id="nav">
-    <div class="nav-logo">VERIT<span>OUS</span></div>
+  <div id="cursor" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div id="cursor-label" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <nav id="nav" aria-label="Primary">
+    <a href="#hero" class="nav-logo" aria-label="Veritous home" style="color:inherit;text-decoration:none;">VERIT<span>OUS</span></a>
 
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -780,16 +473,12 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
 
-    <a href="#cta" class="nav-cta" data-cursor="Let's talk">
-      Start a Project
-    </a>
+    <a href="#cta" class="nav-cta" data-cursor="Let's talk">Start a Project</a>
   </nav>
 
 
-  <!-- =====================================================
-       HERO
-       ===================================================== -->
-  <section id="hero" class="hero">
+  <!-- HERO -->
+  <section id="hero" class="hero" aria-labelledby="hero-heading">
 
     <div class="hero-bg">
       <video
@@ -799,8 +488,10 @@
         muted
         loop
         playsinline
-        preload="auto"
-        aria-hidden="true">
+        preload="metadata"
+        disablepictureinpicture
+        aria-hidden="true"
+        tabindex="-1">
         <source src="assets/videos/gemini_generated_video_2ee2ee4b.mp4" type="video/mp4">
       </video>
 
@@ -812,12 +503,12 @@
       <div class="hero-content">
 
         <div class="hero-kicker">
-          <span class="status-dot"></span>
+          <span class="status-dot" aria-hidden="true"></span>
           INDEPENDENT SOFTWARE STUDIO
         </div>
 
         <div class="hero-heading">
-          <h1 class="hero-title">
+          <h1 class="hero-title" id="hero-heading">
             <span class="line">One founder.</span>
             <span class="line gradient-text">One engineer. Real products.</span>
           </h1>
@@ -830,34 +521,16 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#cta" class="btn btn-primary hero-primary">
-            Start a Project <span>↗</span>
-          </a>
-
-          <a href="#work" class="btn btn-secondary">
-            Explore My Work <span>↓</span>
-          </a>
+          <a href="#cta" class="btn btn-primary hero-primary">Start a Project <span aria-hidden="true">↗</span></a>
+          <a href="#work" class="btn btn-secondary">Explore My Work <span aria-hidden="true">↓</span></a>
         </div>
 
         <div class="hero-proof">
-          <div class="proof-item">
-            <strong>3</strong>
-            <span>Core products</span>
-          </div>
-
-          <div class="proof-divider"></div>
-
-          <div class="proof-item">
-            <strong>20+</strong>
-            <span>Technologies used</span>
-          </div>
-
-          <div class="proof-divider"></div>
-
-          <div class="proof-item">
-            <strong>1:1</strong>
-            <span>Direct communication</span>
-          </div>
+          <div class="proof-item"><strong>3</strong><span>Core products</span></div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item"><strong>20+</strong><span>Technologies used</span></div>
+          <div class="proof-divider" aria-hidden="true"></div>
+          <div class="proof-item"><strong>1:1</strong><span>Direct communication</span></div>
         </div>
 
       </div>
@@ -866,45 +539,38 @@
   </section>
 
 
-  <!-- =====================================================
-       VALUE STRIP
-       ===================================================== -->
+  <!-- VALUE STRIP -->
   <section class="value-strip" aria-label="What clients can expect">
     <div class="container value-strip-inner">
       <span class="value-label">THE VERITOUS MODEL</span>
 
       <div class="value-points">
         <span>Direct founder access</span>
-        <span>•</span>
+        <span aria-hidden="true">•</span>
         <span>Engineering-led decisions</span>
-        <span>•</span>
+        <span aria-hidden="true">•</span>
         <span>Transparent milestones</span>
-        <span>•</span>
+        <span aria-hidden="true">•</span>
         <span>Long-term continuity</span>
       </div>
     </div>
   </section>
 
 
-  <!-- =====================================================
-       PROJECT STATS
-       ===================================================== -->
+  <!-- PROJECT STATS -->
   <section id="stats" aria-label="Veritous project statistics">
     <div class="stat-item reveal">
       <div class="stat-num">3</div>
       <div class="stat-label">Core Projects Built</div>
     </div>
-
     <div class="stat-item reveal">
       <div class="stat-num">20+</div>
       <div class="stat-label">Technologies Used</div>
     </div>
-
     <div class="stat-item reveal">
       <div class="stat-num">100%</div>
       <div class="stat-label">Custom Development</div>
     </div>
-
     <div class="stat-item reveal">
       <div class="stat-num">1:1</div>
       <div class="stat-label">Founder Communication</div>
@@ -912,16 +578,13 @@
   </section>
 
 
-  <!-- =====================================================
-       SERVICES
-       ===================================================== -->
-  <section id="services">
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="services-title">
 
     <div class="section-header reveal">
       <div>
         <p class="section-eyebrow">What I Build</p>
-
-        <h2 class="section-title">
+        <h2 class="section-title" id="services-title">
           From idea to software,<br>
           without the agency layers.
         </h2>
@@ -937,7 +600,7 @@
 
       <div class="service-card reveal">
         <div class="service-index">01</div>
-        <div class="service-icon">🌐</div>
+        <div class="service-icon" aria-hidden="true">🌐</div>
         <h3 class="service-name">Web Development</h3>
         <p class="service-desc">
           High-performance websites and web applications designed around
@@ -948,7 +611,7 @@
 
       <div class="service-card reveal">
         <div class="service-index">02</div>
-        <div class="service-icon">⚙️</div>
+        <div class="service-icon" aria-hidden="true">⚙️</div>
         <h3 class="service-name">Custom Software</h3>
         <p class="service-desc">
           Purpose-built software for workflows that off-the-shelf tools
@@ -959,7 +622,7 @@
 
       <div class="service-card reveal">
         <div class="service-index">03</div>
-        <div class="service-icon">🤖</div>
+        <div class="service-icon" aria-hidden="true">🤖</div>
         <h3 class="service-name">AI Applications</h3>
         <p class="service-desc">
           Practical AI features and applications that connect models,
@@ -970,7 +633,7 @@
 
       <div class="service-card reveal">
         <div class="service-index">04</div>
-        <div class="service-icon">🚀</div>
+        <div class="service-icon" aria-hidden="true">🚀</div>
         <h3 class="service-name">SaaS Products</h3>
         <p class="service-desc">
           MVPs and SaaS systems with authentication, dashboards, APIs,
@@ -981,8 +644,8 @@
 
       <div class="service-card reveal">
         <div class="service-index">05</div>
-        <div class="service-icon">☁️</div>
-        <h3 class="service-name">Cloud & Deployment</h3>
+        <div class="service-icon" aria-hidden="true">☁️</div>
+        <h3 class="service-name">Cloud &amp; Deployment</h3>
         <p class="service-desc">
           Deployment architecture, environments, APIs, databases, and
           cloud foundations built with maintainability in mind.
@@ -992,7 +655,7 @@
 
       <div class="service-card reveal">
         <div class="service-index">06</div>
-        <div class="service-icon">🎨</div>
+        <div class="service-icon" aria-hidden="true">🎨</div>
         <h3 class="service-name">Product UI/UX</h3>
         <p class="service-desc">
           Clean interfaces and design systems that make the underlying
@@ -1005,17 +668,15 @@
   </section>
 
 
-  <!-- =====================================================
-       WHY VERITOUS
-       ===================================================== -->
-  <section id="why">
+  <!-- WHY -->
+  <section id="why" aria-labelledby="why-title">
 
     <div class="container">
 
       <div class="section-header reveal">
         <span class="section-eyebrow">Why Work With Me</span>
 
-        <h2 class="section-title">
+        <h2 class="section-title" id="why-title">
           One person.<br>
           Full ownership.
         </h2>
@@ -1030,7 +691,7 @@
       <div class="why-grid">
 
         <article class="why-card reveal">
-          <div class="why-icon">◎</div>
+          <div class="why-icon" aria-hidden="true">◎</div>
           <h3>Direct Founder Access</h3>
           <p>
             No account manager or project hierarchy. You communicate directly
@@ -1039,7 +700,7 @@
         </article>
 
         <article class="why-card reveal">
-          <div class="why-icon">⚡</div>
+          <div class="why-icon" aria-hidden="true">⚡</div>
           <h3>Fast Decisions</h3>
           <p>
             Technical and product decisions do not have to pass through
@@ -1048,7 +709,7 @@
         </article>
 
         <article class="why-card reveal">
-          <div class="why-icon">⌁</div>
+          <div class="why-icon" aria-hidden="true">⌁</div>
           <h3>One Context</h3>
           <p>
             Product goals, design decisions, architecture, and implementation
@@ -1057,7 +718,7 @@
         </article>
 
         <article class="why-card reveal">
-          <div class="why-icon">◌</div>
+          <div class="why-icon" aria-hidden="true">◌</div>
           <h3>Lean Delivery</h3>
           <p>
             I focus on the smallest useful version first, then improve it
@@ -1066,7 +727,7 @@
         </article>
 
         <article class="why-card reveal">
-          <div class="why-icon">↗</div>
+          <div class="why-icon" aria-hidden="true">↗</div>
           <h3>Engineering Ownership</h3>
           <p>
             I stay close to the codebase and the technical decisions instead
@@ -1075,7 +736,7 @@
         </article>
 
         <article class="why-card reveal">
-          <div class="why-icon">∞</div>
+          <div class="why-icon" aria-hidden="true">∞</div>
           <h3>Long-Term Continuity</h3>
           <p>
             The same person who learns the system can continue maintaining,
@@ -1088,52 +749,38 @@
   </section>
 
 
-  <!-- =====================================================
-       FOUNDER
-       ===================================================== -->
-  <section id="founder">
+  <!-- FOUNDER -->
+  <section id="founder" aria-label="About the founder">
 
     <div class="founder-showcase reveal">
-
       <div class="founder-card">
-
         <div class="founder-avatar">
-          <img src="assets/images/mayuresh.png" alt="Mayuresh Kahar">
+          <img src="assets/images/mayuresh.png" alt="Portrait of Mayuresh Kahar" decoding="async" loading="lazy">
         </div>
-
         <h3>Mayuresh Kahar</h3>
-
-        <p class="founder-position">
-          Founder & Software Engineer
-        </p>
-
+        <p class="founder-position">Founder &amp; Software Engineer</p>
       </div>
-
     </div>
 
     <div class="founder-content reveal">
 
-      <p class="founder-eyebrow">
-        Meet the Founder
-      </p>
+      <p class="founder-eyebrow">Meet the Founder</p>
 
       <h2 class="founder-name">
         I build the product.<br>
         I own the outcome.
       </h2>
 
-      <p class="founder-role">
-        Founder • MCA Graduate • Software Engineer
-      </p>
+      <p class="founder-role">Founder • MCA Graduate • Software Engineer</p>
 
       <blockquote class="founder-quote">
-  <span class="founder-quote-mark" aria-hidden="true">“</span>
-  <p>
-    I believe good software comes from understanding the problem deeply,
-    communicating clearly, and caring about the details all the way to production.
-  </p>
-  <span class="founder-quote-line" aria-hidden="true"></span>
-</blockquote>
+        <span class="founder-quote-mark" aria-hidden="true">“</span>
+        <p>
+          I believe good software comes from understanding the problem deeply,
+          communicating clearly, and caring about the details all the way to production.
+        </p>
+        <span class="founder-quote-line" aria-hidden="true"></span>
+      </blockquote>
 
       <p class="founder-bio">
         I'm Mayuresh Kahar, the founder and developer behind Veritous.
@@ -1150,13 +797,8 @@
       </p>
 
       <div class="founder-links">
-        <a href="https://www.linkedin.com/in/mayuresh-kahar-b37aa922/" target="_blank" rel="noopener noreferrer">
-          LinkedIn ↗
-        </a>
-
-        <a href="https://github.com/mayurrresh" target="_blank" rel="noopener noreferrer">
-          GitHub ↗
-        </a>
+        <a href="https://www.linkedin.com/in/mayuresh-kahar-b37aa922/" target="_blank" rel="noopener noreferrer">LinkedIn ↗<span class="sr-only"> (opens in a new tab)</span></a>
+        <a href="https://github.com/mayurrresh" target="_blank" rel="noopener noreferrer">GitHub ↗<span class="sr-only"> (opens in a new tab)</span></a>
       </div>
 
     </div>
@@ -1164,10 +806,8 @@
   </section>
 
 
-  <!-- =====================================================
-       PROCESS
-       ===================================================== -->
-  <section id="process">
+  <!-- PROCESS -->
+  <section id="process" aria-labelledby="process-title">
 
     <div
       class="section-header reveal"
@@ -1175,7 +815,7 @@
 
       <p class="section-eyebrow">How I Work</p>
 
-      <h2 class="section-title">
+      <h2 class="section-title" id="process-title">
         A direct path from<br>
         idea to launch.
       </h2>
@@ -1218,7 +858,7 @@
 
       <div class="step reveal">
         <div class="step-num">04</div>
-        <h4 class="step-title">Launch & Grow</h4>
+        <h4 class="step-title">Launch &amp; Grow</h4>
         <p class="step-desc">
           After deployment, I can continue with fixes, maintenance,
           monitoring, improvements, and new product capabilities.
@@ -1229,18 +869,15 @@
   </section>
 
 
-  <!-- =====================================================
-       WORK — SELECTED VERITOUS PROJECTS
-       ===================================================== -->
-  <section id="work">
+  <!-- WORK -->
+  <section id="work" aria-labelledby="work-title">
 
     <div class="container">
 
       <div class="section-header reveal">
         <div>
           <p class="section-eyebrow">Selected Work</p>
-
-          <h2 class="section-title">
+          <h2 class="section-title" id="work-title">
             Software built<br>
             for real problems.
           </h2>
@@ -1258,30 +895,18 @@
         <article class="project-card reveal">
 
           <div class="project-visual pv-1">
-
-            <div class="project-glow" style="background:var(--indigo);top:-60px;right:-60px;"></div>
+            <div class="project-glow" style="background:var(--indigo);top:-60px;right:-60px;" aria-hidden="true"></div>
 
             <div class="project-image">
-              <img
-                src="assets/images/volunteer.png"
-                alt="Volunteer Management Platform">
+              <img src="assets/images/volunteer.png" alt="Volunteer Management Platform dashboard" loading="lazy" decoding="async">
             </div>
 
-            <span class="project-metric">
-              NGO Digital Transformation
-            </span>
-
+            <span class="project-metric">NGO Digital Transformation</span>
           </div>
 
           <div class="project-info">
-
-            <p class="project-type">
-              Full Stack Web Platform
-            </p>
-
-            <h3 class="project-name">
-              Volunteer Management Platform
-            </h3>
+            <p class="project-type">Full Stack Web Platform</p>
+            <h3 class="project-name">Volunteer Management Platform</h3>
 
             <p class="project-desc">
               A complete volunteer management platform built for
@@ -1299,40 +924,26 @@
               <span class="tech-tag">Cloudinary</span>
             </div>
 
-            <a href="#cta" class="project-cs-link">
-              Discuss This Project ↗
-            </a>
-
+            <a href="#cta" class="project-cs-link">Discuss This Project ↗</a>
           </div>
         </article>
+
         <!-- PROJECT 2 -->
         <article class="project-card reveal">
 
           <div class="project-visual pv-2">
-
-            <div class="project-glow" style="background:#22c55e;top:-60px;right:-60px;"></div>
+            <div class="project-glow" style="background:#22c55e;top:-60px;right:-60px;" aria-hidden="true"></div>
 
             <div class="project-image">
-              <img
-                src="images/quickgpt.webp"
-                alt="QuickGPT AI Chatbot">
+              <img src="images/quickgpt.webp" alt="QuickGPT AI chatbot interface" loading="lazy" decoding="async">
             </div>
 
-            <span class="project-metric">
-              Generative AI
-            </span>
-
+            <span class="project-metric">Generative AI</span>
           </div>
 
           <div class="project-info">
-
-            <p class="project-type">
-              AI Web Application
-            </p>
-
-            <h3 class="project-name">
-              QuickGPT
-            </h3>
+            <p class="project-type">AI Web Application</p>
+            <h3 class="project-name">QuickGPT</h3>
 
             <p class="project-desc">
               An AI-powered chatbot integrating Google Gemini with
@@ -1347,42 +958,26 @@
               <span class="tech-tag">Gemini API</span>
             </div>
 
-            <a href="#cta" class="project-cs-link">
-              Discuss This Project ↗
-            </a>
-
+            <a href="#cta" class="project-cs-link">Discuss This Project ↗</a>
           </div>
         </article>
-
 
         <!-- PROJECT 3 -->
         <article class="project-card reveal">
 
           <div class="project-visual pv-3">
-
-            <div class="project-glow" style="background:#f97316;top:-60px;left:-60px;"></div>
+            <div class="project-glow" style="background:#f97316;top:-60px;left:-60px;" aria-hidden="true"></div>
 
             <div class="project-image">
-              <img
-                src="images/managekaro.webp"
-                alt="ManageKaro student management platform">
+              <img src="images/managekaro.webp" alt="ManageKaro student management platform" loading="lazy" decoding="async">
             </div>
 
-            <span class="project-metric">
-              In Development
-            </span>
-
+            <span class="project-metric">In Development</span>
           </div>
 
           <div class="project-info">
-
-            <p class="project-type">
-              Education Platform
-            </p>
-
-            <h3 class="project-name">
-              ManageKaro
-            </h3>
+            <p class="project-type">Education Platform</p>
+            <h3 class="project-name">ManageKaro</h3>
 
             <p class="project-desc">
               A student management platform with role-based authentication,
@@ -1397,10 +992,7 @@
               <span class="tech-tag">REST API</span>
             </div>
 
-            <a href="#cta" class="project-cs-link">
-              Discuss This Project ↗
-            </a>
-
+            <a href="#cta" class="project-cs-link">Discuss This Project ↗</a>
           </div>
         </article>
 
@@ -1409,20 +1001,16 @@
   </section>
 
 
-  <!-- =====================================================
-       AREAS OF EXPERTISE
-       ===================================================== -->
-  <section id="badges">
+  <!-- AREAS OF EXPERTISE -->
+  <section id="badges" aria-labelledby="badges-title">
 
     <div
       class="section-header reveal"
       style="text-align:center;justify-content:center;flex-direction:column;align-items:center;margin-bottom:0;">
 
-      <p class="section-eyebrow">
-        Areas of Expertise
-      </p>
+      <p class="section-eyebrow">Areas of Expertise</p>
 
-      <h2 class="section-title" style="font-size:clamp(1.75rem,3vw,2.5rem);">
+      <h2 class="section-title" id="badges-title" style="font-size:clamp(1.75rem,3vw,2.5rem);">
         Technology built around<br>
         the problem, not the trend.
       </h2>
@@ -1439,16 +1027,14 @@
       <span class="badge-pill">🎓 Education</span>
       <span class="badge-pill">🏢 NGOs</span>
       <span class="badge-pill">🤖 Artificial Intelligence</span>
-      <span class="badge-pill">📈 SaaS & Startups</span>
+      <span class="badge-pill">📈 SaaS &amp; Startups</span>
     </div>
 
   </section>
 
 
-  <!-- =====================================================
-       STACK
-       ===================================================== -->
-  <section id="stack">
+  <!-- STACK -->
+  <section id="stack" aria-labelledby="stack-title">
 
     <div
       class="section-header reveal"
@@ -1456,7 +1042,7 @@
 
       <p class="section-eyebrow">Technology Stack</p>
 
-      <h2 class="section-title">
+      <h2 class="section-title" id="stack-title">
         The right tools,<br>
         used deliberately.
       </h2>
@@ -1468,17 +1054,15 @@
 
     </div>
 
-    <div class="ticker-wrap">
+    <div class="ticker-wrap" aria-label="Technologies used">
       <div class="ticker" id="ticker"></div>
     </div>
 
   </section>
 
 
-  <!-- =====================================================
-       ENGAGEMENT
-       ===================================================== -->
-  <section id="engagement">
+  <!-- ENGAGEMENT -->
+  <section id="engagement" aria-labelledby="engagement-title">
 
     <div class="container">
 
@@ -1486,11 +1070,9 @@
         class="section-header reveal"
         style="text-align:center;justify-content:center;flex-direction:column;align-items:center;">
 
-        <p class="section-eyebrow">
-          Working With Veritous
-        </p>
+        <p class="section-eyebrow">Working With Veritous</p>
 
-        <h2 class="section-title">
+        <h2 class="section-title" id="engagement-title">
           A simple path from<br>
           idea to launch.
         </h2>
@@ -1506,12 +1088,8 @@
       <div class="engagement-grid">
 
         <div class="engagement-card reveal">
-          <p class="engagement-icon">💡</p>
-
-          <h3 class="engagement-title">
-            Tell me the problem
-          </h3>
-
+          <p class="engagement-icon" aria-hidden="true">💡</p>
+          <h3 class="engagement-title">Tell me the problem</h3>
           <p class="engagement-desc">
             Share the idea, workflow, challenge, or product you want to build.
             It can be a rough concept or a detailed specification.
@@ -1519,12 +1097,8 @@
         </div>
 
         <div class="engagement-card reveal">
-          <p class="engagement-icon">📝</p>
-
-          <h3 class="engagement-title">
-            Get a technical plan
-          </h3>
-
+          <p class="engagement-icon" aria-hidden="true">📝</p>
+          <h3 class="engagement-title">Get a technical plan</h3>
           <p class="engagement-desc">
             I break the problem into scope, architecture, technologies,
             milestones, and a practical delivery approach.
@@ -1532,12 +1106,8 @@
         </div>
 
         <div class="engagement-card reveal">
-          <p class="engagement-icon">⚙️</p>
-
-          <h3 class="engagement-title">
-            Build together
-          </h3>
-
+          <p class="engagement-icon" aria-hidden="true">⚙️</p>
+          <h3 class="engagement-title">Build together</h3>
           <p class="engagement-desc">
             Development happens in visible milestones with direct feedback,
             working software, and clear communication.
@@ -1545,12 +1115,8 @@
         </div>
 
         <div class="engagement-card reveal">
-          <p class="engagement-icon">🚀</p>
-
-          <h3 class="engagement-title">
-            Launch & continue
-          </h3>
-
+          <p class="engagement-icon" aria-hidden="true">🚀</p>
+          <h3 class="engagement-title">Launch &amp; continue</h3>
           <p class="engagement-desc">
             After deployment, I can continue with maintenance, monitoring,
             improvements, fixes, and new features.
@@ -1561,9 +1127,7 @@
 
       <div class="consultation-cta reveal">
 
-        <h3>
-          Let's build something meaningful.
-        </h3>
+        <h3>Let's build something meaningful.</h3>
 
         <p>
           If you have a product idea, an existing codebase that needs work,
@@ -1572,13 +1136,8 @@
         </p>
 
         <div class="cta-actions">
-          <a href="#cta" class="primary-btn">
-            Start a Conversation →
-          </a>
-
-          <a href="#work" class="secondary-btn">
-            Explore My Work
-          </a>
+          <a href="#cta" class="primary-btn">Start a Conversation →</a>
+          <a href="#work" class="secondary-btn">Explore My Work</a>
         </div>
 
       </div>
@@ -1588,31 +1147,25 @@
   </section>
 
 
-  <!-- =====================================================
-       FAQ
-       ===================================================== -->
-  <section id="faq">
+  <!-- FAQ -->
+  <section id="faq" aria-labelledby="faq-title">
 
     <div
       class="section-header reveal"
       style="flex-direction:column;align-items:flex-start;">
 
       <p class="section-eyebrow">Good to Know</p>
-
-      <h2 class="section-title">
-        Questions, answered.
-      </h2>
+      <h2 class="section-title" id="faq-title">Questions, answered.</h2>
 
     </div>
 
     <div class="faq-list" id="faqList">
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" type="button">
           Is Veritous a team or an agency?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-
         <div class="faq-answer">
           <div class="faq-answer-inner">
             Veritous is an independent, founder-led software studio.
@@ -1622,11 +1175,10 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" type="button">
           Who actually builds the software?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-
         <div class="faq-answer">
           <div class="faq-answer-inner">
             I do. I handle the core product engineering, architecture,
@@ -1636,11 +1188,10 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" type="button">
           Do you work with early-stage startups?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-
         <div class="faq-answer">
           <div class="faq-answer-inner">
             Yes. Early-stage products are a natural fit for a lean,
@@ -1651,11 +1202,10 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" type="button">
           Can you take over an existing codebase?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-
         <div class="faq-answer">
           <div class="faq-answer-inner">
             Yes. I can review the existing architecture and codebase,
@@ -1666,11 +1216,10 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" type="button">
           What happens after launch?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-
         <div class="faq-answer">
           <div class="faq-answer-inner">
             Depending on the project, I can continue with maintenance,
@@ -1680,11 +1229,10 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">
+        <button class="faq-question" type="button">
           How is pricing structured?
-          <span class="faq-icon">+</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
         </button>
-
         <div class="faq-answer">
           <div class="faq-answer-inner">
             Pricing depends on scope, complexity, and the level of ongoing
@@ -1700,18 +1248,14 @@
   </section>
 
 
-  <!-- =====================================================
-       CTA
-       ===================================================== -->
-  <section id="cta">
+  <!-- CTA -->
+  <section id="cta" aria-labelledby="cta-title">
 
     <div class="container">
 
-      <p class="section-eyebrow reveal">
-        Start a Conversation
-      </p>
+      <p class="section-eyebrow reveal">Start a Conversation</p>
 
-      <h2 class="cta-title reveal">
+      <h2 class="cta-title reveal" id="cta-title">
         Have an idea?<br>
         <span>Let's build it together.</span>
       </h2>
@@ -1723,38 +1267,21 @@
       </p>
 
       <div class="cta-buttons reveal">
-
-        <a href="mailto:hello@veritous.com" class="btn-primary">
-          Email Me →
-        </a>
+        <a href="mailto:hello@veritous.com?subject=Project%20enquiry%20via%20veritous.com" class="btn-primary">Email Me →</a>
 
         <a
           href="https://www.linkedin.com/in/mayuresh-kahar-b37aa922/"
           target="_blank"
           rel="noopener noreferrer"
           class="btn-secondary">
-          Connect on LinkedIn
+          Connect on LinkedIn<span class="sr-only"> (opens in a new tab)</span>
         </a>
-
       </div>
 
       <div class="cta-info reveal">
-
-        <div>
-          <strong>Communication</strong>
-          <span>Direct with the founder</span>
-        </div>
-
-        <div>
-          <strong>Location</strong>
-          <span>Pune, India</span>
-        </div>
-
-        <div>
-          <strong>Project Types</strong>
-          <span>Web • AI • SaaS • Custom Software</span>
-        </div>
-
+        <div><strong>Communication</strong><span>Direct with the founder</span></div>
+        <div><strong>Location</strong><span>Pune, India</span></div>
+        <div><strong>Project Types</strong><span>Web • AI • SaaS • Custom Software</span></div>
       </div>
 
     </div>
@@ -1762,9 +1289,7 @@
   </section>
 
 
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
+  <!-- FOOTER -->
   <footer id="footer">
 
     <div class="container">
@@ -1772,10 +1297,7 @@
       <div class="footer-top">
 
         <div class="footer-brand">
-
-          <a href="#hero" class="footer-logo" aria-label="Veritous home">
-            VERITOUS
-          </a>
+          <a href="#hero" class="footer-logo" aria-label="Veritous home">VERITOUS</a>
 
           <p class="footer-desc">
             Independent software and AI engineering,
@@ -1783,74 +1305,46 @@
           </p>
 
           <div class="footer-social">
-            <a href="https://www.linkedin.com/in/mayuresh-kahar-b37aa922/" target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-
-            <a href="https://github.com/mayurrresh" target="_blank" rel="noopener noreferrer">
-              GitHub
-            </a>
-
+            <a href="https://www.linkedin.com/in/mayuresh-kahar-b37aa922/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/mayurrresh" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="#work">Projects</a>
           </div>
-
         </div>
 
-
         <div class="footer-column">
-
           <h4>Explore</h4>
-
           <a href="#services">Services</a>
           <a href="#work">Work</a>
           <a href="#process">Approach</a>
           <a href="#founder">Founder</a>
-
         </div>
 
-
         <div class="footer-column">
-
           <h4>Build With Me</h4>
-
           <a href="#services">Web Applications</a>
           <a href="#services">AI Solutions</a>
           <a href="#services">SaaS Development</a>
           <a href="#services">Custom Software</a>
-
         </div>
 
-
         <div class="footer-column">
-
           <h4>Contact</h4>
-
           <p>Pune, Maharashtra</p>
           <p>India</p>
-
-          <a href="mailto:hello@veritous.com">
-            hello@veritous.com
-          </a>
-
+          <a href="mailto:hello@veritous.com">hello@veritous.com</a>
         </div>
 
       </div>
 
-
       <div class="footer-divider"></div>
 
-
       <div class="footer-bottom">
-
-        <p>
-          © 2026 Veritous. Built by Mayuresh Kahar.
-        </p>
+        <p>© <span id="year">2026</span> Veritous. Built by Mayuresh Kahar.</p>
 
         <div class="footer-bottom-links">
           <a href="#hero">Home</a>
           <a href="#cta">Contact</a>
         </div>
-
       </div>
 
     </div>
@@ -1859,18 +1353,151 @@
 
 
   <!-- =====================================================
-       JAVASCRIPT
+       SCRIPTS — existing modules (deferred, order preserved)
        ===================================================== -->
-  <script src="./js/navbar.js"></script>
-  <script src="./js/cursor.js"></script>
-  <script src="./js/magnetic.js"></script>
-  <script src="./js/counters.js"></script>
-  <script src="./js/reveal.js"></script>
-  <script src="./js/ticker.js"></script>
-  <script src="./js/marquee.js"></script>
-  <script src="./js/tilt.js"></script>
-  <script src="./js/faq.js"></script>
-  <script src="./js/main.js"></script>
+  <script src="./js/navbar.js" defer></script>
+  <script src="./js/cursor.js" defer></script>
+  <script src="./js/magnetic.js" defer></script>
+  <script src="./js/counters.js" defer></script>
+  <script src="./js/reveal.js" defer></script>
+  <script src="./js/ticker.js" defer></script>
+  <script src="./js/marquee.js" defer></script>
+  <script src="./js/tilt.js" defer></script>
+  <script src="./js/faq.js" defer></script>
+  <script src="./js/main.js" defer></script>
+
+  <!-- =====================================================
+       ENHANCEMENTS — additive, safe to run alongside the modules above
+       (no design changes: accessibility, performance, polish)
+       ===================================================== -->
+  <script>
+  (function () {
+    'use strict';
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+
+    /* Screen-reader-only utility (injected so no CSS file needs editing) */
+    var srStyle = document.createElement('style');
+    srStyle.textContent = '.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}';
+    document.head.appendChild(srStyle);
+
+    /* Touch / coarse pointers: disable custom cursor elements entirely */
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+      ['cursor', 'cursor-ring', 'cursor-label'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+    }
+
+    /* Auto-updating footer year */
+    var yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      /* ---------- Hero video: respect motion/data preferences, pause off-screen ---------- */
+      var video = document.getElementById('hero-video');
+      if (video) {
+        if (reduceMotion || saveData) {
+          video.removeAttribute('autoplay');
+          video.pause();
+        } else if ('IntersectionObserver' in window) {
+          new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                var p = video.play();
+                if (p && p.catch) p.catch(function () {});
+              } else {
+                video.pause();
+              }
+            });
+          }, { threshold: 0.05 }).observe(video);
+        }
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) video.pause();
+        });
+      }
+
+      /* ---------- Active nav link on scroll ---------- */
+      var links = document.querySelectorAll('.nav-links a[href^="#"]');
+      var map = {};
+      links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+
+      if ('IntersectionObserver' in window && links.length) {
+        var spy = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && map[e.target.id]) {
+              links.forEach(function (l) { l.removeAttribute('aria-current'); });
+              map[e.target.id].setAttribute('aria-current', 'true');
+            }
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+
+        Object.keys(map).forEach(function (id) {
+          var sec = document.getElementById(id);
+          if (sec) spy.observe(sec);
+        });
+      }
+
+      /* ---------- FAQ: ARIA wiring that mirrors whatever state faq.js applies ---------- */
+      var items = document.querySelectorAll('.faq-item');
+      items.forEach(function (item, i) {
+        var btn = item.querySelector('.faq-question');
+        var ans = item.querySelector('.faq-answer');
+        if (!btn || !ans) return;
+
+        var bid = 'faq-q-' + (i + 1);
+        var aid = 'faq-a-' + (i + 1);
+        btn.id = bid;
+        ans.id = aid;
+        btn.setAttribute('aria-controls', aid);
+        ans.setAttribute('role', 'region');
+        ans.setAttribute('aria-labelledby', bid);
+
+        var sync = function () {
+          var open = /\b(open|active|expanded|is-open)\b/.test(item.className) ||
+                     /\b(open|active|expanded|is-open)\b/.test(btn.className);
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
+        sync();
+
+        var mo = new MutationObserver(sync);
+        mo.observe(item, { attributes: true, attributeFilter: ['class'] });
+        mo.observe(btn, { attributes: true, attributeFilter: ['class'] });
+      });
+
+      /* ---------- Smooth in-page anchors: keep focus in sync for keyboard users ---------- */
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var id = a.getAttribute('href').slice(1);
+          var target = id && document.getElementById(id);
+          if (!target) return;
+          if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+          setTimeout(function () { target.focus({ preventScroll: true }); }, reduceMotion ? 0 : 600);
+        });
+      });
+
+      /* ---------- Image failure fallback (project paths differ: assets/images vs images) ---------- */
+      document.querySelectorAll('.project-image img, .founder-avatar img').forEach(function (img) {
+        img.addEventListener('error', function () {
+          if (img.dataset.retried) return;
+          img.dataset.retried = '1';
+          var src = img.getAttribute('src');
+          img.src = /^assets\//.test(src) ? src.replace(/^assets\//, '') : 'assets/' + src;
+        });
+      });
+
+    });
+
+    /* ---------- Warm the next likely interaction: prefetch on link intent ---------- */
+    document.addEventListener('pointerover', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+      if (a) a.setAttribute('rel', 'noopener');
+    }, { passive: true, once: true });
+
+  })();
+  </script>
 
 </body>
 </html>
